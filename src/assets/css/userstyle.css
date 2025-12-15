@@ -1649,18 +1649,96 @@ textarea {
 }
 
 @media (max-width: 576px) {
+  /* Bookings list spacing */
+  .ta-bookings {
+    padding: 12px 8px calc(76px + env(safe-area-inset-bottom) + 20px) !important;
+  }
+
   .ta-bookings__title {
-    font-size: 22px;
+    font-size: 22px !important;
+    margin-bottom: 16px !important;
+    padding: 0 4px !important;
   }
+
+  /* Ticket card spacing improvements */
   .ta-ticket-card {
-    padding: 14px;
+    padding: 16px 14px !important;
+    margin-bottom: 14px !important;
+    border-radius: 12px !important;
   }
+
   .ta-ticket-card__top {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
   }
+
+  .ta-ticket-card__cities {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .ta-ticket-card__city {
+    font-size: 16px !important;
+    line-height: 1.3 !important;
+  }
+
+  .ta-ticket-card__agency {
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .ta-ticket-card__grid {
+    gap: 12px 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .ta-kv {
+    gap: 4px !important;
+  }
+
+  .ta-kv__k {
+    font-size: 11px !important;
+    gap: 4px !important;
+  }
+
+  .ta-kv__k svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .ta-kv__v {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+  }
+
   .ta-kv--right {
-    text-align: left;
+    text-align: left !important;
+  }
+
+  .ta-kv__v--price {
+    font-size: 15px !important;
+  }
+
+  /* Ticket card actions */
+  .ta-ticket-card__actions {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .ta-ticket-card__actions .ta-btn {
+    flex: 1 1 calc(50% - 4px) !important;
+    min-width: calc(50% - 4px) !important;
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  .ta-ticket-card__actions .ta-btn svg {
+    width: 16px !important;
+    height: 16px !important;
   }
 }
 
@@ -1834,18 +1912,216 @@ textarea {
 }
 
 @media (max-width: 768px) {
+  /* Ticket container spacing */
+  .ta-ticket {
+    padding: 12px 12px calc(76px + env(safe-area-inset-bottom) + 20px) !important;
+  }
+
+  .ta-ticket__header {
+    margin: 8px 0 16px !important;
+    padding: 0 4px !important;
+  }
+
+  /* Boarding pass card spacing */
+  .ta-boarding-pass {
+    border-radius: 16px !important;
+    margin: 0 4px !important;
+  }
+
+  /* Header spacing improvements */
+  .ta-boarding-pass__header {
+    padding: 20px 16px 16px !important;
+    gap: 12px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .ta-boarding-pass__brand {
+    width: 100% !important;
+  }
+
+  .ta-boarding-pass__agency {
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .ta-boarding-pass__title {
+    font-size: 13px !important;
+    margin-top: 4px !important;
+  }
+
+  .ta-boarding-pass__barcode {
+    text-align: left !important;
+    min-width: auto !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+
+  .ta-boarding-pass__barcodeLabel {
+    font-size: 11px !important;
+  }
+
+  .ta-boarding-pass__barcodeValue {
+    font-size: 16px !important;
+    margin-top: 4px !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* Route section spacing */
   .ta-boarding-pass__route {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 20px 16px !important;
   }
+
   .ta-boarding-pass__routeMid {
-    display: none;
+    display: none !important;
   }
+
+  .ta-boarding-pass__routeCol {
+    padding: 0 !important;
+  }
+
   .ta-boarding-pass__routeCol--right {
-    text-align: left;
+    text-align: left !important;
+    margin-top: 0 !important;
   }
+
+  .ta-boarding-pass__routeLabel {
+    font-size: 11px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .ta-boarding-pass__routeCity {
+    font-size: 20px !important;
+    margin-top: 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Perforated line spacing */
+  .ta-perf {
+    padding: 0 16px !important;
+    margin: 8px 0 !important;
+  }
+
+  /* Details section spacing */
   .ta-boarding-pass__details {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px 12px !important;
+    padding: 20px 16px !important;
+  }
+
+  .ta-kv {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .ta-kv__k {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: var(--ta-muted) !important;
+  }
+
+  .ta-kv__k svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .ta-kv__v {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--ta-text) !important;
+    line-height: 1.3 !important;
+    margin-top: 2px !important;
+  }
+
+  .ta-kv__v--price {
+    font-size: 16px !important;
+    color: var(--ta-brand) !important;
+  }
+
+  .ta-kv--right {
+    text-align: left !important;
+  }
+
+  .ta-status {
+    display: inline-block !important;
+    padding: 4px 10px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Action buttons spacing */
+  .ta-boarding-pass__actions {
+    padding: 16px !important;
+    gap: 10px !important;
+    flex-direction: column !important;
+    margin-bottom: 0 !important;
+  }
+
+  .ta-boarding-pass__actions .ta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    gap: 8px !important;
+  }
+
+  .ta-boarding-pass__actions .ta-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Extra small screens - tighter spacing */
+  .ta-ticket {
+    padding: 8px 8px calc(76px + env(safe-area-inset-bottom) + 16px) !important;
+  }
+
+  .ta-boarding-pass {
+    margin: 0 2px !important;
+    border-radius: 12px !important;
+  }
+
+  .ta-boarding-pass__header {
+    padding: 16px 14px 14px !important;
+  }
+
+  .ta-boarding-pass__route {
+    padding: 16px 14px !important;
+    gap: 14px !important;
+  }
+
+  .ta-boarding-pass__routeCity {
+    font-size: 18px !important;
+  }
+
+  .ta-boarding-pass__details {
+    padding: 16px 14px !important;
+    gap: 14px 10px !important;
+  }
+
+  .ta-kv__v {
+    font-size: 14px !important;
+  }
+
+  .ta-boarding-pass__actions {
+    padding: 14px !important;
+    gap: 8px !important;
+  }
+
+  .ta-boarding-pass__actions .ta-btn {
+    padding: 11px 14px !important;
+    font-size: 13px !important;
   }
 }
 

@@ -99,7 +99,15 @@ const Form: React.FC<FormProps> = ({
         }
 
         toast.success(data.message || 'Account created successfully.', { id: toastId });
-        router.push("/book");
+        // Use redirect parameter if available, otherwise default to /book
+        const destination = redirectTo || "/book";
+        
+        // Use a small delay to ensure state and localStorage are updated before redirect
+        // This is especially important for mobile and when navigating to protected routes
+        setTimeout(() => {
+          // Use router.replace to avoid adding to history stack
+          router.replace(destination);
+        }, 150);
       }
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
