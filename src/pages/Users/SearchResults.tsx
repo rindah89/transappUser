@@ -352,17 +352,15 @@ const SearchResults: React.FC = () => {
               </div>
             </div>
           )}
-          <div className="row pt-5">
-            <div className="col-lg-2">
-              {hasResults ? (
+          {hasResults && hasFilteredResults && (
+            <div className="row pt-5">
+              <div className="col-lg-2">
                 <h6>
-                  {hasFilteredResults ? filteredTrips.length : 0} {t('buses')} {t('from')} {from} {t('to')} {to}
+                  {filteredTrips.length} {t('buses')} {t('from')} {from} {t('to')} {to}
                 </h6>
-              ) : (
-                <h6>{filterNoSeatsAvailable.length} {t('no_bus')} {t('from')} {from} {t('to')} {to}</h6>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="container-fluid">
           {hasResults && (

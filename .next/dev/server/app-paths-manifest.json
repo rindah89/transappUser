@@ -1,7 +1,8 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(dashboard)/book/page": "app/(dashboard)/book/page.js",
-  "/(dashboard)/terms/page": "app/(dashboard)/terms/page.js",
+  "/api/v1/trips/trip-search/route": "app/api/v1/trips/trip-search/route.js",
+  "/page": "app/page.js",
+  "/(dashboard)/user-bookings/page": "app/(dashboard)/user-bookings/page.js",
   "/(dashboard)/ticket/[id]/page": "app/(dashboard)/ticket/[id]/page.js",
-  "/(dashboard)/user-bookings/page": "app/(dashboard)/user-bookings/page.js"
+  "/(dashboard)/terms/page": "app/(dashboard)/terms/page.js",
+  "/(dashboard)/trip-search/page": "app/(dashboard)/trip-search/page.js"
 }

@@ -201,7 +201,7 @@
     "popular_routes": "Popular routes",
     "find_trip_hint": "Pick your route, date, and time.",
     "modify_search": "Modify search",
-    "no_bus": " Bus found",
+    "no_bus": "No buses found",
     "buses": "Buses found",
     "operator": "Operator",
     "get_ticket": "Get Ticket",
