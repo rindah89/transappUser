@@ -94,3 +94,4 @@ const { data } = await supabase
 **Supabase types generation complete!** 🎉
 
 
+
