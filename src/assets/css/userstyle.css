@@ -1092,12 +1092,23 @@ textarea {
   pointer-events: auto;
   position: relative;
   z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ta-seat.is-available:hover {
   transform: translateY(-1px);
   border-color: rgba(188, 192, 20, 0.55);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+}
+
+.ta-seat.is-available:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
 .ta-seat.is-selected {
@@ -1111,6 +1122,7 @@ textarea {
   border-color: rgba(148, 163, 184, 0.35);
   color: rgba(15, 23, 42, 0.45);
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .ta-seat.ta-seat--empty {

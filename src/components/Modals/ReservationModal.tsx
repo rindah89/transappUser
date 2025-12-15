@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useCallback } from "react";
 import {
   Row,
   Col,
@@ -144,9 +144,9 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
     load();
   }, [modal.modal_static, trip?.id]);
 
-  const pickSeat = (seat: string): void => {
+  const pickSeat = useCallback((seat: string): void => {
     setValue('seat', seat, { shouldValidate: true, shouldDirty: true });
-  };
+  }, [setValue]);
 
   const selectedSeat = watch('seat');
   const seatRows = useMemo(() => {
@@ -166,13 +166,21 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
     if (!seat) return <div className="ta-seat ta-seat--empty" aria-hidden="true" />;
     const isTaken = takenSeats.includes(seat);
     const isSelected = selectedSeat === seat;
+    
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!isTaken) {
+        pickSeat(seat);
+      }
+    };
+    
     return (
       <button
-        key={seat}
         type="button"
         className={`ta-seat ${isTaken ? 'is-taken' : 'is-available'} ${isSelected ? 'is-selected' : ''}`}
         disabled={isTaken}
-        onClick={() => pickSeat(seat)}
+        onClick={handleClick}
         aria-label={`Seat ${seat}${isTaken ? ' (taken)' : isSelected ? ' (selected)' : ''}`}
       >
         {seat}

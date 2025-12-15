@@ -55,10 +55,34 @@ function ticketNumber(): string {
   return Math.random().toString(36).slice(2, 9).toUpperCase();
 }
 
-function reservationFeeFor(price: number): number {
+/**
+ * Calculate reservation fee based on agency settings
+ * - If percentage mode: calculate percentage, round up to nearest 50 XAF if below 500 XAF, then apply cap
+ * - If fixed mode: return fixed amount
+ */
+function calculateReservationFee(
+  price: number,
+  mode: 'percentage' | 'fixed',
+  percent: number = 10,
+  capXaf: number = 500,
+  fixedXaf: number = 500
+): number {
   if (!Number.isFinite(price) || price <= 0) return 0;
-  const fee = (price / 100) * 10;
-  return fee > 500 ? 500 : fee;
+  
+  if (mode === 'fixed') {
+    return fixedXaf;
+  }
+  
+  // Percentage mode
+  let fee = (price / 100) * percent;
+  
+  // Round up to nearest 50 XAF if below 500 XAF and not already a multiple of 50
+  if (fee < 500 && fee % 50 !== 0) {
+    fee = Math.ceil(fee / 50) * 50;
+  }
+  
+  // Apply cap
+  return fee > capXaf ? capXaf : fee;
 }
 
 export async function POST(
@@ -157,18 +181,27 @@ export async function POST(
     if (bookingError) throw new HttpException(500, bookingError.message);
     if (!booking) throw new HttpException(500, 'Failed to create booking');
 
-    // Fetch agency logo separately to avoid RLS issues with foreign key joins
+    // Fetch agency logo and reservation fee settings separately to avoid RLS issues with foreign key joins
     // Service role bypasses RLS - safe to query agencies directly
     let agencyLogo: string | null = null;
+    let reservationFeeMode: 'percentage' | 'fixed' = 'percentage';
+    let reservationFeePercent: number = 10;
+    let reservationFeeCapXaf: number = 500;
+    let reservationFeeXaf: number = 500;
+    
     if (insertPayload.agency_id) {
       const { data: agency, error: agencyError } = await supabaseAdmin
         .from('agencies')
-        .select('logo')
+        .select('logo, reservation_fee_mode, reservation_fee_percent, reservation_fee_cap_xaf, reservation_fee_xaf')
         .eq('id', insertPayload.agency_id)
         .single();
       
       if (!agencyError && agency) {
         agencyLogo = agency.logo || null;
+        reservationFeeMode = (agency.reservation_fee_mode as 'percentage' | 'fixed') || 'percentage';
+        reservationFeePercent = agency.reservation_fee_percent ?? 10;
+        reservationFeeCapXaf = agency.reservation_fee_cap_xaf ?? 500;
+        reservationFeeXaf = agency.reservation_fee_xaf ?? 500;
       }
     }
 
@@ -180,7 +213,13 @@ export async function POST(
 
     // Record "payment" (reservation fee waived) + cash-at-counter amount (best-effort; never blocks booking)
     try {
-      const reservationFee = reservationFeeFor(Number(trip.price || 0));
+      const reservationFee = calculateReservationFee(
+        Number(trip.price || 0),
+        reservationFeeMode,
+        reservationFeePercent,
+        reservationFeeCapXaf,
+        reservationFeeXaf
+      );
       const paymentPayload: PaymentRecordInsert = {
         booking_id: booking.id,
         trip_id: tripId,
