@@ -45,21 +45,37 @@ const TicketForm: React.FC = () => {
 
   const { name, idCardNo, payerName, phoneNumber, payerEmail, numberOfSeats, ticketType, seat } = values;
 
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.setAttribute("style", "background: #f8f8f8!important;");
-    }
-  }, []);
-
-  const handleChange = (field: keyof TicketFormValues) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setValues({ ...values, [field]: event.target.value });
-  };
-
   const { actions, state } = useStateMachine({
     updateBooking,
     updateAction,
     updateUser,
   });
+
+  // Prefill form with user details if authenticated
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.setAttribute("style", "background: #f8f8f8!important;");
+    }
+
+    // Get user data from state (handle different possible paths)
+    const userData = (state?.user as any)?.data?.data || (state?.user as any)?.data || (state?.user as any);
+    
+    if (userData && (userData.email || userData.name)) {
+      // User is authenticated, prefill form fields
+      setValues(prevValues => ({
+        ...prevValues,
+        name: userData.name || prevValues.name,
+        idCardNo: userData.id_card_number || prevValues.idCardNo,
+        payerName: userData.name || prevValues.payerName,
+        payerEmail: userData.email || prevValues.payerEmail,
+        phoneNumber: userData.phone_number || prevValues.phoneNumber,
+      }));
+    }
+  }, [state?.user]);
+
+  const handleChange = (field: keyof TicketFormValues) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setValues({ ...values, [field]: event.target.value });
+  };
 
   const createBooking = async (event: React.FormEvent): Promise<void> => {
     event.preventDefault();

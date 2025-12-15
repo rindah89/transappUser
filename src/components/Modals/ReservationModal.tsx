@@ -109,6 +109,22 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
     }
   }, [booking, reset]);
 
+  // Prefill form with user details if authenticated
+  useEffect(() => {
+    if (!modal.modal_static) return; // Only prefill when modal is open
+    
+    // Get user data from state (handle different possible paths)
+    const userData = (state?.user as any)?.data?.data || (state?.user as any)?.data || (state?.user as any);
+    
+    if (userData && (userData.email || userData.name)) {
+      // User is authenticated, prefill form fields
+      if (userData.name) setValue('name', userData.name);
+      if (userData.id_card_number) setValue('idCardNo', userData.id_card_number);
+      if (userData.phone_number) setValue('phoneNumber', userData.phone_number);
+      if (userData.email) setValue('payerEmail', userData.email);
+    }
+  }, [modal.modal_static, state?.user, setValue]);
+
   const stateAny = state as any;
   const trip = stateAny?.trip?.trip;
 
