@@ -175,6 +175,9 @@
     "or": "Or",
     "sign_up": "Sign Up",
     "guest_checkout": "Checkout as guest",
+    "guest_checkout_info": "You can book without creating an account. Your booking will be saved with the information you provide.",
+    "book_as_guest": "Book as Guest",
+    "guest_booking_info": "You can book tickets without creating an account. Simply click \"Get Ticket\" and fill in your details.",
     "ticket_number": "Number",
     "parcel_summary": "Parcel information",
    

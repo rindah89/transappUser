@@ -105,14 +105,10 @@ export async function GET(request: NextRequest): Promise<NextResponse<BookingsRe
 
     const currentYear = new Date().getFullYear().toString();
 
+    // Service role bypasses RLS - fetch bookings without joins to avoid RLS issues on agencies table
     const { data, error } = await supabaseAdmin
       .from('bookings')
-      .select(`
-        *,
-        agencies!bookings_agency_id_fkey (
-          logo
-        )
-      `)
+      .select('*')
       .eq('booker_id', userId)
       .eq('year', currentYear)
       .order('created_at', { ascending: false });
@@ -121,13 +117,38 @@ export async function GET(request: NextRequest): Promise<NextResponse<BookingsRe
       throw new HttpException(500, error.message);
     }
 
-    // Attach agency_logo from joined agencies table to each booking
+    if (!data || data.length === 0) {
+      return {
+        error: false,
+        message: 'No bookings found',
+        data: [],
+      };
+    }
+
+    // Fetch agency logos separately to avoid RLS issues with foreign key joins
+    // Service role bypasses RLS - safe to query agencies directly
+    const agencyIds = [...new Set((data as any[]).map((b: any) => b.agency_id).filter(Boolean))];
+    const agencyLogos: Record<number, string | null> = {};
+
+    if (agencyIds.length > 0) {
+      const { data: agencies, error: agenciesError } = await supabaseAdmin
+        .from('agencies')
+        .select('id, logo')
+        .in('id', agencyIds);
+
+      if (!agenciesError && agencies) {
+        agencies.forEach((agency: any) => {
+          agencyLogos[agency.id] = agency.logo || null;
+        });
+      }
+    }
+
+    // Attach agency_logo from agencies table to each booking
     const bookings = ((data || []) as any[]).map((b: any) => {
       const bookingWithLogo = {
         ...b,
-        agency_logo: b.agencies?.logo || null,
+        agency_logo: agencyLogos[b.agency_id] || null,
       };
-      delete bookingWithLogo.agencies;
       return bookingWithLogo;
     }) as Booking[];
 

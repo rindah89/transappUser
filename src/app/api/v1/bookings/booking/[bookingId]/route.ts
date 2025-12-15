@@ -59,14 +59,10 @@ export async function GET(
 
     const { user } = await userAuthService.verifySession(accessToken);
 
+    // Service role bypasses RLS - fetch booking without joins to avoid RLS issues on agencies table
     const { data: booking, error } = await supabaseAdmin
       .from('bookings')
-      .select(`
-        *,
-        agencies!bookings_agency_id_fkey (
-          logo
-        )
-      `)
+      .select('*')
       .eq('id', bookingId)
       .eq('booker_id', user.id)
       .single();
@@ -78,12 +74,26 @@ export async function GET(
 
     if (!booking) throw new HttpException(404, 'Booking not found');
 
-    // Attach agency_logo from joined agencies table
+    // Fetch agency logo separately to avoid RLS issues with foreign key joins
+    // Service role bypasses RLS - safe to query agencies directly
+    let agencyLogo: string | null = null;
+    if ((booking as any).agency_id) {
+      const { data: agency, error: agencyError } = await supabaseAdmin
+        .from('agencies')
+        .select('logo')
+        .eq('id', (booking as any).agency_id)
+        .single();
+      
+      if (!agencyError && agency) {
+        agencyLogo = agency.logo || null;
+      }
+    }
+
+    // Attach agency_logo from agencies table
     const bookingWithLogo = {
       ...booking,
-      agency_logo: (booking as any).agencies?.logo || null,
+      agency_logo: agencyLogo || null,
     };
-    delete (bookingWithLogo as any).agencies;
 
     return NextResponse.json<BookingResponse>(
       { error: false, message: 'Booking retrieved successfully', data: bookingWithLogo as Booking },

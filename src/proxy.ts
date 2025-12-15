@@ -64,9 +64,7 @@ export async function proxy(request: NextRequest) {
     '/user-bookings',
     '/ticket-form',
     '/ticket-summary',
-    '/book',
-    '/trip-search',
-    '/search-results',
+    // Removed /book, /trip-search, /search-results to allow guest booking
   ];
 
   // Auth routes (public routes)

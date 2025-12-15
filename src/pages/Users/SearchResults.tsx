@@ -32,6 +32,10 @@ const SearchResults: React.FC = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { actions, state } = useStateMachine({ updateSearch, updateAction, updateBooking });
+  
+  // Check if user is authenticated
+  const userEmail = (state?.user as any)?.data?.data?.email ?? (state?.user as any)?.data?.email;
+  const isGuest = !userEmail;
 
   const [data, setData] = useState<Trip[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -326,6 +330,24 @@ const SearchResults: React.FC = () => {
                       </Link>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {isGuest && hasResults && (
+            <div className="row pt-4">
+              <div className="col-lg-12">
+                <div className="alert alert-light border d-flex align-items-center gap-2">
+                  <span>👤</span>
+                  <div className="flex-grow-1">
+                    <strong>{t('book_as_guest') || 'Book as Guest'}</strong>
+                    <p className="mb-0 small text-muted">
+                      {t('guest_booking_info') || 'You can book tickets without creating an account. Simply click "Get Ticket" and fill in your details.'}
+                    </p>
+                  </div>
+                  <Link href="/register" className="btn btn-sm btn-outline-primary">
+                    {t('sign_up') || 'Sign Up'}
+                  </Link>
                 </div>
               </div>
             </div>

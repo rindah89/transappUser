@@ -4,6 +4,26 @@ import { HttpException } from '@exceptions/HttpException';
 import type { Booking, BookingInsert } from '@interfaces/booking.interface';
 import type { PaymentRecordInsert } from '@interfaces/payment-record.interface';
 
+/**
+ * Anonymous Booking API Route
+ * 
+ * This endpoint allows guests (unauthenticated users) to create bookings without an account.
+ * 
+ * RLS (Row Level Security) Bypass:
+ * - Uses `supabaseAdmin` which is initialized with SUPABASE_SERVICE_ROLE_KEY
+ * - Service role key automatically bypasses all RLS policies
+ * - This is safe because:
+ *   1. This is a server-side API route (never exposed to client)
+ *   2. All validations are performed server-side
+ *   3. Guest bookings have `booker_id: null` to distinguish from authenticated bookings
+ * 
+ * Security:
+ * - Input validation on all fields
+ * - Seat conflict checking before insert
+ * - Trip availability verification
+ * - No sensitive data exposed to client
+ */
+
 interface AnonBookingResponse {
   error: boolean;
   message: string;
@@ -66,6 +86,7 @@ export async function POST(
       seat?: string | null;
     };
 
+    // Service role bypasses RLS - safe to read trips without authentication
     const { data: trip, error: tripError } = await supabaseAdmin
       .from('trips')
       .select('*')
@@ -113,6 +134,7 @@ export async function POST(
       throw new HttpException(400, 'Seat is required');
     }
 
+    // Service role bypasses RLS - check for seat conflicts
     // Best-effort: prevent duplicate seat selection (non-atomic)
     const { data: seatRow, error: seatError } = await supabaseAdmin
       .from('bookings')
@@ -123,26 +145,38 @@ export async function POST(
     if (seatError) throw new HttpException(500, seatError.message);
     if ((seatRow || []).length > 0) throw new HttpException(409, 'Seat already taken');
 
+    // Service role bypasses RLS - allows insert without authentication
+    // Guest bookings have booker_id: null to distinguish from authenticated bookings
+    // Note: Using select('*') instead of join to avoid RLS issues on agencies table
     const { data: booking, error: bookingError } = await supabaseAdmin
       .from('bookings')
       .insert(insertPayload)
-      .select(`
-        *,
-        agencies!bookings_agency_id_fkey (
-          logo
-        )
-      `)
+      .select('*')
       .single();
 
     if (bookingError) throw new HttpException(500, bookingError.message);
     if (!booking) throw new HttpException(500, 'Failed to create booking');
 
-    // Attach agency_logo from joined agencies table
+    // Fetch agency logo separately to avoid RLS issues with foreign key joins
+    // Service role bypasses RLS - safe to query agencies directly
+    let agencyLogo: string | null = null;
+    if (insertPayload.agency_id) {
+      const { data: agency, error: agencyError } = await supabaseAdmin
+        .from('agencies')
+        .select('logo')
+        .eq('id', insertPayload.agency_id)
+        .single();
+      
+      if (!agencyError && agency) {
+        agencyLogo = agency.logo || null;
+      }
+    }
+
+    // Attach agency_logo from agencies table
     const bookingWithLogo = {
       ...booking,
-      agency_logo: (booking as any).agencies?.logo || null,
+      agency_logo: agencyLogo || null,
     };
-    delete (bookingWithLogo as any).agencies;
 
     // Record "payment" (reservation fee waived) + cash-at-counter amount (best-effort; never blocks booking)
     try {
@@ -169,11 +203,13 @@ export async function POST(
         } as any,
       };
 
+      // Service role bypasses RLS - allows insert without authentication
       await supabaseAdmin.from('payment_records').insert(paymentPayload);
     } catch {
       // ignore
     }
 
+    // Service role bypasses RLS - update trip reserved count
     // Best-effort: increment reserved seats (non-atomic)
     try {
       await supabaseAdmin

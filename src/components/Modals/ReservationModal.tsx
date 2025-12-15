@@ -69,6 +69,10 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
     updateUser,
   });
 
+  // Check if user is authenticated
+  const userEmail = (state?.user as any)?.data?.data?.email ?? (state?.user as any)?.data?.email;
+  const isGuest = !userEmail;
+
   const saveLocal = async (): Promise<void> => {
     setIsLoading(true);
     const phone = getValues("phoneNumber");
@@ -207,6 +211,15 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
           </div>
         </ModalHeader>
         <ModalBody >
+          {isGuest && (
+            <div className="alert alert-info mb-3 d-flex align-items-center gap-2" role="alert">
+              <span>ℹ️</span>
+              <div>
+                <strong>{t('guest_checkout') || 'Guest Checkout'}</strong>
+                <p className="mb-0 small">{t('guest_checkout_info') || 'You can book without creating an account. Your booking will be saved with the information you provide.'}</p>
+              </div>
+            </div>
+          )}
           <form onSubmit={handleSubmit(saveLocal)} className="p-2">
             <Row>
               <Col lg={6}>

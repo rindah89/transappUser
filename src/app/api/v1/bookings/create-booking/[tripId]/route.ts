@@ -157,26 +157,37 @@ export async function POST(
     if (seatError) throw new HttpException(500, seatError.message);
     if ((seatRow || []).length > 0) throw new HttpException(409, 'Seat already taken');
 
+    // Service role bypasses RLS - allows insert without authentication
+    // Note: Using select('*') instead of join to avoid RLS issues on agencies table
     const { data: booking, error: bookingError } = await supabaseAdmin
       .from('bookings')
       .insert(insertPayload)
-      .select(`
-        *,
-        agencies!bookings_agency_id_fkey (
-          logo
-        )
-      `)
+      .select('*')
       .single();
 
     if (bookingError) throw new HttpException(500, bookingError.message);
     if (!booking) throw new HttpException(500, 'Failed to create booking');
 
-    // Attach agency_logo from joined agencies table
+    // Fetch agency logo separately to avoid RLS issues with foreign key joins
+    // Service role bypasses RLS - safe to query agencies directly
+    let agencyLogo: string | null = null;
+    if (insertPayload.agency_id) {
+      const { data: agency, error: agencyError } = await supabaseAdmin
+        .from('agencies')
+        .select('logo')
+        .eq('id', insertPayload.agency_id)
+        .single();
+      
+      if (!agencyError && agency) {
+        agencyLogo = agency.logo || null;
+      }
+    }
+
+    // Attach agency_logo from agencies table
     const bookingWithLogo = {
       ...booking,
-      agency_logo: (booking as any).agencies?.logo || null,
+      agency_logo: agencyLogo || null,
     };
-    delete (bookingWithLogo as any).agencies;
 
     // Record "payment" (reservation fee waived) + cash-at-counter amount (best-effort; never blocks booking)
     try {
