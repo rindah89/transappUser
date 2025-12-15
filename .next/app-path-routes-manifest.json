@@ -37,5 +37,6 @@
   "/api/v1/users/user-delete-account/route": "/api/v1/users/user-delete-account",
   "/api/v1/users/user-forgot/route": "/api/v1/users/user-forgot",
   "/api/v1/users/user-reset/route": "/api/v1/users/user-reset",
-  "/api/v1/users/verify-reset-token/route": "/api/v1/users/verify-reset-token"
+  "/api/v1/users/verify-reset-token/route": "/api/v1/users/verify-reset-token",
+  "/page": "/"
 }

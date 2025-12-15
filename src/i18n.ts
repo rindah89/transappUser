@@ -35,11 +35,18 @@ i18n
     returnEmptyString: false,
     returnObjects: true,
     // Don't show missing keys in production
-    missingKeyHandler: process.env.NODE_ENV === 'development' 
-      ? (lng: string[], ns: string, key: string) => {
-          console.warn(`Missing translation key: ${key} for language: ${lng.join(', ')}`);
-        }
-      : undefined
+    ...(process.env.NODE_ENV === 'development' && {
+      missingKeyHandler: (
+        lngs: readonly string[], 
+        _ns: string, 
+        key: string, 
+        _fallbackValue: string, 
+        _updateMissing: boolean, 
+        _options: any
+      ) => {
+        console.warn(`Missing translation key: ${key} for language: ${lngs.join(', ')}`);
+      }
+    })
   });
 
 export default i18n;
