@@ -118,11 +118,11 @@ export async function GET(request: NextRequest): Promise<NextResponse<BookingsRe
     }
 
     if (!data || data.length === 0) {
-      return {
+      return NextResponse.json<BookingsResponse>({
         error: false,
         message: 'No bookings found',
         data: [],
-      };
+      });
     }
 
     // Fetch agency logos separately to avoid RLS issues with foreign key joins
