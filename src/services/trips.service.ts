@@ -15,11 +15,14 @@ class TripService {
       .select('*');
 
     if (params.from) {
-      query = query.eq('from_location', params.from);
+      // Use pattern matching to find trips where location contains the town name
+      // e.g., "Bamenda" matches "Bamenda", "Bamenda, Up Station", etc.
+      query = query.ilike('from_location', `%${params.from}%`);
     }
 
     if (params.to) {
-      query = query.eq('to_location', params.to);
+      // Use pattern matching to find trips where location contains the town name
+      query = query.ilike('to_location', `%${params.to}%`);
     }
 
     if (params.journeyDate) {
