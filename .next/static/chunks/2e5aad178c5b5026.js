@@ -1,0 +1,10 @@
+__turbopack_load_page_chunks__("/Users/DeleteAccount", [
+  "static/chunks/580d0c74b4ddfbc8.js",
+  "static/chunks/64cce7c9534bbb96.js",
+  "static/chunks/9cbadfee432ca48b.js",
+  "static/chunks/c01b8b6ead4660d0.js",
+  "static/chunks/5247e999c9091f8f.js",
+  "static/chunks/40bbb85b0aa0c1bf.js",
+  "static/chunks/1ecb9635d996ab78.js",
+  "static/chunks/turbopack-e5a5b6cb5380d417.js"
+])

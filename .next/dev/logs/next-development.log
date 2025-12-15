@@ -1,0 +1,177 @@
+[00:00:05.039] Server  LOG      ✓ Ready in 4.4s
+[00:00:11.225] Server  LOG      ○ Compiling / ...
+[00:00:17.640] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:18.404] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:42.520] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:46.015] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:46.438] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:48.850] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:55.721] Server  LOG      ✓ Compiled in 356ms
+[00:06:58.303] Server  LOG      ✓ Compiled in 236ms
+[00:11:12.981] Server  LOG      ✓ Compiled in 201ms
+[00:11:22.854] Server  LOG      ✓ Compiled in 94ms
+[00:12:21.544] Server  LOG      ✓ Compiled in 139ms
+[00:13:48.937] Server  LOG      ✓ Compiled in 126ms
+[00:13:54.658] Server  LOG      ✓ Compiled in 24ms
+[00:21:33.873] Server  LOG      ✓ Compiled in 885ms
+[00:21:41.297] Server  LOG      ✓ Compiled in 83ms
+[00:22:57.656] Server  LOG      ✓ Compiled in 217ms
+[00:23:17.046] Server  LOG      ✓ Compiled in 35ms
+[00:23:24.933] Server  LOG      ✓ Compiled in 26ms
+[00:28:16.901] Server  LOG      ✓ Compiled in 429ms
+[00:30:23.606] Server  LOG      ✓ Compiled in 179ms
+[00:30:44.290] Server  LOG      ✓ Compiled in 44ms
+[00:30:52.455] Server  LOG      ✓ Compiled in 30ms
+[01:16:10.093] Server  LOG      ✓ Compiled in 163ms
+[01:17:33.950] Server  LOG      ✓ Compiled in 271ms
+[01:18:14.231] Server  LOG      ✓ Compiled in 1584ms
+[01:18:14.391] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:18:15.041] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:19:44.913] Server  LOG      ✓ Compiled in 224ms
+[01:19:45.016] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:19:54.578] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:19:54.579] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:20:48.143] Browser ERROR   ./src/pages/Users/book.tsx
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+
+Caused by:
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/pages/Users/book.tsx [app-client] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of *EcmascriptChunkItemContent::new failed
+- Execution of EcmascriptModuleContent::new failed
+- Expected export to be in eval context "default" ImportMap { imports: {}, namespace_imports: {}, reexports: [], references: {}, has_imports: false, has_exports: false, has_top_level_await: false, strict: false, attributes: {}, full_star_imports: {}, exports: {} }
+
+Import trace:
+  Server Component:
+    ./src/pages/Users/book.tsx
+    ./src/app/(dashboard)/book/page.tsx
+[01:20:48.874] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:49.198] Browser WARN    Image with src "/_next/static/media/transapp-logo.3c10fcbb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:21:40.450] Browser ERROR   uncaughtError: SyntaxError: Cannot use import statement outside a module
+[01:21:40.825] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:23:04.512] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:05.007] Browser WARN    Image with src "/_next/static/media/transapp-logo.3c10fcbb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:23:15.100] Browser ERROR   uncaughtError: SyntaxError: Cannot use import statement outside a module
+[01:23:15.100] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:23:18.912] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:19.254] Browser WARN    Image with src "/_next/static/media/transapp-logo.3c10fcbb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:25:37.096] Server  LOG      ✓ Compiled in 1923ms
+[01:25:38.332] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:25:38.664] Browser ERROR   uncaughtError: SyntaxError: Cannot use import statement outside a module
+[01:25:52.550] Server  LOG      ✓ Compiled in 707ms
+[01:26:01.523] Server  LOG      ✓ Compiled in 343ms
+[01:27:23.600] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:27:23.933] Browser WARN    Image with src "/_next/static/media/transapp-logo.3c10fcbb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:28:13.076] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:36:22.914] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:36:23.293] Browser WARN    Image with src "/_next/static/media/transapp-logo.3c10fcbb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:36:29.902] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:38:59.492] Server  LOG      ✓ Compiled in 0ms
+[02:54:57.040] Server  LOG      ✓ Compiled in 854ms
+[03:12:02.733] Server  LOG      ✓ Compiled in 1624ms
+[03:12:05.983] Server  LOG      ✓ Compiled in 305ms
+[03:12:27.678] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:12:28.274] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:12:35.992] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:12:52.640] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:12:53.087] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[03:13:38.722] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:12:02.644] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:12:03.199] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[09:12:11.467] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:46:40.810] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:46:42.159] Browser WARN    Image with src "/_next/static/media/hero.d1663ce9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.

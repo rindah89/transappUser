@@ -1,0 +1,3 @@
+module.exports=[93695,(a,b,c)=>{b.exports=a.x("next/dist/shared/lib/no-fallback-error.external.js",()=>require("next/dist/shared/lib/no-fallback-error.external.js"))},47750,a=>a.a(async(b,c)=>{try{let b=await a.y("react-i18next");a.n(b),c()}catch(a){c(a)}},!0),12967,a=>a.a(async(b,c)=>{try{let b=await a.y("axios");a.n(b),c()}catch(a){c(a)}},!0),75627,a=>a.a(async(b,c)=>{try{let b=await a.y("react-hot-toast");a.n(b),c()}catch(a){c(a)}},!0),56195,(a,b,c)=>{b.exports=a.x("react-dom",()=>require("react-dom"))},6197,a=>a.a(async(b,c)=>{try{let b=await a.y("react-hook-form");a.n(b),c()}catch(a){c(a)}},!0),26653,(a,b,c)=>{b.exports=a.x("spinners-react",()=>require("spinners-react"))}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__f615d2c1._.js.map

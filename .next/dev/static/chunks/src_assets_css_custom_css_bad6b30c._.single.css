@@ -1,0 +1,214 @@
+/* [project]/src/assets/css/custom.css [app-client] (css) */
+.icon-box {
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.modal-content * {
+  border: none;
+}
+
+.modal-title, .modal-footer {
+  margin: 0 auto;
+}
+
+.modal-body {
+  padding-top: 0;
+}
+
+.modal-header .close {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+}
+
+.red-circle {
+  text-align: center;
+  vertical-align: middle;
+  color: red;
+  background-color: #fff;
+  border: 3px solid red;
+  border-radius: 50%;
+  width: 76px;
+  height: 76px;
+  padding: 5px;
+  font-size: 60px;
+  line-height: 60px;
+  transition: all .2s;
+}
+
+.loader-outer {
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding-top: 400px;
+  display: flex;
+}
+
+.loader-outer-bar {
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  padding-top: 150px;
+  display: flex;
+}
+
+.loader-inner {
+  width: 200px;
+  height: 200px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  background-color: #bcc014 !important;
+}
+
+.react-datepicker__day.react-datepicker__day--selected, .react-datepicker__day.react-datepicker__day--today {
+  color: #fff;
+  background-color: #bcc014 !important;
+}
+
+.react-datepicker__header {
+  background: #fff !important;
+  border-bottom: 5px solid #fff !important;
+}
+
+.react-datepicker__input-container input {
+  -moz-padding-start: calc(.75rem - 3px);
+  color: #212529;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  width: 100%;
+  padding: .375rem 2.25rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.react-datepicker__input-container input:hover {
+  color: #212529;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #bcc015;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.box {
+  text-align: center;
+  background: #fff;
+  margin-bottom: 30px;
+  padding: 40px;
+  box-shadow: 0 0 30px #494e5c26;
+}
+
+.box h3 {
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.box h4 {
+  color: #126f27;
+  margin-bottom: 25px;
+  font-family: Open Sans, sans-serif;
+  font-size: 46px;
+  font-weight: 400;
+}
+
+.box h4 span {
+  color: #bababa;
+  font-size: 18px;
+  display: block;
+}
+
+.box ul {
+  color: #999;
+  text-align: left;
+  padding: 0;
+  line-height: 20px;
+  list-style: none;
+}
+
+.box ul li {
+  padding-bottom: 12px;
+  font-weight: bold;
+}
+
+.box ul li span {
+  font-weight: normal;
+}
+
+.box .btn-buy {
+  color: #fff;
+  background: #bcc014;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 35px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all .3s;
+  display: inline-block;
+}
+
+.pricing .btn-buy:hover {
+  background: #bcc014;
+}
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .box {
+    max-width: 80%;
+    margin: 0 auto 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .box {
+    max-width: 100%;
+    margin: 0 auto 30px;
+  }
+}
+
+option:checked {
+  color: #f6fa00;
+  background-color: #051a01;
+}
+
+option:focus {
+  color: #f6fa00;
+  background-color: #051a01 !important;
+}
+
+.active {
+  background-color: #bcc015;
+  border-radius: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: bold;
+  color: #162f27 !important;
+}
+
+.link-color {
+  color: #fff;
+  font-weight: bold;
+}
+
+.link-color:hover {
+  color: #fff;
+}
+
+.del-box {
+  font-size: 24px;
+  font-weight: bold !important;
+}
+
+/*# sourceMappingURL=src_assets_css_custom_css_bad6b30c._.single.css.map*/

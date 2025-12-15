@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/Common/TopbarDropdown/Profile.tsx -> @databases/supabase\":{\"id\":\"components/Common/TopbarDropdown/Profile.tsx -> @databases/supabase\",\"files\":[\"static/chunks/_app-pages-browser_src_lib_supabase_ts.js\"]}}"

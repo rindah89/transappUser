@@ -1,0 +1,3 @@
+module.exports=[856117,a=>{a.v("/_next/static/media/hero.d1663ce9.png")},551676,a=>{a.v("/_next/static/media/App-Store---eng.af46bb82.svg")},558044,a=>{a.v("/_next/static/media/Google-Play---eng.6d095721.svg")},552662,a=>{a.v("/_next/static/media/about_transapp.c9401b1b.png")},785983,a=>{a.v("/_next/static/media/how1.fa3bb369.svg")},393199,a=>{a.v("/_next/static/media/how2.b744a08a.svg")},316073,a=>{a.v("/_next/static/media/how3.236031a1.svg")},293407,a=>{a.v("/_next/static/media/trans.63dc3aee.jpeg")},255525,a=>{a.v("/_next/static/media/sia.d734e3d0.jpeg")}];
+
+//# sourceMappingURL=src_assets_images_31c5889f._.js.map

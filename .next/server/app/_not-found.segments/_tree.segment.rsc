@@ -1,0 +1,8 @@
+:HL["/_next/static/chunks/94e607299d4cedf9.css","style"]
+:HL["/_next/static/chunks/fe4199f8787f7fae.css","style"]
+:HL["/_next/static/chunks/5a38378929192e69.css","style"]
+:HL["/_next/static/chunks/3efae02b3ad6ded1.css","style"]
+:HL["/_next/static/chunks/0b5bba207baf1e02.css","style"]
+:HL["/_next/static/chunks/432968321bdeb73e.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap","style"]
+0:{"buildId":"FQhvoHASZdax1Oazj8xg-","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

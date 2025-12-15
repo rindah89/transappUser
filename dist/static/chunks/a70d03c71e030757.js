@@ -1,0 +1,11 @@
+__turbopack_load_page_chunks__("/Users/PayUnit", [
+  "static/chunks/19bd915a70377b2a.js",
+  "static/chunks/23fb5a0a881424ff.js",
+  "static/chunks/9eee0ad3238cd162.js",
+  "static/chunks/0dd1e6658097418d.js",
+  "static/chunks/099bdb5796379283.js",
+  "static/chunks/b321ec33cf27cc29.js",
+  "static/chunks/af4fafaf222afcb2.js",
+  "static/chunks/56b47d93baf1e1de.js",
+  "static/chunks/turbopack-70c5b9eaf20fff3a.js"
+])

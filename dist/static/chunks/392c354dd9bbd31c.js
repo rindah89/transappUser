@@ -1,0 +1,7 @@
+__turbopack_load_page_chunks__("/Users/Privacy", [
+  "static/chunks/0dd1e6658097418d.js",
+  "static/chunks/b321ec33cf27cc29.js",
+  "static/chunks/086f7481fc2b8d91.js",
+  "static/chunks/523b1ec1667f1ebd.css",
+  "static/chunks/turbopack-8e9ea756dc0f375e.js"
+])

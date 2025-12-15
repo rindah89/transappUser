@@ -1,0 +1,3 @@
+{
+  "/(auth)/trip-login/page": "app/(auth)/trip-login/page.js"
+}

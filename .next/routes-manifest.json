@@ -1,0 +1,440 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "on"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ],
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    }
+  ],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/v1/bookings/anon-booking/[tripId]",
+      "regex": "^/api/v1/bookings/anon\\-booking/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtripId": "nxtPtripId"
+      },
+      "namedRegex": "^/api/v1/bookings/anon\\-booking/(?<nxtPtripId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/bookings/booking/[bookingId]",
+      "regex": "^/api/v1/bookings/booking/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbookingId": "nxtPbookingId"
+      },
+      "namedRegex": "^/api/v1/bookings/booking/(?<nxtPbookingId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/bookings/cancel/[bookingId]",
+      "regex": "^/api/v1/bookings/cancel/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbookingId": "nxtPbookingId"
+      },
+      "namedRegex": "^/api/v1/bookings/cancel/(?<nxtPbookingId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/bookings/create-booking/[tripId]",
+      "regex": "^/api/v1/bookings/create\\-booking/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtripId": "nxtPtripId"
+      },
+      "namedRegex": "^/api/v1/bookings/create\\-booking/(?<nxtPtripId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/bookings/trip-seats/[tripId]",
+      "regex": "^/api/v1/bookings/trip\\-seats/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtripId": "nxtPtripId"
+      },
+      "namedRegex": "^/api/v1/bookings/trip\\-seats/(?<nxtPtripId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payments/by-booking/[bookingId]",
+      "regex": "^/api/v1/payments/by\\-booking/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbookingId": "nxtPbookingId"
+      },
+      "namedRegex": "^/api/v1/payments/by\\-booking/(?<nxtPbookingId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/ticket/[id]",
+      "regex": "^/ticket/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/ticket/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about-transapp",
+      "regex": "^/about\\-transapp(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about\\-transapp(?:/)?$"
+    },
+    {
+      "page": "/api/v1/bookings/user-bookings",
+      "regex": "^/api/v1/bookings/user\\-bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/bookings/user\\-bookings(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payments/record",
+      "regex": "^/api/v1/payments/record(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/payments/record(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payments/verify",
+      "regex": "^/api/v1/payments/verify(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/payments/verify(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payunit/initialize",
+      "regex": "^/api/v1/payunit/initialize(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/payunit/initialize(?:/)?$"
+    },
+    {
+      "page": "/api/v1/trips/trip-search",
+      "regex": "^/api/v1/trips/trip\\-search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/trips/trip\\-search(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/login",
+      "regex": "^/api/v1/users/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/login(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/logout",
+      "regex": "^/api/v1/users/logout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/logout(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/signup",
+      "regex": "^/api/v1/users/signup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/signup(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/user-delete-account",
+      "regex": "^/api/v1/users/user\\-delete\\-account(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/user\\-delete\\-account(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/user-forgot",
+      "regex": "^/api/v1/users/user\\-forgot(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/user\\-forgot(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/user-reset",
+      "regex": "^/api/v1/users/user\\-reset(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/user\\-reset(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/verify-reset-token",
+      "regex": "^/api/v1/users/verify\\-reset\\-token(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/verify\\-reset\\-token(?:/)?$"
+    },
+    {
+      "page": "/book",
+      "regex": "^/book(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/book(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/pay",
+      "regex": "^/pay(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pay(?:/)?$"
+    },
+    {
+      "page": "/payunit-return",
+      "regex": "^/payunit\\-return(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/payunit\\-return(?:/)?$"
+    },
+    {
+      "page": "/privacy-policy",
+      "regex": "^/privacy\\-policy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacy\\-policy(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/search-results",
+      "regex": "^/search\\-results(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/search\\-results(?:/)?$"
+    },
+    {
+      "page": "/terms",
+      "regex": "^/terms(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terms(?:/)?$"
+    },
+    {
+      "page": "/ticket-form",
+      "regex": "^/ticket\\-form(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ticket\\-form(?:/)?$"
+    },
+    {
+      "page": "/ticket-summary",
+      "regex": "^/ticket\\-summary(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ticket\\-summary(?:/)?$"
+    },
+    {
+      "page": "/transapp-delete-my-account",
+      "regex": "^/transapp\\-delete\\-my\\-account(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/transapp\\-delete\\-my\\-account(?:/)?$"
+    },
+    {
+      "page": "/trip-login",
+      "regex": "^/trip\\-login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/trip\\-login(?:/)?$"
+    },
+    {
+      "page": "/trip-search",
+      "regex": "^/trip\\-search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/trip\\-search(?:/)?$"
+    },
+    {
+      "page": "/user-bookings",
+      "regex": "^/user\\-bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/user\\-bookings(?:/)?$"
+    },
+    {
+      "page": "/user-forgot",
+      "regex": "^/user\\-forgot(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/user\\-forgot(?:/)?$"
+    },
+    {
+      "page": "/user-reset",
+      "regex": "^/user\\-reset(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/user\\-reset(?:/)?$"
+    },
+    {
+      "page": "/Users",
+      "regex": "^/Users(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users(?:/)?$"
+    },
+    {
+      "page": "/Users/About",
+      "regex": "^/Users/About(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/About(?:/)?$"
+    },
+    {
+      "page": "/Users/book",
+      "regex": "^/Users/book(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/book(?:/)?$"
+    },
+    {
+      "page": "/Users/DeleteAccount",
+      "regex": "^/Users/DeleteAccount(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/DeleteAccount(?:/)?$"
+    },
+    {
+      "page": "/Users/InAppPayment",
+      "regex": "^/Users/InAppPayment(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/InAppPayment(?:/)?$"
+    },
+    {
+      "page": "/Users/Login",
+      "regex": "^/Users/Login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/Login(?:/)?$"
+    },
+    {
+      "page": "/Users/PayUnit",
+      "regex": "^/Users/PayUnit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/PayUnit(?:/)?$"
+    },
+    {
+      "page": "/Users/Privacy",
+      "regex": "^/Users/Privacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/Privacy(?:/)?$"
+    },
+    {
+      "page": "/Users/Register",
+      "regex": "^/Users/Register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/Register(?:/)?$"
+    },
+    {
+      "page": "/Users/ResetPassword",
+      "regex": "^/Users/ResetPassword(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/ResetPassword(?:/)?$"
+    },
+    {
+      "page": "/Users/SearchResults",
+      "regex": "^/Users/SearchResults(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/SearchResults(?:/)?$"
+    },
+    {
+      "page": "/Users/Terms",
+      "regex": "^/Users/Terms(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/Terms(?:/)?$"
+    },
+    {
+      "page": "/Users/TicketForm",
+      "regex": "^/Users/TicketForm(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/TicketForm(?:/)?$"
+    },
+    {
+      "page": "/Users/TicketPage",
+      "regex": "^/Users/TicketPage(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/TicketPage(?:/)?$"
+    },
+    {
+      "page": "/Users/TicketSummary",
+      "regex": "^/Users/TicketSummary(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/TicketSummary(?:/)?$"
+    },
+    {
+      "page": "/Users/TripLogin",
+      "regex": "^/Users/TripLogin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/TripLogin(?:/)?$"
+    },
+    {
+      "page": "/Users/Trips",
+      "regex": "^/Users/Trips(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/Trips(?:/)?$"
+    },
+    {
+      "page": "/Users/TripSearch",
+      "regex": "^/Users/TripSearch(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/TripSearch(?:/)?$"
+    },
+    {
+      "page": "/Users/UserForgot",
+      "regex": "^/Users/UserForgot(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/UserForgot(?:/)?$"
+    },
+    {
+      "page": "/Users/UserReset",
+      "regex": "^/Users/UserReset(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Users/UserReset(?:/)?$"
+    },
+    {
+      "page": "/Util/ResetHelper",
+      "regex": "^/Util/ResetHelper(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/Util/ResetHelper(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

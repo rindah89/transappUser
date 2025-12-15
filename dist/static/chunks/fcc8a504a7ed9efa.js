@@ -1,0 +1,12 @@
+__turbopack_load_page_chunks__("/Users/book", [
+  "static/chunks/96d7e28083a27f6f.js",
+  "static/chunks/23fb5a0a881424ff.js",
+  "static/chunks/0dd1e6658097418d.js",
+  "static/chunks/8ecca2b774647d2e.js",
+  "static/chunks/b321ec33cf27cc29.js",
+  "static/chunks/56b47d93baf1e1de.js",
+  "static/chunks/099bdb5796379283.js",
+  "static/chunks/8b38b4f85952bf9c.js",
+  "static/chunks/523b1ec1667f1ebd.css",
+  "static/chunks/turbopack-bdb861ddee751893.js"
+])

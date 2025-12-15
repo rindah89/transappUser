@@ -1,0 +1,11 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/pages/Users/SearchResults.js")
+R.c("server/chunks/ssr/[root-of-the-server]__f615d2c1._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__3f3024e1._.js")
+R.c("server/chunks/ssr/node_modules_reactstrap_esm_08da047a._.js")
+R.c("server/chunks/ssr/node_modules_next_dist_004b2d83._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__9401d745._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__334aff55._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__d133fcd0._.js")
+R.c("server/chunks/ssr/node_modules_next_f71b9665._.js")
+R.m(58532)
+module.exports=R.m(58532).exports

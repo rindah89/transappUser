@@ -1,0 +1,1574 @@
+.appie-loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appie-loader {
+  opacity: 0;
+}
+/*.appie-loader.active {
+  opacity: 100;
+}*/
+.appie-visible {
+  transition: all 0.5s ease-in-out;
+}
+.appie-visible {
+  opacity: 0;
+}
+/*.appie-visible.active {
+  opacity: 100;
+}*/
+/* .appie-home-loader {
+  transition: all 0.5s ease-in-out;
+} */
+.offcanvas_main_menu li ul.sub-menu {
+  padding-left: 20 px;
+  overflow: hidden;
+  transition: all linear 0.65s;
+}
+.appie-fun-fact-box .appie-fun-fact-content .appie-fun-fact-item .title span {
+  font-size: 30px !important;
+  color: #fff !important;
+}
+.home-four-project {
+  background: #eef1f6;
+}
+.home-four-footer {
+  background: #ffffff;
+}
+.slick-dots li button:before {
+  content: "";
+}
+.appie-showcase-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media (min-width: 1400px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1200px;
+  }
+}
+.appie-services-2-area.appie-services-8-area {
+  overflow: hidden;
+}
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
+  .appie-services-8-area .service-thumb {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.save-comment input:checked + label::after {
+  font-family: "Font Awesome 5 Pro";
+  content: "\f00c";
+}
+.appie-testimonial-area {
+  overflow: hidden;
+}
+.testimonial-about-slider-active .testimonial-parent-item {
+  display: flex !important;
+  justify-content: center;
+}
+.testimonial-box {
+  width: 770px !important;
+}
+.testimonial-box-about-slider-small-active
+  .slick-center.slick-current
+  .item
+  .thumb
+  img {
+  width: 70px;
+  display: inline-block;
+}
+.testimonial-box-about-slider-small-active .item .thumb img {
+  display: inline-block;
+  width: 40px;
+}
+.testimonial-box-about-slider-small-active .item .thumb {
+  align-items: center;
+}
+.testimonial-box-about-slider-small-active .slick-center.slick-current .item {
+  margin-top: -20px;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
+  .testimonial-about-slider-active .testimonial-box {
+    box-shadow: none;
+    background: none;
+  }
+}
+@media only screen and (min-width: 770px) and (max-width: 1024px) {
+  .testimonial-about-slider-active .slick-arrow.next {
+    right: 15px;
+  }
+  .testimonial-about-slider-active .slick-arrow.prev {
+    left: 15px;
+  }
+}
+
+/* ===========================
+   Modern header layout (global)
+   =========================== */
+.modern-header {
+  background: linear-gradient(135deg, #162f27 0%, #2d5a47 100%) !important;
+  padding: 15px 0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.modern-header.appie-sticky {
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(22, 47, 39, 0.98) 0%,
+    rgba(45, 90, 71, 0.98) 100%
+  ) !important;
+}
+
+.modern-header-container {
+  width: 100% !important;
+}
+
+.modern-header-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 20px !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+}
+
+.modern-header-inner > * {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.modern-header-logo {
+  flex: 0 0 auto !important;
+  min-width: 120px !important;
+  max-width: 120px !important;
+}
+
+.modern-logo-box {
+  transition: transform 0.3s ease;
+}
+
+.modern-logo-box:hover {
+  transform: scale(1.05);
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.modern-logo {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.modern-header-nav {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+.modern-nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.modern-nav-menu ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.modern-nav-menu li {
+  margin: 0 !important;
+}
+
+.modern-nav-menu a {
+  color: white !important;
+  text-decoration: none !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+.modern-nav-menu a:hover,
+.modern-nav-menu a.active {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #f59e0b !important;
+  transform: translateY(-2px);
+}
+
+.modern-nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #f59e0b;
+  transition: width 0.3s ease;
+}
+
+.modern-nav-menu a:hover::after,
+.modern-nav-menu a.active::after {
+  width: 60%;
+}
+
+.modern-header-actions-wrapper {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin-left: auto !important;
+}
+
+.modern-header-actions {
+  position: relative !important;
+  padding-right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  justify-content: flex-end !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+}
+
+.modern-header-actions > * {
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+
+.modern-header-actions .dropdown {
+  display: inline-block !important;
+}
+
+.modern-login-btn {
+  padding: 10px 24px !important;
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+}
+
+.modern-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4) !important;
+  background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%) !important;
+  color: white !important;
+}
+
+.modern-menu-toggle {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  /* Hidden on desktop; shown via media query below */
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modern-menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+  .modern-header {
+    padding: 12px 0 !important;
+  }
+  .modern-header-nav {
+    display: none !important;
+  }
+  .modern-menu-toggle {
+    display: flex !important;
+  }
+  .modern-header-inner {
+    gap: 15px !important;
+  }
+  .modern-header-actions {
+    gap: 10px !important;
+  }
+  .modern-login-btn {
+    padding: 8px 20px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .modern-logo {
+    width: 100px !important;
+    height: auto !important;
+  }
+  .modern-header-actions {
+    gap: 8px !important;
+  }
+  .modern-header-inner {
+    gap: 10px !important;
+  }
+}
+
+/* ===========================
+   Mobile-native baseline UX
+   =========================== */
+:root {
+  --ta-radius: 14px;
+  --ta-bg: #f6f7fb;
+  --ta-surface: #ffffff;
+  --ta-text: #0f172a;
+  --ta-muted: #64748b;
+  --ta-brand: #162f27;
+  /* Primary accent (match header brand green) */
+  --ta-accent: #bcc014;
+}
+
+/* Brand primary button (override default Bootstrap blue) */
+.btn-primary,
+.ta-btn-primary {
+  background-color: var(--ta-accent) !important;
+  border-color: var(--ta-accent) !important;
+  color: #0b1b15 !important;
+}
+
+.btn-primary:hover,
+.ta-btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+.ta-btn-outline {
+  background: transparent !important;
+  border: 1px solid rgba(22, 47, 39, 0.2) !important;
+  color: var(--ta-brand) !important;
+}
+
+.ta-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(22, 47, 39, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ta-brand);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.ta-chip:hover {
+  background: rgba(188, 192, 20, 0.12);
+  border-color: rgba(188, 192, 20, 0.35);
+  transform: translateY(-1px);
+}
+
+.ta-popular-routes__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ta-popular-routes__title {
+  color: var(--ta-text);
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+/* Filters bar */
+.ta-filterbar {
+  position: sticky;
+  top: 76px; /* below header */
+  z-index: 20;
+  padding: 10px 0;
+  background: rgba(246, 247, 251, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.ta-filterbar__row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.ta-filterbar__group {
+  min-width: 0;
+}
+
+.ta-filterbar__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.6);
+  margin-bottom: 6px;
+}
+
+.ta-filterbar__control {
+  border-radius: 12px !important;
+}
+
+.ta-filterbar__time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ta-filterbar__time-sep {
+  color: rgba(15, 23, 42, 0.5);
+  font-weight: 700;
+}
+
+.ta-filterbar__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+  .ta-filterbar {
+    top: calc(62px + env(safe-area-inset-top));
+  }
+  .ta-filterbar__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile filter trigger */
+.ta-filterbar-mobile {
+  position: sticky;
+  top: calc(62px + env(safe-area-inset-top));
+  z-index: 25;
+  padding: 10px 0;
+  background: rgba(246, 247, 251, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* Bottom sheet modal */
+.ta-sheet .modal-dialog {
+  margin: 0;
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ta-sheet__content.modal-content {
+  border-radius: 18px 18px 0 0;
+  width: 100%;
+  max-height: 85vh;
+  overflow: hidden;
+}
+
+.ta-sheet .modal-body {
+  overflow: auto;
+}
+
+.ta-sheet__footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* Trip cards (modern) */
+.ta-trip-card {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ta-trip-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ta-trip-card__left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.ta-trip-card__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(22, 47, 39, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.ta-trip-card__meta {
+  min-width: 0;
+}
+
+.ta-trip-card__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ta-trip-card__agency {
+  font-weight: 800;
+  color: var(--ta-text);
+}
+
+.ta-trip-card__route {
+  margin-top: 2px;
+  color: var(--ta-text);
+}
+
+.ta-trip-card__sub {
+  margin-top: 4px;
+  color: rgba(15, 23, 42, 0.6);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ta-dot {
+  opacity: 0.6;
+}
+
+.ta-trip-card__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 0 0 auto;
+}
+
+.ta-trip-card__price-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.ta-trip-card__price-value {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ta-brand);
+  line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+  .ta-trip-card__body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ta-trip-card__right {
+    justify-content: space-between;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior-y: contain;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ta-bg) !important;
+  color: var(--ta-text);
+}
+
+/* Remove tap highlight + make taps feel immediate */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Improve focus visuals (esp. mobile keyboards) */
+:focus-visible {
+  outline: 2px solid rgba(245, 158, 11, 0.7);
+  outline-offset: 2px;
+}
+
+/* App content gets safe-area and bottom-nav spacing */
+.ta-app-content {
+  min-height: calc(100vh - 56px);
+}
+
+@media (max-width: 992px) {
+  .modern-header.appie-sticky {
+    padding-top: calc(12px + env(safe-area-inset-top)) !important;
+  }
+
+  .ta-app-content {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  /* Make common interactive elements easier to hit */
+  .btn,
+  .btn_1,
+  .btn_1.full-width,
+  .modern-login-btn,
+  .form-control {
+    min-height: 44px;
+    border-radius: 12px !important;
+  }
+
+  .form-control {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+
+  /* Panels/cards feel more native */
+  .panel,
+  .box,
+  .modal-content {
+    border-radius: var(--ta-radius) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+  }
+}
+
+/* Bottom tab bar */
+.ta-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1200;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.ta-bottom-nav__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.ta-bottom-nav__item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 10px 6px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: rgba(15, 23, 42, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 52px;
+}
+
+.ta-bottom-nav__item.is-active {
+  background: rgba(22, 47, 39, 0.08);
+  color: var(--ta-brand);
+}
+
+.ta-bottom-nav__label {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ===========================
+   Modern search (Book a trip)
+   =========================== */
+.ta-search-card.booking-card {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22) !important;
+}
+
+.ta-search-form {
+  width: 100%;
+}
+
+.ta-search-form__header {
+  margin-bottom: 14px;
+}
+
+.ta-search-form__title {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ta-text);
+  font-size: 16px;
+}
+
+.ta-search-form__hint {
+  margin-top: 4px;
+  color: var(--ta-muted);
+  font-size: 13px;
+}
+
+.ta-search-form__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.ta-field__label {
+  display: block;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.75);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.ta-field__control {
+  position: relative;
+}
+
+.ta-field__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(15, 23, 42, 0.45);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* react-select */
+.ta-select__control {
+  min-height: 48px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: none !important;
+  padding-left: 34px; /* room for icon */
+}
+
+.ta-select__control:hover {
+  border-color: rgba(188, 192, 20, 0.55) !important;
+}
+
+.ta-select__control--is-focused {
+  border-color: rgba(188, 192, 20, 0.7) !important;
+  box-shadow: 0 0 0 4px rgba(188, 192, 20, 0.15) !important;
+}
+
+.ta-select__single-value {
+  color: var(--ta-text) !important;
+  font-weight: 700;
+}
+
+.ta-select__placeholder {
+  color: rgba(15, 23, 42, 0.55) !important;
+}
+
+.ta-select__menu {
+  border-radius: 14px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.ta-select__option {
+  font-weight: 700;
+}
+
+.ta-select__option--is-focused {
+  background: rgba(188, 192, 20, 0.12) !important;
+  color: var(--ta-text) !important;
+}
+
+.ta-select__option--is-selected {
+  background: rgba(188, 192, 20, 0.22) !important;
+  color: var(--ta-text) !important;
+}
+
+/* DatePicker input */
+.ta-input.form-control {
+  min-height: 48px;
+  border-radius: 14px !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  padding-left: 46px !important; /* room for icon */
+  font-weight: 700;
+}
+
+.ta-input.form-control:focus {
+  border-color: rgba(188, 192, 20, 0.7) !important;
+  box-shadow: 0 0 0 4px rgba(188, 192, 20, 0.15) !important;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.ta-search-form__actions {
+  margin-top: 14px;
+}
+
+.ta-search-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+}
+
+/* ===========================
+   Modern booking modals + seatmap
+   =========================== */
+.ta-modal {
+  border-radius: calc(var(--ta-radius) + 6px) !important;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  box-shadow: 0 30px 90px rgba(15, 23, 42, 0.25);
+}
+
+.ta-modal .modal-body {
+  padding-top: 22px !important;
+}
+
+.ta-modal__header {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
+  background: radial-gradient(1200px 1200px at 10% -10%, rgba(188, 192, 20, 0.18), transparent 55%),
+    radial-gradient(900px 900px at 110% -10%, rgba(22, 47, 39, 0.16), transparent 55%),
+    rgba(255, 255, 255, 0.98) !important;
+}
+
+.ta-modal__headerInner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.ta-modal__kicker {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.ta-modal__title {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ta-text);
+}
+
+.ta-modal__arrow {
+  color: rgba(15, 23, 42, 0.35);
+}
+
+.ta-modal__close {
+  appearance: none;
+  border: 0;
+  background: rgba(15, 23, 42, 0.06);
+  color: rgba(15, 23, 42, 0.7);
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ta-modal__close:hover {
+  background: rgba(15, 23, 42, 0.10);
+}
+
+.ta-seatmap {
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  padding-top: 14px;
+}
+
+.ta-seatmap__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.ta-seatmap__title {
+  font-weight: 900;
+  color: var(--ta-text);
+}
+
+.ta-seatmap__subtitle {
+  margin-top: 3px;
+  font-size: 13px;
+  color: var(--ta-muted);
+}
+
+.ta-seatmap__legend {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ta-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.ta-legend::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.ta-legend.is-available::before { background: rgba(22, 47, 39, 0.35); }
+.ta-legend.is-selected::before { background: rgba(188, 192, 20, 0.9); }
+.ta-legend.is-taken::before { background: rgba(148, 163, 184, 0.9); }
+
+.ta-seatmap__bus {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: calc(var(--ta-radius) + 2px);
+  background: rgba(246, 247, 251, 0.7);
+  padding: 12px;
+  position: relative;
+}
+
+.ta-seatmap__driver {
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.6);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed rgba(15, 23, 42, 0.14);
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.ta-seatmap__rows {
+  display: grid;
+  gap: 10px;
+}
+
+.ta-seatmap__row {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.ta-seatmap__aisle {
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.04), rgba(15, 23, 42, 0.02));
+  border: 1px dashed rgba(15, 23, 42, 0.10);
+  pointer-events: none;
+}
+
+.ta-seatmap__side {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ta-seat {
+  min-height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.95);
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.85);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.ta-seat.is-available:hover {
+  transform: translateY(-1px);
+  border-color: rgba(188, 192, 20, 0.55);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+}
+
+.ta-seat.is-selected {
+  border-color: rgba(188, 192, 20, 0.75);
+  background: rgba(188, 192, 20, 0.20);
+  box-shadow: 0 12px 28px rgba(188, 192, 20, 0.22);
+}
+
+.ta-seat.is-taken {
+  background: rgba(148, 163, 184, 0.20);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: rgba(15, 23, 42, 0.45);
+  cursor: not-allowed;
+}
+
+.ta-seat.ta-seat--empty {
+  border: 1px dashed rgba(15, 23, 42, 0.12);
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .ta-seatmap__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ta-seatmap__row {
+    grid-template-columns: 1fr 28px 1fr;
+  }
+  .ta-seatmap__aisle {
+    height: 40px;
+    border-radius: 10px;
+  }
+}
+
+/* Drawer: make menu items feel like tappable rows */
+.offcanvas_menu_wrapper.active {
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+.offcanvas_main_menu li {
+  list-style: none;
+}
+
+.offcanvas_main_menu li a.link-color {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+/* Booking + trips: mobile spacing/typography tweaks */
+@media (max-width: 768px) {
+  .booking {
+    padding: 14px 0 0;
+  }
+
+  .booking-h2 {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .booking-card {
+    border-radius: var(--ta-radius) !important;
+    overflow: hidden;
+  }
+
+  .trip-search {
+    margin-top: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .trip-search .card {
+    border-radius: var(--ta-radius) !important;
+  }
+
+  .trip-search h5 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .trip-search p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--ta-muted);
+  }
+}
+
+/* ===========================
+   Modern "My bookings" cards
+   =========================== */
+.ta-bookings {
+  padding: 20px 0 48px;
+}
+
+.ta-bookings__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 8px 0 18px;
+}
+
+.ta-bookings__title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ta-text);
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.ta-bookings__subtitle {
+  margin: 8px 0 0;
+  color: var(--ta-muted);
+}
+
+.ta-bookings__list {
+  display: grid;
+  gap: 14px;
+}
+
+.ta-empty {
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--ta-radius);
+  padding: 18px 16px;
+  color: var(--ta-muted);
+}
+
+.ta-ticket-card {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: var(--ta-radius);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  padding: 16px;
+}
+
+.ta-ticket-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ta-ticket-card__cities {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: var(--ta-text);
+  letter-spacing: -0.01em;
+}
+
+.ta-ticket-card__agency {
+  margin-top: 6px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.72);
+}
+
+.ta-ticket-card__city {
+  white-space: nowrap;
+}
+
+.ta-ticket-card__arrow {
+  color: rgba(15, 23, 42, 0.35);
+  font-weight: 700;
+}
+
+.ta-ticket-card__meta {
+  margin-top: 8px;
+}
+
+.ta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(22, 47, 39, 0.15);
+  background: rgba(246, 247, 251, 0.9);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--ta-text);
+}
+
+.ta-pill__label {
+  font-size: 12px;
+  color: var(--ta-muted);
+  font-weight: 700;
+}
+
+.ta-pill__value {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.ta-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.75);
+  white-space: nowrap;
+}
+
+.ta-status.is-success {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.22);
+  color: #047857;
+}
+
+.ta-status.is-warning {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.26);
+  color: #92400e;
+}
+
+.ta-status.is-danger {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.22);
+  color: #b91c1c;
+}
+
+.ta-ticket-card__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.ta-kv {
+  min-width: 0;
+}
+
+.ta-kv__k {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ta-muted);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.ta-kv__v {
+  margin-top: 6px;
+  font-weight: 800;
+  color: var(--ta-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ta-kv--right {
+  text-align: right;
+}
+
+.ta-kv__v--price {
+  color: var(--ta-brand);
+}
+
+.ta-ticket-card__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.ta-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  padding: 8px 12px !important;
+}
+
+.btn-outline-primary.ta-btn {
+  border-color: rgba(188, 192, 20, 0.55) !important;
+  color: var(--ta-brand) !important;
+}
+
+.btn-outline-primary.ta-btn:hover {
+  background: rgba(188, 192, 20, 0.12) !important;
+}
+
+.btn-outline-secondary.ta-btn {
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  color: rgba(15, 23, 42, 0.8) !important;
+}
+
+.btn-outline-secondary.ta-btn:hover {
+  background: rgba(15, 23, 42, 0.05) !important;
+}
+
+@media (max-width: 992px) {
+  .ta-ticket-card__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .ta-bookings__title {
+    font-size: 22px;
+  }
+  .ta-ticket-card {
+    padding: 14px;
+  }
+  .ta-ticket-card__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ta-kv--right {
+    text-align: left;
+  }
+}
+
+/* ===========================
+   Ticket detail: boarding pass
+   =========================== */
+.ta-ticket {
+  padding: 12px 0 40px;
+}
+
+.ta-ticket__header {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 0 14px;
+}
+
+.ta-boarding-pass {
+  position: relative;
+  border-radius: calc(var(--ta-radius) + 4px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94));
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+  overflow: hidden;
+}
+
+.ta-boarding-pass__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 16px 12px;
+  background: radial-gradient(1200px 1200px at 10% -10%, rgba(188, 192, 20, 0.18), transparent 55%),
+    radial-gradient(900px 900px at 110% -10%, rgba(22, 47, 39, 0.18), transparent 55%);
+}
+
+.ta-boarding-pass__agency {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  color: var(--ta-brand);
+}
+
+.ta-boarding-pass__title {
+  margin-top: 6px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ta-text);
+  opacity: 0.9;
+}
+
+.ta-boarding-pass__barcode {
+  text-align: right;
+  min-width: 140px;
+}
+
+.ta-boarding-pass__barcodeLabel {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ta-muted);
+}
+
+.ta-boarding-pass__barcodeValue {
+  margin-top: 6px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--ta-text);
+  white-space: nowrap;
+}
+
+.ta-boarding-pass__route {
+  display: grid;
+  grid-template-columns: 1fr 120px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.ta-boarding-pass__routeCol--right {
+  text-align: right;
+}
+
+.ta-boarding-pass__routeLabel {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ta-muted);
+}
+
+.ta-boarding-pass__routeCity {
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ta-text);
+}
+
+.ta-boarding-pass__routeMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ta-boarding-pass__routeLine {
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(22, 47, 39, 0.12), rgba(22, 47, 39, 0.35), rgba(22, 47, 39, 0.12));
+  position: relative;
+}
+
+.ta-boarding-pass__routeLine::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--ta-accent);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 6px 20px rgba(188, 192, 20, 0.35);
+}
+
+.ta-perf {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.ta-perf__line {
+  height: 1px;
+  width: 100%;
+  border-top: 2px dashed rgba(15, 23, 42, 0.14);
+}
+
+.ta-perf__cut {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  background: #f6f7fb;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.ta-perf__cut--left {
+  left: -11px;
+}
+
+.ta-perf__cut--right {
+  right: -11px;
+}
+
+.ta-boarding-pass__details {
+  padding: 14px 16px 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ta-boarding-pass__actions {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 768px) {
+  .ta-boarding-pass__route {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .ta-boarding-pass__routeMid {
+    display: none;
+  }
+  .ta-boarding-pass__routeCol--right {
+    text-align: left;
+  }
+  .ta-boarding-pass__details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  .ta-no-print,
+  header,
+  footer,
+  .ta-bottom-nav,
+  .offcanvas_menu_wrapper,
+  .appie-header-area {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  .ta-boarding-pass {
+    box-shadow: none !important;
+  }
+}
+

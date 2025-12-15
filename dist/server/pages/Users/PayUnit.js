@@ -1,0 +1,11 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/pages/Users/PayUnit.js")
+R.c("server/chunks/ssr/node_modules_40b02886._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__cd348b51._.js")
+R.c("server/chunks/ssr/node_modules_next_dist_004b2d83._.js")
+R.c("server/chunks/ssr/node_modules_next_ea2d768f._.js")
+R.c("server/chunks/ssr/node_modules_reactstrap_esm_08da047a._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__334aff55._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__d133fcd0._.js")
+R.c("server/chunks/ssr/node_modules_next_f71b9665._.js")
+R.m(92980)
+module.exports=R.m(92980).exports

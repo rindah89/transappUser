@@ -1,0 +1,243 @@
+.icon-box {
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.modal-content * {
+  border: none;
+}
+
+.modal-title,
+.modal-footer {
+  margin: 0 auto;
+}
+
+.modal-body {
+  padding-top: 0px;
+}
+
+.modal-header .close {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+}
+
+.red-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  vertical-align: middle;
+  padding: 5px;
+  font-size: 60px;
+  color: red;
+  transition: 0.2s;
+  background-color: white;
+  border: 3px solid red;
+}
+
+.loader-outer {
+  height: 300px;
+  padding-top: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.loader-outer-bar {
+  height: 300px;
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.loader-inner {
+
+  width: 200px;
+  height: 200px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+  background-color: #bcc014 !important;
+
+}
+
+.react-datepicker__day.react-datepicker__day--selected {
+
+
+  background-color: #bcc014 !important;
+  color:#fff;
+
+}
+
+.react-datepicker__day.react-datepicker__day--today {
+
+  background-color: #bcc014 !important;
+  color:#fff;
+
+
+}
+
+.react-datepicker__header {
+  border-bottom: solid 5px #fff !important;
+  background: white !important;
+}
+.react-datepicker__input-container
+  input{
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    appearance: none;
+}
+.react-datepicker__input-container
+  input:hover{
+   
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #bcc015;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    appearance: none;
+}
+
+ .box {
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
+  background: #fff;
+  text-align: center;
+  
+}
+
+.box h3 {
+  font-weight: 300;
+  margin-bottom: 15px;
+  font-size: 28px;
+}
+
+.box h4 {
+  font-size: 46px;
+  color: #126f27;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 25px;
+}
+
+.box h4 span {
+  color: #bababa;
+  font-size: 18px;
+  display: block;
+}
+
+.box ul {
+  padding: 0;
+  list-style: none;
+  color: #999;
+  text-align: left;
+  line-height: 20px;
+}
+
+.box ul li {
+  padding-bottom: 12px;
+  font-weight: bold;
+}
+
+.box ul li span {
+  
+  font-weight: normal;
+}
+
+
+.box .btn-buy {
+  background: #bcc014;
+  display: inline-block;
+  padding: 10px 35px;
+  border-radius: 3px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 700;
+ 
+  transition: 0.3s;
+  border: none;
+}
+
+.pricing .btn-buy:hover {
+  background: #bcc014;
+}
+
+
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+   .box {
+    max-width: 80%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 420px) {
+   .box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+select option {
+  
+  
+}
+
+option:checked{
+  color: rgb(246, 250, 0);
+  background-color: rgb(5, 26, 1);
+}
+
+option:focus{
+  color: rgb(246, 250, 0);
+  background-color: rgb(5, 26, 1) !important;
+}
+
+.active {
+  
+  border-radius: 7px;
+  color: #162f27 !important;
+  font-weight: bold;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: #bcc015;
+}
+
+.link-color{
+  color: #fff;
+  font-weight: bold;
+}
+
+.link-color:hover{
+  color: #fff;
+}
+
+.del-box{
+  font-weight: bold !important;
+  font-size: 24px;
+  
+}
+
