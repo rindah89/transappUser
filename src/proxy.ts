@@ -67,9 +67,6 @@ export async function proxy(request: NextRequest) {
     '/book',
     '/trip-search',
     '/search-results',
-    '/about-transapp',
-    '/privacy-policy',
-    '/terms',
   ];
 
   // Auth routes (public routes)

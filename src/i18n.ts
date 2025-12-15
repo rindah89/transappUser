@@ -29,7 +29,17 @@ i18n
     },
     interpolation: {
       escapeValue: false // react already safes from xss
-    }
+    },
+    // Return the key if translation is missing (for debugging)
+    returnNull: false,
+    returnEmptyString: false,
+    returnObjects: true,
+    // Don't show missing keys in production
+    missingKeyHandler: process.env.NODE_ENV === 'development' 
+      ? (lng: string[], ns: string, key: string) => {
+          console.warn(`Missing translation key: ${key} for language: ${lng.join(', ')}`);
+        }
+      : undefined
   });
 
 export default i18n;

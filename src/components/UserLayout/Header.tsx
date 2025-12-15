@@ -88,29 +88,40 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ action }) => {
 
               <div className="modern-header-actions-wrapper">
                 <div className="appie-btn-box modern-header-actions">
-                  {!isAuthenticated ? (
-                    <Link className="btn login-btn modern-login-btn" href="/login">
-                      {t('login')}
-                    </Link>
-                  ) : (
-                    <ProfileMenu
-                      source="user"
-                      logoutRoute="/api/v1/users/logout"
-                      storageKey="authClient"
-                      forgot="/user-forgot"
-                    />
-                  )}
+                  {/* Hide login/profile and menu toggle in mobile - use bottom nav instead */}
+                  <div className="d-none d-lg-flex align-items-center gap-2">
+                    {!isAuthenticated ? (
+                      <Link className="btn login-btn modern-login-btn" href="/login">
+                        {t('login')}
+                      </Link>
+                    ) : (
+                      <ProfileMenu
+                        source="user"
+                        logoutRoute="/api/v1/users/logout"
+                        storageKey="authClient"
+                        forgot="/user-forgot"
+                      />
+                    )}
 
+                    {action && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          action(e);
+                        }}
+                        className="toggle-btn canvas_open modern-menu-toggle"
+                        aria-label="Open menu"
+                        aria-expanded="false"
+                      >
+                        <Menu size={24} />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Language dropdown - visible on all screen sizes */}
                   <LanguageDropdown user={true} />
-
-                  {action && (
-                    <div
-                      onClick={action}
-                      className="toggle-btn canvas_open d-lg-none d-block modern-menu-toggle"
-                    >
-                      <Menu size={24} />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

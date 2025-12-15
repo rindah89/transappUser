@@ -1,17 +1,5 @@
 {
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/(dashboard)/book/page": "app/(dashboard)/book/page.js",
-  "/(dashboard)/page": "app/(dashboard)/page.js",
-  "/(dashboard)/ticket/[id]/page": "app/(dashboard)/ticket/[id]/page.js",
-  "/(dashboard)/trip-search/page": "app/(dashboard)/trip-search/page.js",
-  "/(dashboard)/user-bookings/page": "app/(dashboard)/user-bookings/page.js",
+  "/page": "app/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/v1/bookings/booking/[bookingId]/route": "app/api/v1/bookings/booking/[bookingId]/route.js",
-  "/api/v1/bookings/cancel/[bookingId]/route": "app/api/v1/bookings/cancel/[bookingId]/route.js",
-  "/api/v1/bookings/create-booking/[tripId]/route": "app/api/v1/bookings/create-booking/[tripId]/route.js",
-  "/api/v1/bookings/trip-seats/[tripId]/route": "app/api/v1/bookings/trip-seats/[tripId]/route.js",
-  "/api/v1/bookings/user-bookings/route": "app/api/v1/bookings/user-bookings/route.js",
-  "/api/v1/payunit/initialize/route": "app/api/v1/payunit/initialize/route.js",
-  "/api/v1/trips/trip-search/route": "app/api/v1/trips/trip-search/route.js",
-  "/api/v1/users/login/route": "app/api/v1/users/login/route.js"
+  "/(auth)/login/page": "app/(auth)/login/page.js"
 }

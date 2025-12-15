@@ -473,7 +473,8 @@ link-color .back-to-top.back-to-top-2 a {
   transition: all linear 0.3s;
 }
 
-.canvas_close a {
+.canvas_close a,
+.canvas_close button {
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 500;
@@ -486,6 +487,13 @@ link-color .back-to-top.back-to-top-2 a {
   border-radius: 10px;
   background: #bcc014;
   color: #fff;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -493,13 +501,15 @@ link-color .back-to-top.back-to-top-2 a {
   transition: all 0.3s ease-out 0s;
 }
 
-.canvas_close a:hover {
+.canvas_close a:hover,
+.canvas_close button:hover {
   background: #bcc014;
   border-color: #bcc014;
   color: #fff;
 }
 
-.canvas_open a {
+.canvas_open a,
+.canvas_open button {
   font-size: 26px;
   width: 50px;
   height: 42px;
@@ -508,6 +518,13 @@ link-color .back-to-top.back-to-top-2 a {
   text-align: center;
   border: 1px solid #232323;
   color: #222;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -515,7 +532,8 @@ link-color .back-to-top.back-to-top-2 a {
   transition: all 0.3s ease-out 0s;
 }
 
-.canvas_open a:hover {
+.canvas_open a:hover,
+.canvas_open button:hover {
   color: #bcc014;
   border-color: #bcc014;
 }

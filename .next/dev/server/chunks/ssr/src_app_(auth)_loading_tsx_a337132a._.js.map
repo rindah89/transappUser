@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/remyngwanyam/Desktop/transapp/transapp-user-master/src/app/%28auth%29/loading.tsx"],"sourcesContent":["export default function Loading() {\n  return (\n    <div style={{ \n      display: 'flex', \n      justifyContent: 'center', \n      alignItems: 'center', \n      minHeight: '50vh' \n    }}>\n      <div>\n        <p>Loading...</p>\n      </div>\n    </div>\n  );\n}\n\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,OAAO;YACV,SAAS;YACT,gBAAgB;YAChB,YAAY;YACZ,WAAW;QACb;kBACE,cAAA,8OAAC;sBACC,cAAA,8OAAC;0BAAE;;;;;;;;;;;;;;;;AAIX"}}]
-}

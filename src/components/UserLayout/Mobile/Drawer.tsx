@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -15,12 +15,21 @@ import { X, Facebook, Twitter } from 'lucide-react';
 interface DrawerProps {
   drawer: boolean;
   action: (e?: React.MouseEvent) => void;
+  closeDrawer?: () => void;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
+const Drawer: React.FC<DrawerProps> = ({ drawer, action, closeDrawer }) => {
   const { t } = useTranslation();
   const { state } = useStateMachine({ updateClient });
   const pathname = usePathname();
+
+  // Close drawer when route changes
+  useEffect(() => {
+    if (drawer && closeDrawer) {
+      closeDrawer();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   const userEmail =
     (state?.user as any)?.data?.email ??
@@ -40,10 +49,24 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
   const isAuthenticated = Boolean(userEmail);
   const tripsHref = isAuthenticated ? '/user-bookings' : `/login?redirect=${encodeURIComponent('/user-bookings')}`;
 
+  // Handler that closes drawer without preventing navigation
+  const handleLinkClick = () => {
+    if (drawer && closeDrawer) {
+      closeDrawer();
+    } else if (drawer) {
+      // Fallback: call action without event to avoid preventDefault
+      action(undefined as any);
+    }
+  };
+
   return (
     <>
       <div
-        onClick={action}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          action(e);
+        }}
         className={`off_canvars_overlay ${drawer ? 'active' : ''}`}
       />
       <div className="offcanvas_menu">
@@ -52,9 +75,17 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
             <div className="col-12">
               <div className={`offcanvas_menu_wrapper ${drawer ? 'active' : ''}`}>
                 <div className="canvas_close">
-                  <Link href="#" onClick={action}>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      action(e);
+                    }}
+                    aria-label="Close menu"
+                  >
                     <X size={20} />
-                  </Link>
+                  </button>
                 </div>
                 <div className="offcanvas-brand text-center mb-40">
                   <Image src={logo} alt="TransApp Logo" width={120} height={40} />
@@ -62,7 +93,11 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
 
                 <div className="offcanvas-actions d-flex align-items-center justify-content-center gap-2 mb-4">
                   {!isAuthenticated ? (
-                    <Link className="btn login-btn" href="/login" onClick={action}>
+                    <Link 
+                      className="btn login-btn" 
+                      href="/login" 
+                      onClick={handleLinkClick}
+                    >
                       {t('login')}
                     </Link>
                   ) : (
@@ -82,7 +117,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href="/"
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/' ? 'active' : ''}`}
                       >
                         {t('home')}
@@ -91,7 +126,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href="/book"
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/book' ? 'active' : ''}`}
                       >
                         {t('book_trip')}
@@ -100,7 +135,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href={tripsHref}
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/user-bookings' ? 'active' : ''}`}
                       >
                         {t('tickets') || 'Tickets'}
@@ -109,7 +144,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href="/about-transapp"
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/about-transapp' ? 'active' : ''}`}
                       >
                         {t('about')}
@@ -118,7 +153,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href="/terms"
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/terms' ? 'active' : ''}`}
                       >
                         {t('terms_of_service')}
@@ -127,7 +162,7 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action }) => {
                     <li>
                       <Link
                         href="/privacy-policy"
-                        onClick={action}
+                        onClick={handleLinkClick}
                         className={`link-color mt-3 ${pathname === '/privacy-policy' ? 'active' : ''}`}
                       >
                         {t('privacy_policy')}

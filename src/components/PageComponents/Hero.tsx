@@ -272,27 +272,93 @@ const Hero: React.FC = () => {
 
         @media (max-width: 992px) {
           .modern-hero {
-            padding: 80px 0 60px;
+            padding: 60px 0 40px;
           }
 
           .modern-title,
           .modern-title-link {
             font-size: 2.5rem;
+            text-align: center;
           }
 
           .hero-description {
             font-size: 1rem;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .modern-app-buttons {
             justify-content: center;
           }
+
+          .modern-hero-content {
+            text-align: center;
+            margin-bottom: 30px;
+          }
+
+          .hero-badge {
+            display: flex;
+            justify-content: center;
+          }
+
+          .hero-image-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+
+          .hero-main-image {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 400px;
+            object-fit: contain;
+          }
         }
 
         @media (max-width: 768px) {
+          .modern-hero {
+            padding: 40px 0 30px;
+          }
+
           .modern-title,
           .modern-title-link {
-            font-size: 2rem;
+            font-size: 1.75rem;
+            line-height: 1.3;
+            text-align: center;
+            margin-bottom: 12px;
+          }
+
+          .hero-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0 16px;
+            margin-bottom: 24px;
+          }
+
+          .modern-app-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+
+          .app-button-image {
+            width: 160px !important;
+            height: auto !important;
+            max-width: 100%;
+            object-fit: contain;
+          }
+
+          .hero-main-image {
+            max-width: 100%;
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain;
+          }
+
+          .hero-image-container {
+            padding: 0 16px;
           }
         }
       `}</style>

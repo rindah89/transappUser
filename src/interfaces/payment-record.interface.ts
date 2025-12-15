@@ -5,3 +5,4 @@ export type PaymentRecordInsert = Database['public']['Tables']['payment_records'
 export type PaymentRecordUpdate = Database['public']['Tables']['payment_records']['Update'];
 
 
+

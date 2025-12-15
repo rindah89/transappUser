@@ -31,9 +31,16 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
     }
   }, [pathname]);
 
+  // Close drawer without preventing default (for navigation links)
+  const closeDrawer = () => {
+    if (drawer) {
+      drawerAction.set(false);
+    }
+  };
+
   return (
     <React.Fragment>
-      <Drawer drawer={drawer} action={drawerAction.toggle} />
+      <Drawer drawer={drawer} action={drawerAction.toggle} closeDrawer={closeDrawer} />
       <Header action={drawerAction.toggle} />
       <main className="ta-app-content">{children}</main>
       <BottomNav onMenu={() => drawerAction.toggle()} />
