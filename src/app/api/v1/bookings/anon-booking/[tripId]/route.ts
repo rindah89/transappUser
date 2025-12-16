@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@databases/supabase';
 import { HttpException } from '@exceptions/HttpException';
 import type { Booking, BookingInsert } from '@interfaces/booking.interface';
-import type { PaymentRecordInsert } from '@interfaces/payment-record.interface';
 
 /**
  * Anonymous Booking API Route
@@ -53,42 +52,6 @@ function isoWeek(date: string): string {
 function ticketNumber(): string {
   // 7 chars, upper-case, URL-safe-ish
   return Math.random().toString(36).slice(2, 9).toUpperCase();
-}
-
-/**
- * Round price up to the nearest multiple of 50
- */
-function roundPriceToNearest50(price: number): number {
-  if (!Number.isFinite(price) || price <= 0) return 0;
-  return Math.ceil(price / 50) * 50;
-}
-
-/**
- * Calculate reservation fee based on agency settings
- * - Round ticket price to nearest 50 first
- * - If percentage mode: calculate 10% of rounded price, cap at 500 XAF (whichever is lower), then round to nearest 50
- * - If fixed mode: return fixed amount
- */
-function calculateReservationFee(
-  price: number,
-  mode: 'percentage' | 'fixed',
-  percent: number = 10,
-  capXaf: number = 500,
-  fixedXaf: number = 500
-): number {
-  if (!Number.isFinite(price) || price <= 0) return 0;
-  
-  if (mode === 'fixed') {
-    return fixedXaf;
-  }
-  
-  // Percentage mode: round price first, then calculate fee
-  const roundedPrice = roundPriceToNearest50(price);
-  const feeBase = (roundedPrice / 100) * percent;
-  
-  // Take minimum of (10% of rounded price, cap), then round to nearest 50
-  const feeCapped = Math.min(feeBase, capXaf);
-  return roundPriceToNearest50(feeCapped);
 }
 
 export async function POST(
@@ -187,27 +150,19 @@ export async function POST(
     if (bookingError) throw new HttpException(500, bookingError.message);
     if (!booking) throw new HttpException(500, 'Failed to create booking');
 
-    // Fetch agency logo and reservation fee settings separately to avoid RLS issues with foreign key joins
+    // Fetch agency logo separately to avoid RLS issues with foreign key joins
     // Service role bypasses RLS - safe to query agencies directly
     let agencyLogo: string | null = null;
-    let reservationFeeMode: 'percentage' | 'fixed' = 'percentage';
-    let reservationFeePercent: number = 10;
-    let reservationFeeCapXaf: number = 500;
-    let reservationFeeXaf: number = 500;
     
     if (insertPayload.agency_id) {
       const { data: agency, error: agencyError } = await supabaseAdmin
         .from('agencies')
-        .select('logo, reservation_fee_mode, reservation_fee_percent, reservation_fee_cap_xaf, reservation_fee_xaf')
+        .select('logo')
         .eq('id', insertPayload.agency_id)
         .single();
       
       if (!agencyError && agency) {
         agencyLogo = agency.logo || null;
-        reservationFeeMode = (agency.reservation_fee_mode as 'percentage' | 'fixed') || 'percentage';
-        reservationFeePercent = agency.reservation_fee_percent ?? 10;
-        reservationFeeCapXaf = agency.reservation_fee_cap_xaf ?? 500;
-        reservationFeeXaf = agency.reservation_fee_xaf ?? 500;
       }
     }
 

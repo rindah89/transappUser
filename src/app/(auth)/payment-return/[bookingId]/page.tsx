@@ -25,7 +25,6 @@ export default function PaymentReturnPage() {
 
       const transactionId = searchParams?.get('transaction_id')
       const amount = searchParams?.get('amount')
-      const status = searchParams?.get('transaction_status') || searchParams?.get('status')
 
       // Get stored promo code if any
       const promoCode = localStorage.getItem('pending_payment_promo_code') || null
