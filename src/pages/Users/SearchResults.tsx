@@ -22,6 +22,7 @@ import Search from '../../components/Common/Search';
 import PopularRoutes from '../../components/Common/PopularRoutes';
 import TripFiltersResponsive from '../../components/Trips/TripFiltersResponsive';
 import { DEFAULT_TRIP_FILTERS, applyTripFilters, sortTrips, availableSeats } from '../../utils/tripFilters';
+import { roundPriceToNearest50 } from '../../utils/helpers';
 import { useRouter } from 'next/navigation';
 
 // Use Next.js API routes instead of direct external API calls (proxy pattern)
@@ -189,56 +190,79 @@ const SearchResults: React.FC = () => {
 
     try {
       const userEmail = (state?.user as any)?.data?.data?.email;
-      if (!userEmail) {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: Booking }>(
-          `api/v1/bookings/anon-booking/${trip.id}`,
-          bookingData
-        );
-        if (data?.error) {
-          toast.error(data.message);
-          setIsLoading(false);
-          setWorking(false);
-        } else if (data.data) {
-          bookingRef.current = data.data;
-          actions.updateBooking({ booking: bookingRef.current });
-          if (typeof window !== 'undefined') {
-            localStorage.removeItem('phone');
-            localStorage.removeItem('phoneNumber');
-            localStorage.removeItem("name");
-            localStorage.removeItem("idCard");
-            localStorage.removeItem("email");
-            localStorage.removeItem("seat");
+      const userToken = (state?.user as any)?.data?.data?.token || (state?.user as any)?.data?.token;
+      const isAuthenticated = userEmail && userToken;
+      
+      // Try authenticated booking first if user appears to be logged in
+      if (isAuthenticated) {
+        try {
+          const { data } = await axios.post<{ error: boolean; message: string; data?: Booking }>(
+            `api/v1/bookings/create-booking/${trip.id}`,
+            bookingData
+          );
+          if (data?.error) {
+            // If 401 Unauthorized, fall back to anonymous booking
+            throw new Error(data.message || 'Authentication failed');
+          } else if (data.data) {
+            bookingRef.current = data.data;
+            actions.updateBooking({ booking: bookingRef.current });
+            if (typeof window !== 'undefined') {
+              localStorage.removeItem('phone');
+              localStorage.removeItem('phoneNumber');
+              localStorage.removeItem("name");
+              localStorage.removeItem("idCard");
+              localStorage.removeItem("email");
+              localStorage.removeItem("seat");
+            }
+            setWorking(false);
+            setIsLoading(false);
+            setModalSummary({ modal_static: false });
+            setModalConfirm({ modal_static: false });
+            hideModal();
+            fetchTrips();
+            // Redirect to reservation fee payment screen
+            router.push(`/reservation-fee-payment/${data.data.id}`);
+            return;
           }
-          setWorking(false);
-          setModalSummary({ modal_static: false });
-          setModalConfirm({ modal_static: false });
-          hideModal();
-          fetchTrips();
-          router.push(`/ticket/${data.data.id}${opts?.paymentMethod === 'CASH' ? '' : ''}`);
-        }
-      } else {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: Booking }>(
-          `api/v1/bookings/create-booking/${trip.id}`,
-          bookingData
-        );
-        if (data?.error) {
-          toast.error(data.message);
-          setWorking(false);
-        } else if (data.data) {
-          actions.updateBooking({ booking: data.data });
-          if (typeof window !== 'undefined') {
-            localStorage.removeItem('phone');
-            localStorage.removeItem('phoneNumber');
-            localStorage.removeItem("name");
-            localStorage.removeItem("idCard");
-            localStorage.removeItem("email");
-            localStorage.removeItem("seat");
+        } catch (authError: unknown) {
+          // If authentication fails (401), fall back to anonymous booking
+          if (axios.isAxiosError(authError) && authError.response?.status === 401) {
+            console.log('Authentication failed, falling back to anonymous booking');
+            // Continue to anonymous booking flow below
+          } else {
+            throw authError;
           }
-          setWorking(false);
-          setModalSummary({ modal_static: false });
-          setModalConfirm({ modal_static: false });
-          router.push(`/ticket/${data.data.id}`);
         }
+      }
+      
+      // Anonymous booking flow (also used as fallback for failed auth)
+      const { data } = await axios.post<{ error: boolean; message: string; data?: Booking }>(
+        `api/v1/bookings/anon-booking/${trip.id}`,
+        bookingData
+      );
+      if (data?.error) {
+        toast.error(data.message);
+        setIsLoading(false);
+        setWorking(false);
+      } else if (data.data) {
+        bookingRef.current = data.data;
+        actions.updateBooking({ booking: bookingRef.current });
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('phone');
+          localStorage.removeItem('phoneNumber');
+          localStorage.removeItem("name");
+          localStorage.removeItem("idCard");
+          localStorage.removeItem("email");
+          localStorage.removeItem("seat");
+        }
+        setWorking(false);
+        setIsLoading(false);
+        setModalSummary({ modal_static: false });
+        setModalConfirm({ modal_static: false });
+        hideModal();
+        fetchTrips();
+        // Redirect to reservation fee payment screen
+        router.push(`/reservation-fee-payment/${data.data.id}`);
       }
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -287,7 +311,7 @@ const SearchResults: React.FC = () => {
     <>
       <section className="trip-search mb-5">
         <div className="container-fluid">
-          {(errorMessage || !hasResults) && (
+          {!loading && (errorMessage || (!hasResults && data.length === 0)) && (
             <div className="row pt-4">
               <div className="col-lg-12">
                 <div className="alert alert-light border">
@@ -415,7 +439,7 @@ const SearchResults: React.FC = () => {
                       <div className="ta-trip-card__right">
                         <div className="ta-trip-card__price">
                           <div className="ta-trip-card__price-label">{t('price')}</div>
-                          <div className="ta-trip-card__price-value">{trip.price} XAF</div>
+                          <div className="ta-trip-card__price-value">{roundPriceToNearest50(trip.price)} XAF</div>
                         </div>
                         {trip.reserved !== trip.seats ? (
                           <Button

@@ -918,10 +918,44 @@ textarea {
   overflow: hidden;
   border: 1px solid rgba(15, 23, 42, 0.10);
   box-shadow: 0 30px 90px rgba(15, 23, 42, 0.25);
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 90vh !important;
 }
 
 .ta-modal .modal-body {
   padding-top: 22px !important;
+  overflow-y: auto !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: calc(90vh - 140px) !important;
+}
+
+.ta-modal .modal-footer {
+  flex: 0 0 auto !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.06) !important;
+  padding: 16px 20px !important;
+  display: flex !important;
+  gap: 12px;
+  justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.98) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  min-height: 60px !important;
+}
+
+/* Ensure modal dialog allows proper height */
+.modal.show .ta-modal {
+  display: flex !important;
+}
+
+.modal-dialog {
+  max-height: 90vh !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .ta-modal__header {
@@ -1082,6 +1116,9 @@ textarea {
 
 .ta-seat {
   min-height: 44px;
+  min-width: 44px;
+  width: 100%;
+  height: 100%;
   border-radius: 14px;
   border: 1px solid rgba(15, 23, 42, 0.14);
   background: rgba(255, 255, 255, 0.95);
@@ -1098,6 +1135,12 @@ textarea {
   -ms-user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 auto;
 }
 
 .ta-seat.is-available:hover {

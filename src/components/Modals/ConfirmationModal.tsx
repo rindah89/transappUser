@@ -15,6 +15,7 @@ import {
   updateAction,
   updateUser,
 } from "../../utils/updateActions";
+import { roundPriceToNearest50 } from "../../utils/helpers";
 import { SpinnerCircular } from 'spinners-react';
 
 interface ConfirmationModalProps {
@@ -44,8 +45,10 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   const trip = stateAny?.trip?.trip;
   const booking = stateAny?.booking?.booking?.data;
 
-  const ticketPrice = Number(trip?.price || 0);
-  const reservationFee = trip?.price ? (trip.price / 100 * 10 > 500 ? 500 : trip.price / 100 * 10) : 0;
+  const ticketPrice = roundPriceToNearest50(trip?.price || 0);
+  // Calculate reservation fee: 10% of rounded ticket price, capped at 500 XAF, then rounded to nearest 50
+  const reservationFeeBase = ticketPrice ? Math.min((ticketPrice / 100) * 10, 500) : 0;
+  const reservationFee = roundPriceToNearest50(reservationFeeBase);
   const reservationDiscount = reservationFee; // 100% waived
   const dueNow = 0;
   const payAtCounter = Number.isFinite(ticketPrice) ? ticketPrice : 0;

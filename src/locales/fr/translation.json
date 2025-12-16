@@ -448,8 +448,40 @@
 "about_p1": "Fondée en 2020, TransApp a été créée pour servir les acteurs du marché du voyage camerounais dans les 10 régions. Elle a le potentiel de fournir des services de réservation de voyage à des milliers de voyageurs tout en aidant simultanément plusieurs agences dans leur processus de numérisation.",
 "about_p2": "TransApp est une entreprise technologique dynamique et innovante qui propose des services de réservation de billets à distance de pointe aux voyageurs pour les agences de voyage grâce à notre application mobile conviviale et à notre application web. Notre plateforme est conçue pour rationaliser et améliorer le processus de réservation, offrant une expérience fluide tant aux voyageurs qu'aux agences de voyage. Notre solution offre également aux agences de voyage une plateforme de billetterie basée sur le cloud, comprenant un système de gestion de flotte et de personnel pour surveiller les opérations quotidiennes.",
 
-"about_p3": "Notre application mobile et notre application web servent de centre de réservation centralisé, permettant aux voyageurs de rechercher facilement des options de voyage en autocar, de comparer les tarifs et de faire des réservations sécurisées en quelques tapes ou clics simples. Nous cherchons à collaborer avec un vaste réseau d'agences de voyage pour offrir une vaste sélection d'itinéraires, de destinations et d'horaires afin de répondre aux besoins diversifiés de nos clients.",
-"our_company": "Notre entreprise"
+    "about_p3": "Notre application mobile et notre application web servent de centre de réservation centralisé, permettant aux voyageurs de rechercher facilement des options de voyage en autocar, de comparer les tarifs et de faire des réservations sécurisées en quelques tapes ou clics simples. Nous cherchons à collaborer avec un vaste réseau d'agences de voyage pour offrir une vaste sélection d'itinéraires, de destinations et d'horaires afin de répondre aux besoins diversifiés de nos clients.",
+    "our_company": "Notre entreprise",
+    
+    "reservation_fee_payment": "Paiement des frais de réservation",
+    "reservation_fee_description": "Veuillez payer les frais de réservation pour confirmer votre réservation. Le montant du billet sera payé au comptoir.",
+    "reservation_fee": "Frais de réservation",
+    "enter_promo_code": "Entrez le code promo (optionnel)",
+    "apply": "Appliquer",
+    "promo_applied": "Code promo appliqué !",
+    "promo_code_applied_success": "Code promo appliqué avec succès !",
+    "promo_code_not_found": "Code promo introuvable ou expiré",
+    "total_to_pay": "Total à payer",
+    "ticket_payment_note": "Après avoir payé les frais de réservation, vous devrez payer le montant total du billet en espèces au comptoir.",
+    "pay_now": "Payer maintenant",
+    "processing": "Traitement en cours...",
+    "processing_payment": "Traitement de votre paiement...",
+    "invalid_booking_id": "ID de réservation invalide",
+    "booking_not_found": "Réservation introuvable",
+    "failed_to_load_booking": "Échec du chargement de la réservation",
+    "failed_to_validate_promo": "Échec de la validation du code promo",
+    "payment_gateway_unavailable": "Passerelle de paiement indisponible. Marquage comme payé pour les tests.",
+    "payment_init_failed": "Échec de l'initialisation du paiement",
+    "reservation_fee_paid_success": "Frais de réservation payés avec succès !",
+    "failed_to_complete_payment": "Échec du paiement",
+    "payment_processing_failed": "Échec du traitement du paiement",
+    "unexpected_error": "Une erreur inattendue s'est produite",
+    "route": "Itinéraire",
+    "note": "Note",
+    "discount": "Remise",
+    "loading": "Chargement...",
+    "confirm_reservation": "Confirmer la réservation",
+    "reservation_confirmed": "Réservation confirmée avec succès !",
+    "free_reservation_note": "Vos frais de réservation sont gratuits ! Vous devrez payer le montant total du billet en espèces au comptoir.",
+    "free": "Gratuit"
 
 
       

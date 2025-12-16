@@ -90,33 +90,50 @@ const TicketForm: React.FC = () => {
 
     try {
       const userEmail = (state?.user as any)?.data?.data?.email;
-      if (!userEmail) {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-          `api/v1/bookings/anon-booking/${trip.id}`,
-          values
-        );
-        if (data?.error) {
-          toast.error(data.message);
-        } else {
-          actions.updateBooking({ booking: data.data });
-          const id = (data as any)?.data?.id;
-          router.push(id ? `/ticket/${id}` : "/ticket-summary");
-          toast.success(data.message);
-          setLoading(false);
+      const userToken = (state?.user as any)?.data?.data?.token || (state?.user as any)?.data?.token;
+      const isAuthenticated = userEmail && userToken;
+      
+      // Try authenticated booking first if user appears to be logged in
+      if (isAuthenticated) {
+        try {
+          const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+            `api/v1/bookings/create-booking/${trip.id}`,
+            values
+          );
+          if (data?.error) {
+            // If 401 Unauthorized, fall back to anonymous booking
+            throw new Error(data.message || 'Authentication failed');
+          } else {
+            actions.updateBooking({ booking: data.data });
+            makePayment();
+            toast.success(data.message);
+            setLoading(false);
+            return;
+          }
+        } catch (authError: unknown) {
+          // If authentication fails (401), fall back to anonymous booking
+          if (axios.isAxiosError(authError) && authError.response?.status === 401) {
+            console.log('Authentication failed, falling back to anonymous booking');
+            // Continue to anonymous booking flow below
+          } else {
+            throw authError;
+          }
         }
+      }
+      
+      // Anonymous booking flow (also used as fallback for failed auth)
+      const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+        `api/v1/bookings/anon-booking/${trip.id}`,
+        values
+      );
+      if (data?.error) {
+        toast.error(data.message);
       } else {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-          `api/v1/bookings/create-booking/${trip.id}`,
-          values
-        );
-        if (data?.error) {
-          toast.error(data.message);
-        } else {
-          actions.updateBooking({ booking: data.data });
-          makePayment();
-          toast.success(data.message);
-          setLoading(false);
-        }
+        actions.updateBooking({ booking: data.data });
+        const id = (data as any)?.data?.id;
+        router.push(id ? `/ticket/${id}` : "/ticket-summary");
+        toast.success(data.message);
+        setLoading(false);
       }
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

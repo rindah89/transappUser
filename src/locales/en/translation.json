@@ -446,8 +446,40 @@
 
 "about_p1": "Founded in 2020, TransApp was created to serve the stakeholders of the Cameroonian travel market across all 10 regions. It has the potential to provide travel booking services to over a million travellers while simultaneously assisting multiple agencies on their journey to digitalisation.",
 "about_p2": "TransApp is a dynamic and innovative tech company that offers state-of-the-art remote ticket booking services to travellers for travel agenciesthrough our user-friendly mobile app and web app. Our platform isdesigned to streamline and enhance the booking process, providing a seamless experience for both travellers and travel agencies. Our solution also provides travel agencies a cloud-based ticketing platform, which includes a fleet and personnel management system to monitor daily operations.",
-"about_p3": "Our mobile app and web app serve as a centralized booking hub, allowing travellers to conveniently search for coach travel options, compare fares,and make secure reservations with a few simple taps or clicks. We look to collaborate with a wide network of travel agencies to offer an extensive selection of routes, destinations, and schedules to meet the diverse needs of our customers.",
-"our_company": "Our company"
+    "about_p3": "Our mobile app and web app serve as a centralized booking hub, allowing travellers to conveniently search for coach travel options, compare fares,and make secure reservations with a few simple taps or clicks. We look to collaborate with a wide network of travel agencies to offer an extensive selection of routes, destinations, and schedules to meet the diverse needs of our customers.",
+    "our_company": "Our company",
+    
+    "reservation_fee_payment": "Reservation Fee Payment",
+    "reservation_fee_description": "Please pay the reservation fee to confirm your booking. The ticket amount will be paid at the counter.",
+    "reservation_fee": "Reservation Fee",
+    "enter_promo_code": "Enter promo code (optional)",
+    "apply": "Apply",
+    "promo_applied": "Promo code applied!",
+    "promo_code_applied_success": "Promo code applied successfully!",
+    "promo_code_not_found": "Promo code not found or expired",
+    "total_to_pay": "Total to Pay",
+    "ticket_payment_note": "After paying the reservation fee, you will need to pay the full ticket amount in cash at the counter.",
+    "pay_now": "Pay Now",
+    "processing": "Processing...",
+    "processing_payment": "Processing your payment...",
+    "invalid_booking_id": "Invalid booking ID",
+    "booking_not_found": "Booking not found",
+    "failed_to_load_booking": "Failed to load booking",
+    "failed_to_validate_promo": "Failed to validate promo code",
+    "payment_gateway_unavailable": "Payment gateway unavailable. Marking as paid for testing.",
+    "payment_init_failed": "Payment initialization failed",
+    "reservation_fee_paid_success": "Reservation fee paid successfully!",
+    "failed_to_complete_payment": "Failed to complete payment",
+    "payment_processing_failed": "Payment processing failed",
+    "unexpected_error": "An unexpected error occurred",
+    "route": "Route",
+    "note": "Note",
+    "discount": "Discount",
+    "loading": "Loading...",
+    "confirm_reservation": "Confirm Reservation",
+    "reservation_confirmed": "Reservation confirmed successfully!",
+    "free_reservation_note": "Your reservation fee is free! You will need to pay the full ticket amount in cash at the counter.",
+    "free": "Free"
 
 
 

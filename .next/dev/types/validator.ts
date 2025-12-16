@@ -82,6 +82,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/(auth)/payment-return/[bookingId]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/payment-return/[bookingId]">> = Specific
+  const handler = {} as typeof import("../../../src/app/(auth)/payment-return/[bookingId]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/(auth)/payunit-return/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/payunit-return">> = Specific
@@ -95,6 +104,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/register">> = Specific
   const handler = {} as typeof import("../../../src/app/(auth)/register/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/reservation-fee-payment/[bookingId]">> = Specific
+  const handler = {} as typeof import("../../../src/app/(auth)/reservation-fee-payment/[bookingId]/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -244,6 +262,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/api/v1/bookings/[bookingId]/complete-reservation-payment/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/v1/bookings/[bookingId]/complete-reservation-payment">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/v1/bookings/[bookingId]/complete-reservation-payment/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/api/v1/bookings/anon-booking/[tripId]/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/v1/bookings/anon-booking/[tripId]">> = Specific
@@ -329,6 +356,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/v1/payunit/initialize">> = Specific
   const handler = {} as typeof import("../../../src/app/api/v1/payunit/initialize/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/api/v1/promos/validate/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/v1/promos/validate">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/v1/promos/validate/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -464,6 +500,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends PagesPageConfig> = Specific
   const handler = {} as typeof import("../../../src/pages/Users/Register.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/pages/Users/ReservationFeePayment.tsx
+{
+  type __IsExpected<Specific extends PagesPageConfig> = Specific
+  const handler = {} as typeof import("../../../src/pages/Users/ReservationFeePayment.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useMemo, useState, useCallback } from "react";
+import React, { useEffect, useMemo, useState, useCallback, useRef } from "react";
 import {
   Row,
   Col,
@@ -60,6 +60,7 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
   } = useForm<BookingFormData>();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const bookingRef = useRef<any>(null);
   const { state } = useStateMachine({
     updateBooking,
     updateAction,
@@ -151,9 +152,53 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
         departure_time: tripForPayment.departure,
       };
 
-      // Logged-in users create a real booking (server validates auth via bearer token / cookies)
+      const stateAny = state as any;
+      const userEmail = stateAny?.user?.data?.data?.email || stateAny?.user?.data?.email;
+      const userToken = stateAny?.user?.data?.data?.token || stateAny?.user?.data?.token;
+      const isAuthenticated = userEmail && userToken;
+
+      // Try authenticated booking first if user appears to be logged in
+      if (isAuthenticated) {
+        try {
+          const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+            `api/v1/bookings/create-booking/${tripForPayment.id}`,
+            bookingPayload
+          );
+
+          if ((data as any)?.error) {
+            // If 401 Unauthorized, fall back to anonymous booking
+            if ((data as any)?.message?.includes('Unauthorized') || (data as any)?.message?.includes('401')) {
+              throw new Error('Authentication failed, using anonymous booking');
+            }
+            toast.error((data as any)?.message || 'Booking failed');
+            return;
+          }
+
+          toast.success((data as any)?.message || 'Booking created');
+          getModal({ modal_static: false });
+          const bookingId = (data as any)?.data?.id;
+          if (bookingId) {
+            bookingRef.current = data.data;
+            // Redirect to reservation fee payment screen
+            router.push(`/reservation-fee-payment/${bookingId}`);
+          }
+          return;
+        } catch (authError: unknown) {
+          // If authentication fails (401), fall back to anonymous booking
+          if (axios.isAxiosError(authError) && authError.response?.status === 401) {
+            console.log('Authentication failed, falling back to anonymous booking');
+            // Continue to anonymous booking flow below
+          } else if ((authError as any)?.message?.includes('Authentication failed')) {
+            // Continue to anonymous booking flow below
+          } else {
+            throw authError;
+          }
+        }
+      }
+
+      // Anonymous booking flow (also used as fallback for failed auth)
       const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-        `api/v1/bookings/create-booking/${tripForPayment.id}`,
+        `api/v1/bookings/anon-booking/${tripForPayment.id}`,
         bookingPayload
       );
 
@@ -162,11 +207,13 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
         return;
       }
 
-      toast.success((data as any)?.message || 'Booking created (dev mode)');
+      toast.success((data as any)?.message || 'Booking created');
       getModal({ modal_static: false });
       const bookingId = (data as any)?.data?.id;
       if (bookingId) {
-        router.push(`/ticket/${bookingId}`);
+        bookingRef.current = data.data;
+        // Redirect to reservation fee payment screen
+        router.push(`/reservation-fee-payment/${bookingId}`);
       }
     };
 
@@ -184,15 +231,20 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         const msg = (error.response?.data as any)?.message || 'Payment initialization failed';
-        // In local dev, PayUnit often fails due to credentials / environment; fall back to booking creation
-        // so you can still test the booking pipeline end-to-end.
-        if (process.env.NODE_ENV !== 'production') {
-          toast.error(msg + ' — creating booking directly (dev fallback).');
+        const status = error.response?.status;
+        
+        // If PayUnit fails, still create booking and redirect to payment screen
+        // User can pay reservation fee there
+        if (status === 403 || status === 401 || status === 400 || status >= 500) {
           try {
             await createBookingFallback();
+            // After booking is created, redirect to payment screen
+            if (bookingRef.current?.id) {
+              router.push(`/reservation-fee-payment/${bookingRef.current.id}`);
+            }
+            return;
           } catch (e: unknown) {
-            toast.error((e as any)?.message || 'Booking fallback failed');
-          } finally {
+            toast.error((e as any)?.message || 'Failed to create booking');
             setLoading(false);
           }
           return;
@@ -238,7 +290,15 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
   }, [modal.modal_static, tripForDisplay?.id]);
 
   const pickSeat = useCallback((seat: string): void => {
-    setValue('seat', seat, { shouldValidate: true, shouldDirty: true });
+    if (seat) {
+      setValue('seat', seat, { shouldValidate: true, shouldDirty: true });
+      // Force a re-render to update the selected state
+      const form = document.querySelector('form');
+      if (form) {
+        const event = new Event('input', { bubbles: true });
+        form.dispatchEvent(event);
+      }
+    }
   }, [setValue]);
 
   const selectedSeat = watch('seat');
@@ -263,7 +323,24 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       e.stopPropagation();
-      if (!isTaken) {
+      e.nativeEvent.stopImmediatePropagation();
+      if (!isTaken && seat) {
+        pickSeat(seat);
+      }
+    };
+    
+    const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.nativeEvent.stopImmediatePropagation();
+      if (!isTaken && seat) {
+        pickSeat(seat);
+      }
+    };
+    
+    const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!isTaken && seat) {
         pickSeat(seat);
       }
     };
@@ -274,7 +351,21 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
         className={`ta-seat ${isTaken ? 'is-taken' : 'is-available'} ${isSelected ? 'is-selected' : ''}`}
         disabled={isTaken}
         onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         aria-label={`Seat ${seat}${isTaken ? ' (taken)' : isSelected ? ' (selected)' : ''}`}
+        tabIndex={isTaken ? -1 : 0}
+        style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+          minWidth: '44px',
+          minHeight: '44px',
+          cursor: isTaken ? 'not-allowed' : 'pointer',
+          pointerEvents: isTaken ? 'none' : 'auto'
+        }}
       >
         {seat}
       </button>
@@ -312,7 +403,7 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
           </div>
         </ModalHeader>
         <ModalBody>
-          <form onSubmit={handleSubmit(makePaymentOnPayunit)}>
+          <form onSubmit={handleSubmit(makePaymentOnPayunit)} id="booking-form">
             <Row>
               <Col lg={6}>
                 <div className="ta-field">
@@ -431,33 +522,32 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
                 <div className="text-muted">{t('no_seat_map') || 'Seat map not available for this trip'}</div>
               )}
             </div>
-
-            <ModalFooter>
-              {loading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
-                  <SpinnerCircular
-                    color="#bcc015"
-                    size={50}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                  />
-                </div>
-              ) : (
-                <>
-                  <Button
-                    color="light"
-                    onClick={() => getModal({ modal_static: false })}
-                  >
-                    {t("cancel")}
-                  </Button>
-                  <Button type="submit" color="primary">
-                    {buttonText}
-                  </Button>
-                </>
-              )}
-            </ModalFooter>
           </form>
         </ModalBody>
+        <ModalFooter>
+          {loading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', width: '100%' }}>
+              <SpinnerCircular
+                color="#bcc015"
+                size={50}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            </div>
+          ) : (
+            <>
+              <Button
+                color="light"
+                onClick={() => getModal({ modal_static: false })}
+              >
+                {t("cancel")}
+              </Button>
+              <Button type="submit" color="primary" form="booking-form">
+                {buttonText}
+              </Button>
+            </>
+          )}
+        </ModalFooter>
       </Modal>
     </>
   );

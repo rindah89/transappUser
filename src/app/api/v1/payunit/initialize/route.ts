@@ -54,8 +54,8 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
-        mode,
-        Authorization: `Basic ${token}`,
+        'mode': mode,
+        'Authorization': `Basic ${token}`,
       },
       body: JSON.stringify({
         total_amount: body.total_amount,
@@ -71,6 +71,19 @@ export async function POST(req: NextRequest) {
       json = JSON.parse(text);
     } catch {
       json = { raw: text };
+    }
+
+    // If PayUnit returns an error, format it properly
+    if (!res.ok) {
+      return NextResponse.json(
+        { 
+          error: true, 
+          message: json?.message || json?.error || `Payment initialization failed (${res.status})`,
+          status: res.status,
+          data: json 
+        },
+        { status: res.status, headers: { 'Cache-Control': 'no-store' } }
+      );
     }
 
     return NextResponse.json(json, {

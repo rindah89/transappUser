@@ -1,8 +1,9 @@
 {
-  "/api/v1/trips/trip-search/route": "app/api/v1/trips/trip-search/route.js",
-  "/page": "app/page.js",
-  "/(dashboard)/user-bookings/page": "app/(dashboard)/user-bookings/page.js",
+  "/api/v1/bookings/[bookingId]/complete-reservation-payment/route": "app/api/v1/bookings/[bookingId]/complete-reservation-payment/route.js",
+  "/api/v1/bookings/booking/[bookingId]/route": "app/api/v1/bookings/booking/[bookingId]/route.js",
   "/(dashboard)/ticket/[id]/page": "app/(dashboard)/ticket/[id]/page.js",
-  "/(dashboard)/terms/page": "app/(dashboard)/terms/page.js",
-  "/(dashboard)/trip-search/page": "app/(dashboard)/trip-search/page.js"
+  "/(dashboard)/trip-search/page": "app/(dashboard)/trip-search/page.js",
+  "/(auth)/reservation-fee-payment/[bookingId]/page": "app/(auth)/reservation-fee-payment/[bookingId]/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/user-bookings/page": "app/(dashboard)/user-bookings/page.js"
 }

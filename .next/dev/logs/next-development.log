@@ -1,81 +1,148 @@
-[00:00:05.044] Server  LOG      ○ (pwa) "PWA support is disabled."
-[00:00:05.461] Server  LOG      ✓ Ready in 4.8s
-[00:00:11.464] Server  LOG      ○ Compiling / ...
-[00:00:26.092] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:26.621] Browser WARN    Image with src "/_next/static/media/hero.bda8a480.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:43.190] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:54.042] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:03.523] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:03.835] Browser WARN    Image with src "/_next/static/media/hero.bda8a480.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:01:29.311] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:16.723] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:17.149] Browser WARN    Image with src "/_next/static/media/hero.bda8a480.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:02:17.149] Browser WARN    Image with src "/_next/static/media/Google-Play---eng.0edd9e34.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[00:00:05.021] Server  LOG      ○ (pwa) "PWA support is disabled."
+[00:00:05.623] Server  LOG      ✓ Ready in 4.9s
+[00:00:11.883] Server  LOG      ○ Compiling / ...
+[00:00:28.747] Server  LOG      ○ Compiling /book ...
+[00:00:31.798] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:32.292] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:46.994] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:03:07.188] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:07.532] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:07.532] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:07.532] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:07.532] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:07.532] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:07.532] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:37.514] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:47.728] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:54.064] Browser ERROR   uncaughtError: Error: Element not found
+[00:07:34.874] Browser ERROR   {}
+[00:07:34.874] Browser ERROR   {}
+[00:10:47.443] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:47.875] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:47.875] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:47.875] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:47.875] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:47.875] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:47.875] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:56.336] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:20.393] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.393] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.393] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.393] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.509] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.509] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:11:20.509] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.423] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:43.770] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:12:43.770] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:02:29.795] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:03:46.976] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:47.240] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[00:13:16.225] Browser ERROR   uncaughtError: Error: Element not found
+[00:13:44.901] Browser ERROR   uncaughtError: Error: Element not found
+[00:13:53.243] Browser ERROR   uncaughtError: Error: Element not found
+[01:13:27.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:29.141] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:13:29.141] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:26:26.258] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:26:26.258] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:26:26.730] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:03:49.115] Browser WARN    Image with src "/_next/static/media/hero.bda8a480.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:03:49.115] Browser WARN    Image with src "/_next/static/media/Google-Play---eng.0edd9e34.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[01:33:31.905] Browser LOG     Authentication failed, falling back to anonymous booking
+[01:33:36.664] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:36:06.400] Browser ERROR   unhandledRejection: TypeError: react_hot_toast__WEBPACK_IMPORTED_MODULE_2__.toast.warning is not a function
+[01:40:17.637] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:40:18.014] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:07:03.497] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:07:29.636] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:31:56.769] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:15.564] Server  LOG      ○ Compiling /book ...
-[00:32:17.915] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:17.915] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:32:21.747] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:46.363] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:43:46.807] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:46.808] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:46.808] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:46.808] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:46.808] Browser WARN    Image with src "/_next/static/media/App-Store---eng.158d9623.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[01:40:20.862] Server  LOG      ○ Compiling /api/v1/trips/trip-search ...
+[01:40:49.248] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:48:47.831] Browser ERROR   ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:48:47.858] Server  ERROR    ⨯ ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:48:48.666] Browser ERROR   ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:48:48.678] Server  ERROR    ⨯ ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:48:48.764] Server  LOG      ○ (pwa) "PWA support is disabled."
+[01:48:50.689] Server  LOG      ○ Compiling /_not-found ...
+[01:48:59.660] Browser ERROR   ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:48:59.678] Server  ERROR    ⨯ ./src/app/(auth)/reservation-fee-payment/[bookingId]/page.tsx:1:1
+Module not found: Can't resolve '../../../pages/Users/ReservationFeePayment'
+> 1 | import ReservationFeePayment from '../../../pages/Users/ReservationFeePayment';
+    | ^
+  2 |
+  3 | export default function ReservationFeePaymentPage() {
+  4 |   return <ReservationFeePayment />;
+
+https://nextjs.org/docs/messages/module-not-found
+[01:49:50.215] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:49:50.680] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[01:43:52.817] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:43:52.817] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:43:52.817] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.492] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:44:00.878] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.878] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.878] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.878] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.878] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:00.878] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:05.778] Browser ERROR   uncaughtError: Error: Element not found
-[01:44:07.776] Browser ERROR   uncaughtError: Error: Element not found
-[01:44:09.795] Browser ERROR   uncaughtError: Error: Element not found
-[01:44:12.022] Browser ERROR   uncaughtError: Error: Element not found
-[01:44:14.032] Browser ERROR   uncaughtError: Error: Element not found
-[01:44:30.108] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:44:30.346] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:30.346] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:30.346] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:30.346] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:44.513] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:44.513] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:44:44.513] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:41.679] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:46:42.099] Browser WARN    Image with src "/_next/static/media/french.cffbaaef.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "/_next/static/media/MOMO.fbbe5ac9.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "/_next/static/media/us.8a6317b1.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/transapp-logo.2f15cfdb.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/store-1.3b885d87.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Facebook.8d24fe81.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/logo-transapp-footer-grey.6072d6d5.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Instagram.c2c51d0c.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Twitter.625d4cf1.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Gmail.4a3dafa7.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/OM.caa8f9ca.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Group-224.fc02a05a.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "http://localhost:3000/_next/static/media/Mastercard.f27c6518.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:46:42.099] Browser WARN    Image with src "/_next/static/media/transapp-logo.2f15cfdb.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:50:20.282] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:59:55.522] Server  LOG      ○ Compiling /api/v1/bookings/[bookingId]/complete-reservation-payment ...

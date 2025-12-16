@@ -50,3 +50,14 @@ export const isEmpty = (value: string | number | object | null | undefined): boo
   }
   return false;
 };
+
+/**
+ * Rounds a price up to the nearest multiple of 50
+ * @param price - The price to round (can be number or string)
+ * @returns The rounded price as a number
+ */
+export const roundPriceToNearest50 = (price: number | string): number => {
+  const numPrice = typeof price === 'string' ? parseFloat(price) : Number(price);
+  if (!Number.isFinite(numPrice) || numPrice <= 0) return 0;
+  return Math.ceil(numPrice / 50) * 50;
+};

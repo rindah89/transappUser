@@ -125,42 +125,58 @@ const PayUnit: React.FC = () => {
 
     try {
       const userEmail = (state?.user as any)?.data?.data?.email;
-      if (!userEmail) {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-          `api/v1/bookings/anon-booking/${trip.id}`,
-          bookingData
-        );
-        if (data?.error) {
-          toast.error(data.message);
-          setLoading(false);
-        } else if (data.data) {
-          setSuccess(true);
-          setSeat(data.data.seat);
-          setTicket(data.data.ticket_number || data.data.ticketNumber);
-          localStorage.removeItem('phone');
-          localStorage.removeItem("name");
-          localStorage.removeItem("idCard");
-          localStorage.removeItem("email");
-          setLoading(false);
+      const userToken = (state?.user as any)?.data?.data?.token || (state?.user as any)?.data?.token;
+      const isAuthenticated = userEmail && userToken;
+      
+      // Try authenticated booking first if user appears to be logged in
+      if (isAuthenticated) {
+        try {
+          const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+            `api/v1/bookings/create-booking/${trip.id}`,
+            bookingData
+          );
+          if (data?.error) {
+            // If 401 Unauthorized, fall back to anonymous booking
+            throw new Error(data.message || 'Authentication failed');
+          } else if (data.data) {
+            setSuccess(true);
+            setSeat(data.data.seat);
+            setTicket(data.data.ticket_number || data.data.ticketNumber);
+            localStorage.removeItem('phone');
+            localStorage.removeItem("name");
+            localStorage.removeItem("idCard");
+            localStorage.removeItem("email");
+            setLoading(false);
+            return;
+          }
+        } catch (authError: unknown) {
+          // If authentication fails (401), fall back to anonymous booking
+          if (axios.isAxiosError(authError) && authError.response?.status === 401) {
+            console.log('Authentication failed, falling back to anonymous booking');
+            // Continue to anonymous booking flow below
+          } else {
+            throw authError;
+          }
         }
-      } else {
-        const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-          `api/v1/bookings/create-booking/${trip.id}`,
-          bookingData
-        );
-        if (data?.error) {
-          toast.error(data.message);
-          setLoading(false);
-        } else if (data.data) {
-          setSuccess(true);
-          setSeat(data.data.seat);
-          setTicket(data.data.ticket_number || data.data.ticketNumber);
-          localStorage.removeItem('phone');
-          localStorage.removeItem("name");
-          localStorage.removeItem("idCard");
-          localStorage.removeItem("email");
-          setLoading(false);
-        }
+      }
+      
+      // Anonymous booking flow (also used as fallback for failed auth)
+      const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+        `api/v1/bookings/anon-booking/${trip.id}`,
+        bookingData
+      );
+      if (data?.error) {
+        toast.error(data.message);
+        setLoading(false);
+      } else if (data.data) {
+        setSuccess(true);
+        setSeat(data.data.seat);
+        setTicket(data.data.ticket_number || data.data.ticketNumber);
+        localStorage.removeItem('phone');
+        localStorage.removeItem("name");
+        localStorage.removeItem("idCard");
+        localStorage.removeItem("email");
+        setLoading(false);
       }
     } catch (error: unknown) {
       setLoading(false);

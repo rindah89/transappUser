@@ -161,7 +161,15 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
   }, [modal.modal_static, trip?.id]);
 
   const pickSeat = useCallback((seat: string): void => {
-    setValue('seat', seat, { shouldValidate: true, shouldDirty: true });
+    if (seat) {
+      setValue('seat', seat, { shouldValidate: true, shouldDirty: true });
+      // Force a re-render to update the selected state
+      const form = document.querySelector('form');
+      if (form) {
+        const event = new Event('input', { bubbles: true });
+        form.dispatchEvent(event);
+      }
+    }
   }, [setValue]);
 
   const selectedSeat = watch('seat');
@@ -186,7 +194,24 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       e.stopPropagation();
-      if (!isTaken) {
+      e.nativeEvent.stopImmediatePropagation();
+      if (!isTaken && seat) {
+        pickSeat(seat);
+      }
+    };
+    
+    const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e.nativeEvent.stopImmediatePropagation();
+      if (!isTaken && seat) {
+        pickSeat(seat);
+      }
+    };
+    
+    const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!isTaken && seat) {
         pickSeat(seat);
       }
     };
@@ -197,7 +222,21 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
         className={`ta-seat ${isTaken ? 'is-taken' : 'is-available'} ${isSelected ? 'is-selected' : ''}`}
         disabled={isTaken}
         onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         aria-label={`Seat ${seat}${isTaken ? ' (taken)' : isSelected ? ' (selected)' : ''}`}
+        tabIndex={isTaken ? -1 : 0}
+        style={{ 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+          minWidth: '44px',
+          minHeight: '44px',
+          cursor: isTaken ? 'not-allowed' : 'pointer',
+          pointerEvents: isTaken ? 'none' : 'auto'
+        }}
       >
         {seat}
       </button>

@@ -9,6 +9,7 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import type { Booking } from '../../interfaces/booking.interface';
 import { CalendarDays, Clock, Download, Eye, XCircle } from 'lucide-react';
+import { roundPriceToNearest50 } from '../../utils/helpers';
 
 interface BookingsResponse {
   error: boolean;
@@ -173,7 +174,7 @@ const Trips: React.FC = () => {
                         <div className="ta-kv__k">
                           <span>{t('price') || 'Price'}</span>
                         </div>
-                        <div className="ta-kv__v ta-kv__v--price">{trip.price} XAF</div>
+                        <div className="ta-kv__v ta-kv__v--price">{roundPriceToNearest50(trip.price)} XAF</div>
                       </div>
                     </div>
 

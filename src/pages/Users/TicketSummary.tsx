@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { useStateMachine } from "little-state-machine";
 import { updateAction, updateBooking } from "../../utils/updateActions";
+import { roundPriceToNearest50 } from "../../utils/helpers";
 import Link from "next/link";
 
 const TicketSummary: React.FC = () => {
@@ -59,7 +60,7 @@ const TicketSummary: React.FC = () => {
                   {t('time')}: <span>{trip.departure || trip.departure_time}</span>
                 </li>
                 <li>
-                  {t('fare')}: <span>{trip.price}</span>
+                  {t('fare')}: <span>{roundPriceToNearest50(trip.price)}</span>
                 </li>
               </ul>
               <Link href="/user-checkout" className="btn-buy">

@@ -36,8 +36,17 @@ function ticketNumber(): string {
 }
 
 /**
+ * Round price up to the nearest multiple of 50
+ */
+function roundPriceToNearest50(price: number): number {
+  if (!Number.isFinite(price) || price <= 0) return 0;
+  return Math.ceil(price / 50) * 50;
+}
+
+/**
  * Calculate reservation fee based on agency settings
- * - If percentage mode: calculate percentage, round up to nearest 50 XAF if below 500 XAF, then apply cap
+ * - Round ticket price to nearest 50 first
+ * - If percentage mode: calculate 10% of rounded price, cap at 500 XAF (whichever is lower), then round to nearest 50
  * - If fixed mode: return fixed amount
  */
 function calculateReservationFee(
@@ -53,16 +62,13 @@ function calculateReservationFee(
     return fixedXaf;
   }
   
-  // Percentage mode
-  let fee = (price / 100) * percent;
+  // Percentage mode: round price first, then calculate fee
+  const roundedPrice = roundPriceToNearest50(price);
+  const feeBase = (roundedPrice / 100) * percent;
   
-  // Round up to nearest 50 XAF if below 500 XAF and not already a multiple of 50
-  if (fee < 500 && fee % 50 !== 0) {
-    fee = Math.ceil(fee / 50) * 50;
-  }
-  
-  // Apply cap
-  return fee > capXaf ? capXaf : fee;
+  // Take minimum of (10% of rounded price, cap), then round to nearest 50
+  const feeCapped = Math.min(feeBase, capXaf);
+  return roundPriceToNearest50(feeCapped);
 }
 
 async function getAccessToken(request: NextRequest): Promise<string | null> {
@@ -161,7 +167,7 @@ export async function POST(
       week: (body.week || isoWeek(journeyDate)) || null,
       ticket_number: (body.ticket_number || ticketNumber()) as string,
       seat: (body.seat as string | null | undefined) ?? null,
-      status: (body.status as string | null | undefined) ?? '',
+      status: (body.status as string | null | undefined) || 'PENDING_PAYMENT',
       booking_fee: (body.booking_fee as number | null | undefined) ?? null,
       payer_name: (body.payer_name as string | null | undefined) ?? null,
       payer_phone: (body.payer_phone as number | null | undefined) ?? null,
@@ -222,41 +228,8 @@ export async function POST(
       agency_logo: agencyLogo || null,
     };
 
-    // Record "payment" (reservation fee waived) + cash-at-counter amount (best-effort; never blocks booking)
-    try {
-      const reservationFee = calculateReservationFee(
-        Number(trip.price || 0),
-        reservationFeeMode,
-        reservationFeePercent,
-        reservationFeeCapXaf,
-        reservationFeeXaf
-      );
-      const paymentPayload: PaymentRecordInsert = {
-        booking_id: booking.id,
-        trip_id: tripId,
-        // tenancy: tie payment record to agency via booking/trip
-        agency_id: trip.agency_id,
-        user_id: user.id,
-        currency: 'XAF',
-        ticket_amount: Number(trip.price || 0),
-        reservation_fee_amount: reservationFee,
-        discount_amount: reservationFee, // 100% discount (waived)
-        amount_due_now: 0,
-        amount_due_at_counter: Number(trip.price || 0),
-        payment_method: 'CASH_AT_COUNTER',
-        provider: null,
-        provider_reference: booking.transaction_id ?? null,
-        status: 'SUCCEEDED',
-        verified_at: new Date().toISOString(),
-        metadata: {
-          note: 'Reservation fee waived; ticket payable in cash at counter',
-        } as any,
-      };
-
-      await supabaseAdmin.from('payment_records').insert(paymentPayload);
-    } catch {
-      // ignore
-    }
+    // Don't create payment record yet - booking is PENDING_PAYMENT
+    // Payment record will be created when reservation fee is paid
 
     // Best-effort: increment reserved seats (non-atomic)
     try {

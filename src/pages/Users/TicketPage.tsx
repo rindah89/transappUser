@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 import type { Booking } from '../../interfaces/booking.interface'
 import Link from 'next/link'
 import { Building2, CalendarDays, Clock, Download, Printer, User, XCircle } from 'lucide-react'
+import { roundPriceToNearest50 } from '../../utils/helpers'
 
 type BookingResponse = { error: boolean; message: string; data?: Booking }
 
@@ -42,7 +43,14 @@ const TicketPage: React.FC = () => {
           toast.error(data.message || 'Failed to load ticket')
           setBooking(null)
         } else {
-          setBooking(data.data || null)
+          const bookingData = data.data || null
+          setBooking(bookingData)
+          
+          // Redirect to payment screen if booking is pending payment
+          if (bookingData && bookingData.status === 'PENDING_PAYMENT') {
+            router.push(`/reservation-fee-payment/${bookingId}`)
+            return
+          }
         }
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) toast.error((err.response?.data as any)?.message || err.message || 'Failed to load ticket')
@@ -213,7 +221,7 @@ const TicketPage: React.FC = () => {
                 <div className="ta-kv__k">
                   <span>{t('price') || 'Price'}</span>
                 </div>
-                <div className="ta-kv__v ta-kv__v--price">{booking.price} XAF</div>
+                <div className="ta-kv__v ta-kv__v--price">{roundPriceToNearest50(booking.price)} XAF</div>
               </div>
             </section>
 

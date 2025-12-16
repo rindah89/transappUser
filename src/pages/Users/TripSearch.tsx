@@ -18,6 +18,7 @@ import Search from '../../components/Common/Search';
 import PopularRoutes from '../../components/Common/PopularRoutes';
 import TripFiltersResponsive from '../../components/Trips/TripFiltersResponsive';
 import { DEFAULT_TRIP_FILTERS, applyTripFilters, sortTrips, availableSeats } from '../../utils/tripFilters';
+import { roundPriceToNearest50 } from '../../utils/helpers';
 
 const TripSearch: React.FC = () => {
   const { t } = useTranslation();
@@ -145,7 +146,7 @@ const TripSearch: React.FC = () => {
     <>
       <section className="trip-search mb-5">
         <div className="container">
-          {!loading && (errorMessage || !hasResults) && (
+          {!loading && (errorMessage || (!hasResults && data.length === 0)) && (
             <div className="row pt-5 mb-4">
               <div className="col-lg-12">
                 <Card>
@@ -257,7 +258,7 @@ const TripSearch: React.FC = () => {
                     <div className="ta-trip-card__right">
                       <div className="ta-trip-card__price">
                         <div className="ta-trip-card__price-label">{t('price')}</div>
-                        <div className="ta-trip-card__price-value">{trip.price} XAF</div>
+                        <div className="ta-trip-card__price-value">{roundPriceToNearest50(trip.price)} XAF</div>
                       </div>
                       {trip.reserved !== trip.seats ? (
                         <Button
