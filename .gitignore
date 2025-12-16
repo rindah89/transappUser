@@ -32,3 +32,11 @@ out/
 
 # typescript
 *.tsbuildinfo
+SUPABASE_TYPES_GENERATED.md
+next-env.d.ts
+src/app/(auth)/payment-return/[bookingId]/page.tsx
+src/app/api/v1/bookings/anon-booking/[tripId]/route.ts
+src/app/api/v1/bookings/create-booking/[tripId]/route.ts
+src/app/api/v1/payments/verify/route.ts
+src/interfaces/payment-record.interface.ts
+src/pages/_app.tsx
