@@ -67,7 +67,15 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action, closeDrawer }) => {
           e.stopPropagation();
           action(e);
         }}
+        onTouchStart={(e) => {
+          // Allow touch events to work smoothly on iOS
+          if (drawer) {
+            e.stopPropagation();
+            action(e as any);
+          }
+        }}
         className={`off_canvars_overlay ${drawer ? 'active' : ''}`}
+        style={{ touchAction: 'manipulation' }}
       />
       <div className="offcanvas_menu">
         <div className="container-fluid">
@@ -82,7 +90,18 @@ const Drawer: React.FC<DrawerProps> = ({ drawer, action, closeDrawer }) => {
                       e.stopPropagation();
                       action(e);
                     }}
+                    onTouchStart={(e) => {
+                      // Optimized for iOS - don't prevent default on touch start
+                      e.stopPropagation();
+                    }}
+                    onTouchEnd={(e) => {
+                      // Handle tap on touch end for better iOS responsiveness
+                      e.preventDefault();
+                      e.stopPropagation();
+                      action(e as any);
+                    }}
                     aria-label="Close menu"
+                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
                   >
                     <X size={20} />
                   </button>

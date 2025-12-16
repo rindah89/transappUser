@@ -319,31 +319,46 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
     if (!seat) return <div className="ta-seat ta-seat--empty" aria-hidden="true" />;
     const isTaken = takenSeats.includes(seat);
     const isSelected = selectedSeat === seat;
+    const touchStartTimeRef = useRef<number>(0);
+    const touchStartPosRef = useRef<{ x: number; y: number } | null>(null);
     
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Handle mouse clicks (desktop)
+    const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       e.stopPropagation();
-      e.nativeEvent.stopImmediatePropagation();
       if (!isTaken && seat) {
         pickSeat(seat);
       }
-    };
+    }, [isTaken, seat]);
     
-    const handleTouchStart = (e: React.TouchEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e.nativeEvent.stopImmediatePropagation();
-      if (!isTaken && seat) {
-        pickSeat(seat);
-      }
-    };
+    // Handle touch start - only track position, don't prevent default (allows native iOS scrolling)
+    const handleTouchStart = useCallback((e: React.TouchEvent<HTMLButtonElement>) => {
+      const touch = e.touches[0];
+      touchStartPosRef.current = { x: touch.clientX, y: touch.clientY };
+      touchStartTimeRef.current = Date.now();
+      // Don't prevent default here - allows native iOS scrolling
+    }, []);
     
-    const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      if (!isTaken && seat) {
-        pickSeat(seat);
+    // Handle touch end to detect taps vs swipes
+    const handleTouchEnd = useCallback((e: React.TouchEvent<HTMLButtonElement>) => {
+      if (!touchStartPosRef.current) return;
+      
+      const touch = e.changedTouches[0];
+      const deltaX = Math.abs(touch.clientX - touchStartPosRef.current.x);
+      const deltaY = Math.abs(touch.clientY - touchStartPosRef.current.y);
+      const deltaTime = Date.now() - touchStartTimeRef.current;
+      
+      // Only treat as tap if movement is small and quick (not a scroll)
+      if (deltaX < 10 && deltaY < 10 && deltaTime < 300) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!isTaken && seat) {
+          pickSeat(seat);
+        }
       }
-    };
+      
+      touchStartPosRef.current = null;
+    }, [isTaken, seat]);
     
     return (
       <button
@@ -351,8 +366,8 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
         className={`ta-seat ${isTaken ? 'is-taken' : 'is-available'} ${isSelected ? 'is-selected' : ''}`}
         disabled={isTaken}
         onClick={handleClick}
-        onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         aria-label={`Seat ${seat}${isTaken ? ' (taken)' : isSelected ? ' (selected)' : ''}`}
         tabIndex={isTaken ? -1 : 0}
         style={{ 
@@ -364,7 +379,9 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
           minWidth: '44px',
           minHeight: '44px',
           cursor: isTaken ? 'not-allowed' : 'pointer',
-          pointerEvents: isTaken ? 'none' : 'auto'
+          pointerEvents: isTaken ? 'none' : 'auto',
+          touchAction: 'manipulation',
+          WebkitTapHighlightColor: 'transparent'
         }}
       >
         {seat}
