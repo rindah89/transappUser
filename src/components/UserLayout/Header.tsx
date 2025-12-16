@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 import logo from "../../assets/images/transapp-logo.svg";
 import StickyMenu from '../../lib/StickyMenu';
 import LanguageDropdown from "../Common/TopbarDropdown/LanguageDropdown";
@@ -11,7 +12,7 @@ import Navigation from '../../routes/Navigation';
 import { useStateMachine } from "little-state-machine";
 import { updateClient } from "../../utils/updateActions";
 import ProfileMenu from '../Common/TopbarDropdown/Profile';
-import { Menu } from 'lucide-react';
+import { Menu, ArrowLeft } from 'lucide-react';
 
 interface HomeHeaderProps {
   action?: (e: React.MouseEvent) => void;
@@ -19,9 +20,26 @@ interface HomeHeaderProps {
 
 const HomeHeader: React.FC<HomeHeaderProps> = ({ action }) => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
   const { state } = useStateMachine({ updateClient });
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
   const [hydrated, setHydrated] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile mode
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Check if we can go back (not on home page)
+  const canGoBack = pathname !== '/';
 
   useEffect(() => {
     StickyMenu();
@@ -66,6 +84,18 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ action }) => {
         <div className="container">
           <div className="header-nav-box modern-header-container">
             <div className="modern-header-inner">
+              {/* Back button for mobile */}
+              {isMobile && canGoBack && (
+                <button
+                  type="button"
+                  onClick={() => router.back()}
+                  className="ta-back-button d-lg-none"
+                  aria-label="Go back"
+                >
+                  <ArrowLeft size={24} />
+                </button>
+              )}
+              
               <div className="modern-header-logo">
                 <div className="appie-logo-box modern-logo-box">
                   <Link href="/" className="logo-link">

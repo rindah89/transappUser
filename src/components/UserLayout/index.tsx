@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Drawer from './Mobile/Drawer';
 import BottomNav from './Mobile/BottomNav'
 import Action from './Action';
+import PWAInstallPrompt from './PWAInstallPrompt';
 
 interface UserLayoutProps {
   children: React.ReactNode;
@@ -45,6 +46,7 @@ const UserLayout: React.FC<UserLayoutProps> = ({ children }) => {
       <main className="ta-app-content">{children}</main>
       <BottomNav onMenu={() => drawerAction.toggle()} />
       <Action />
+      <PWAInstallPrompt />
       <Footer />
     </React.Fragment>
   );
