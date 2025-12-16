@@ -57,14 +57,33 @@ export async function POST(request: NextRequest): Promise<NextResponse<PromoVali
     const code = promo_code.trim().toUpperCase();
     const now = new Date().toISOString();
 
-    // First get the promo code
-    const { data: promo, error: promoError } = await supabaseAdmin
+    // First check for app-wide promo codes (applies to all agencies)
+    let { data: promo, error: promoError } = await supabaseAdmin
       .from('reservation_promotions')
       .select('*')
-      .eq('agency_id', trip.agency_id)
       .eq('code', code)
       .eq('is_active', true)
+      .eq('is_app_wide', true)
       .single();
+
+    // If no app-wide promo found, check for agency-specific promo
+    if (promoError || !promo) {
+      const { data: agencyPromo, error: agencyPromoError } = await supabaseAdmin
+        .from('reservation_promotions')
+        .select('*')
+        .eq('agency_id', trip.agency_id)
+        .eq('code', code)
+        .eq('is_active', true)
+        .eq('is_app_wide', false)
+        .single();
+
+      if (!agencyPromoError && agencyPromo) {
+        promo = agencyPromo;
+        promoError = null;
+      } else {
+        promoError = agencyPromoError;
+      }
+    }
 
     if (promoError || !promo) {
       return NextResponse.json({

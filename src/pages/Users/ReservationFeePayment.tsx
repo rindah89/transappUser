@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useParams, useRouter, useSearchParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import axios from 'axios'
 import { Container, Row, Col, Button, Card, CardBody } from 'reactstrap'
 import { SpinnerCircular } from 'spinners-react'
@@ -33,7 +33,6 @@ const ReservationFeePayment: React.FC = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const params = useParams() as { bookingId?: string }
-  const searchParams = useSearchParams()
   const bookingId = Number(params?.bookingId)
 
   const [loading, setLoading] = useState(true)
@@ -48,8 +47,6 @@ const ReservationFeePayment: React.FC = () => {
   const {
     register,
     handleSubmit,
-    setValue,
-    watch,
     formState: { errors },
   } = useForm<PaymentFormData>()
 
@@ -165,7 +162,7 @@ const ReservationFeePayment: React.FC = () => {
       if (data?.error) {
         // If PayUnit fails, mark as paid anyway (for testing/fallback)
         if (process.env.NODE_ENV !== 'production') {
-          toast.warning(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
+          toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
           await completePayment(transaction_id, 'CASH')
           return
         }
@@ -190,7 +187,7 @@ const ReservationFeePayment: React.FC = () => {
         if (status === 403 || status === 401 || status === 400 || (status && status >= 500)) {
           // Fallback: mark as paid for testing
           if (process.env.NODE_ENV !== 'production') {
-            toast.warning(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
+            toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
             await completePayment(transaction_id, 'CASH')
             return
           }

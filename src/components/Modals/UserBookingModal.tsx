@@ -235,7 +235,7 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
         
         // If PayUnit fails, still create booking and redirect to payment screen
         // User can pay reservation fee there
-        if (status === 403 || status === 401 || status === 400 || status >= 500) {
+        if (typeof status === 'number' && (status === 403 || status === 401 || status === 400 || status >= 500)) {
           try {
             await createBookingFallback();
             // After booking is created, redirect to payment screen
