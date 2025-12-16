@@ -1,3 +1,0 @@
-module.exports=[64674,a=>{"use strict";var b=a.i(187924),c=a.i(572131);function d({error:a,reset:d}){return(0,c.useEffect)(()=>{console.error(a)},[a]),(0,b.jsxs)("div",{style:{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",minHeight:"50vh",padding:"2rem"},children:[(0,b.jsx)("h2",{children:"Something went wrong!"}),(0,b.jsx)("p",{children:a.message||"An unexpected error occurred"}),(0,b.jsx)("button",{onClick:d,style:{marginTop:"1rem",padding:"0.5rem 1rem",backgroundColor:"#007bff",color:"white",border:"none",borderRadius:"4px",cursor:"pointer"},children:"Try again"})]})}a.s(["default",()=>d])}];
-
-//# sourceMappingURL=src_app_%28auth%29_error_tsx_62473bf3._.js.map
