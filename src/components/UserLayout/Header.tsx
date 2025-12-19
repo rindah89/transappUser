@@ -141,9 +141,16 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ action }) => {
                           e.stopPropagation();
                           action(e);
                         }}
+                        onTouchEnd={(e) => {
+                          // Optimized for iOS - handle on touch end for better responsiveness
+                          e.preventDefault();
+                          e.stopPropagation();
+                          action(e as any);
+                        }}
                         className="toggle-btn canvas_open modern-menu-toggle"
                         aria-label="Open menu"
                         aria-expanded="false"
+                        style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
                       >
                         <Menu size={24} />
                       </button>

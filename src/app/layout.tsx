@@ -77,8 +77,9 @@ export const viewport: Viewport = {
   themeColor: '#000000',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 }
 
 export default function RootLayout({
@@ -89,6 +90,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* iOS PWA optimizations */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="TransApp" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="format-detection" content="telephone=no" />
+        {/* Prevent iOS from adding automatic styling to inputs */}
+        <meta name="apple-touch-fullscreen" content="yes" />
         {/* Resource hints - Next.js 16 best practice */}
         <link rel="preconnect" href="https://api.bookontransapp.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://api.bookontransapp.com" />

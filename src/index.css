@@ -5,6 +5,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* iOS PWA optimizations */
+  -webkit-tap-highlight-color: transparent;
+  /* Improve scrolling performance on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize button and interactive elements for iOS */
+button,
+a,
+[role="button"],
+[tabindex]:not([contenteditable]) {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Remove 300ms click delay on iOS */
+  cursor: pointer;
+}
+
+/* Improve scrolling containers */
+.scrollable,
+[data-scrollable],
+.modal-body,
+.offcanvas_menu,
+.ta-seat-grid {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  /* Allow momentum scrolling on iOS */
+  overscroll-behavior: contain;
 }
 
 code {
