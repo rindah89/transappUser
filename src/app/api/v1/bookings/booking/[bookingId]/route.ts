@@ -50,22 +50,37 @@ export async function GET(
     }
 
     const accessToken = await getAccessToken(request);
-    if (!accessToken) {
-      return NextResponse.json(
-        { error: true, message: 'Unauthorized' },
-        { status: 401, headers: { 'Cache-Control': 'no-store' } }
-      );
+    let userId: number | null = null;
+
+    // If authenticated, verify session and get user ID
+    if (accessToken) {
+      try {
+        const { user } = await userAuthService.verifySession(accessToken);
+        userId = user.id;
+      } catch {
+        // If session verification fails, treat as anonymous
+        userId = null;
+      }
     }
 
-    const { user } = await userAuthService.verifySession(accessToken);
-
     // Service role bypasses RLS - fetch booking without joins to avoid RLS issues on agencies table
-    const { data: booking, error } = await supabaseAdmin
+    // Allow fetching:
+    // 1. Bookings that belong to the authenticated user (if userId is set)
+    // 2. Anonymous bookings (booker_id is null) if not authenticated
+    let query = supabaseAdmin
       .from('bookings')
       .select('*')
-      .eq('id', bookingId)
-      .eq('booker_id', user.id)
-      .single();
+      .eq('id', bookingId);
+
+    if (userId) {
+      // Authenticated user: only fetch their own bookings
+      query = query.eq('booker_id', userId);
+    } else {
+      // Anonymous user: only fetch anonymous bookings (booker_id is null)
+      query = query.is('booker_id', null);
+    }
+
+    const { data: booking, error } = await query.single();
 
     if (error) {
       if (error.code === 'PGRST116') throw new HttpException(404, 'Booking not found');

@@ -80,6 +80,15 @@ const ReservationFeePayment: React.FC = () => {
 
         setReservationFee(fee)
         setOriginalFee(fee)
+        
+        // AUTO-APPLY 100% PROMO CODE FOR APP LAUNCH
+        // All reservation fees are free during app launch
+        // Apply a 100% discount automatically
+        setReservationFee(0)
+        setDiscount(fee)
+        setPromoApplied(true)
+        setPromoCode('LAUNCH100') // Set a default promo code name for tracking
+        
         setLoading(false)
       } catch (err: unknown) {
         if (axios.isAxiosError(err)) {
@@ -139,65 +148,71 @@ const ReservationFeePayment: React.FC = () => {
   const makePayment = async (): Promise<void> => {
     if (!booking) return
 
+    // PAYUNIT PAYMENT BYPASSED - All reservation fees are free during app launch
     // If amount is 0 (100% discount), skip payment and confirm directly
     if (reservationFee === 0) {
       await confirmReservation()
       return
     }
 
-    setProcessing(true)
-    const uid = new ShortUniqueId({ length: 7, dictionary: 'alphanum_upper' })
-    const transaction_id = uid.rnd()
+    // This should not be reached during app launch since all fees are 0
+    // But keeping as fallback
+    await confirmReservation()
 
-    const paymentData = {
-      total_amount: reservationFee,
-      currency: 'XAF',
-      transaction_id,
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL || window.location.origin}/payment-return/${bookingId}?transaction_id=${transaction_id}&amount=${reservationFee}`,
-    }
+    // PAYUNIT PAYMENT CODE COMMENTED OUT FOR APP LAUNCH
+    // setProcessing(true)
+    // const uid = new ShortUniqueId({ length: 7, dictionary: 'alphanum_upper' })
+    // const transaction_id = uid.rnd()
 
-    try {
-      const { data } = await axios.post('/api/v1/payunit/initialize', paymentData)
+    // const paymentData = {
+    //   total_amount: reservationFee,
+    //   currency: 'XAF',
+    //   transaction_id,
+    //   return_url: `${process.env.NEXT_PUBLIC_APP_URL || window.location.origin}/payment-return/${bookingId}?transaction_id=${transaction_id}&amount=${reservationFee}`,
+    // }
 
-      if (data?.error) {
-        // If PayUnit fails, mark as paid anyway (for testing/fallback)
-        if (process.env.NODE_ENV !== 'production') {
-          toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
-          await completePayment(transaction_id, 'CASH')
-          return
-        }
-        toast.error(data.message || t('payment_init_failed') || 'Payment initialization failed')
-        setProcessing(false)
-        return
-      }
+    // try {
+    //   const { data } = await axios.post('/api/v1/payunit/initialize', paymentData)
 
-      if (data.status === 'SUCCESS' && typeof window !== 'undefined') {
-        // Store booking ID and transaction info in localStorage
-        localStorage.setItem('pending_payment_booking_id', String(bookingId))
-        localStorage.setItem('pending_payment_transaction_id', transaction_id)
-        localStorage.setItem('pending_payment_amount', String(reservationFee))
-        if (promoCode) {
-          localStorage.setItem('pending_payment_promo_code', promoCode)
-        }
-        window.location.href = data.data.transaction_url
-      }
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        const status = error.response?.status
-        if (status === 403 || status === 401 || status === 400 || (status && status >= 500)) {
-          // Fallback: mark as paid for testing
-          if (process.env.NODE_ENV !== 'production') {
-            toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
-            await completePayment(transaction_id, 'CASH')
-            return
-          }
-        }
-        toast.error((error.response?.data as any)?.message || t('payment_init_failed') || 'Payment initialization failed')
-      } else {
-        toast.error(t('unexpected_error') || 'An unexpected error occurred')
-      }
-      setProcessing(false)
-    }
+    //   if (data?.error) {
+    //     // If PayUnit fails, mark as paid anyway (for testing/fallback)
+    //     if (process.env.NODE_ENV !== 'production') {
+    //       toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
+    //       await completePayment(transaction_id, 'CASH')
+    //       return
+    //     }
+    //     toast.error(data.message || t('payment_init_failed') || 'Payment initialization failed')
+    //     setProcessing(false)
+    //     return
+    //   }
+
+    //   if (data.status === 'SUCCESS' && typeof window !== 'undefined') {
+    //     // Store booking ID and transaction info in localStorage
+    //     localStorage.setItem('pending_payment_booking_id', String(bookingId))
+    //     localStorage.setItem('pending_payment_transaction_id', transaction_id)
+    //     localStorage.setItem('pending_payment_amount', String(reservationFee))
+    //     if (promoCode) {
+    //       localStorage.setItem('pending_payment_promo_code', promoCode)
+    //     }
+    //     window.location.href = data.data.transaction_url
+    //   }
+    // } catch (error: unknown) {
+    //   if (axios.isAxiosError(error)) {
+    //     const status = error.response?.status
+    //     if (status === 403 || status === 401 || status === 400 || (status && status >= 500)) {
+    //       // Fallback: mark as paid for testing
+    //       if (process.env.NODE_ENV !== 'production') {
+    //         toast(t('payment_gateway_unavailable') || 'Payment gateway unavailable. Marking as paid for testing.')
+    //         await completePayment(transaction_id, 'CASH')
+    //         return
+    //       }
+    //     }
+    //     toast.error((error.response?.data as any)?.message || t('payment_init_failed') || 'Payment initialization failed')
+    //   } else {
+    //     toast.error(t('unexpected_error') || 'An unexpected error occurred')
+    //   }
+    //   setProcessing(false)
+    // }
   }
 
   const confirmReservation = async (): Promise<void> => {
@@ -208,12 +223,13 @@ const ReservationFeePayment: React.FC = () => {
     const transaction_id = uid.rnd()
 
     try {
+      // During app launch, all reservations are free with 100% promo code
       const { data } = await axios.post(`/api/v1/bookings/${bookingId}/complete-reservation-payment`, {
         transaction_id: transaction_id,
         payment_method: 'PROMO',
         amount: 0,
-        discount: originalFee,
-        promo_code: promoCode || null,
+        discount: originalFee, // Full discount applied
+        promo_code: promoCode || 'LAUNCH100', // Use auto-applied promo code
       })
 
       if (data?.error) {

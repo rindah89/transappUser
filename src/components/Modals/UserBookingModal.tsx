@@ -129,6 +129,8 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
       return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://transapp-user.herokuapp.com'}/payunit-return/:transaction_id/:transaction_amount/:transaction_gateway/:transaction_status/:purchaseRef/:currency`,
     };
 
+    // PAYUNIT PAYMENT BYPASSED - Direct booking creation for app launch
+    // All reservation fees will have 100% promo code applied
     const createBookingFallback = async (): Promise<void> => {
       if (!tripForPayment?.id) {
         toast.error('No trip selected');
@@ -171,6 +173,7 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
               throw new Error('Authentication failed, using anonymous booking');
             }
             toast.error((data as any)?.message || 'Booking failed');
+            setLoading(false);
             return;
           }
 
@@ -181,7 +184,9 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
             bookingRef.current = data.data;
             // Redirect to reservation fee payment screen
             router.push(`/reservation-fee-payment/${bookingId}`);
+            return;
           }
+          setLoading(false);
           return;
         } catch (authError: unknown) {
           // If authentication fails (401), fall back to anonymous booking
@@ -191,68 +196,109 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
           } else if ((authError as any)?.message?.includes('Authentication failed')) {
             // Continue to anonymous booking flow below
           } else {
-            throw authError;
+            // For other errors, still try anonymous booking as fallback
+            console.log('Booking error, trying anonymous booking as fallback');
           }
         }
       }
 
       // Anonymous booking flow (also used as fallback for failed auth)
-      const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
-        `api/v1/bookings/anon-booking/${tripForPayment.id}`,
-        bookingPayload
-      );
+      try {
+        const { data } = await axios.post<{ error: boolean; message: string; data?: any }>(
+          `api/v1/bookings/anon-booking/${tripForPayment.id}`,
+          bookingPayload
+        );
 
-      if ((data as any)?.error) {
-        toast.error((data as any)?.message || 'Booking failed');
-        return;
-      }
+        if ((data as any)?.error) {
+          toast.error((data as any)?.message || 'Booking failed');
+          setLoading(false);
+          return;
+        }
 
-      toast.success((data as any)?.message || 'Booking created');
-      getModal({ modal_static: false });
-      const bookingId = (data as any)?.data?.id;
-      if (bookingId) {
-        bookingRef.current = data.data;
-        // Redirect to reservation fee payment screen
-        router.push(`/reservation-fee-payment/${bookingId}`);
+        toast.success((data as any)?.message || 'Booking created');
+        getModal({ modal_static: false });
+        const bookingId = (data as any)?.data?.id;
+        if (bookingId) {
+          bookingRef.current = data.data;
+          // Redirect to reservation fee payment screen
+          router.push(`/reservation-fee-payment/${bookingId}`);
+        } else {
+          toast.error('Booking created but no booking ID returned');
+          setLoading(false);
+        }
+      } catch (anonError: unknown) {
+        console.error('Anonymous booking failed:', anonError);
+        if (axios.isAxiosError(anonError)) {
+          toast.error(anonError.response?.data?.message || 'Failed to create booking');
+        } else {
+          toast.error('Failed to create booking');
+        }
+        setLoading(false);
       }
     };
 
-    try {
-      // IMPORTANT: Call our server-side proxy to avoid browser CORS issues with PayUnit.
-      const { data } = await axios.post(`api/v1/payunit/initialize`, booked);
-      if (data?.error) {
-        toast.error(data.message);
-        setLoading(false);
-      } else {
-        if (data.status === "SUCCESS" && typeof window !== 'undefined') {
-          window.location.href = data.data.transaction_url;
-        }
-      }
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        const msg = (error.response?.data as any)?.message || 'Payment initialization failed';
-        const status = error.response?.status;
+    // PAYUNIT PAYMENT BYPASSED - Skip payment initialization and go directly to booking creation
+    // All reservation fees will have 100% promo code applied on the reservation fee payment page
+    // try {
+    //   // IMPORTANT: Call our server-side proxy to avoid browser CORS issues with PayUnit.
+    //   const { data } = await axios.post(`api/v1/payunit/initialize`, booked);
+    //   if (data?.error) {
+    //     toast.error(data.message);
+    //     setLoading(false);
+    //   } else {
+    //     if (data.status === "SUCCESS" && typeof window !== 'undefined') {
+    //       window.location.href = data.data.transaction_url;
+    //     }
+    //   }
+    // } catch (error: unknown) {
+    //   if (axios.isAxiosError(error)) {
+    //     const msg = (error.response?.data as any)?.message || 'Payment initialization failed';
+    //     const status = error.response?.status;
         
-        // If PayUnit fails, still create booking and redirect to payment screen
-        // User can pay reservation fee there
-        if (typeof status === 'number' && (status === 403 || status === 401 || status === 400 || status >= 500)) {
-          try {
-            await createBookingFallback();
-            // After booking is created, redirect to payment screen
-            if (bookingRef.current?.id) {
-              router.push(`/reservation-fee-payment/${bookingRef.current.id}`);
-            }
-            return;
-          } catch (e: unknown) {
-            toast.error((e as any)?.message || 'Failed to create booking');
-            setLoading(false);
-          }
-          return;
-        }
-        toast.error(msg);
-      } else {
-        toast.error('An unexpected error occurred');
-      }
+    //     // If PayUnit fails (especially 401/403), still create booking and redirect to payment screen
+    //     // User can pay reservation fee there
+    //     if (typeof status === 'number' && (status === 403 || status === 401 || status === 400 || status >= 500)) {
+    //       try {
+    //         await createBookingFallback();
+    //         // After booking is created, redirect to payment screen
+    //         // createBookingFallback already handles the redirect, but ensure it happens
+    //         if (bookingRef.current?.id) {
+    //           router.push(`/reservation-fee-payment/${bookingRef.current.id}`);
+    //         } else {
+    //           // If bookingRef wasn't set, wait a moment and try again
+    //           setTimeout(() => {
+    //             if (bookingRef.current?.id) {
+    //               router.push(`/reservation-fee-payment/${bookingRef.current.id}`);
+    //             } else {
+    //               toast.error('Booking created but could not redirect. Please check your bookings.');
+    //               setLoading(false);
+    //             }
+    //           }, 500);
+    //         }
+    //         return;
+    //       } catch (e: unknown) {
+    //         console.error('Failed to create booking fallback:', e);
+    //         toast.error((e as any)?.message || 'Failed to create booking');
+    //         setLoading(false);
+    //       }
+    //       return;
+    //     }
+    //     toast.error(msg);
+    //     setLoading(false);
+    //   } else {
+    //     toast.error('An unexpected error occurred');
+    //     setLoading(false);
+    //   }
+    // }
+
+    // Direct booking creation - bypass PayUnit payment
+    try {
+      await createBookingFallback();
+      // createBookingFallback already handles the redirect to reservation fee payment page
+      // where a 100% promo code will be automatically applied
+    } catch (e: unknown) {
+      console.error('Failed to create booking:', e);
+      toast.error((e as any)?.message || 'Failed to create booking');
       setLoading(false);
     }
   };
@@ -491,6 +537,56 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
                   <span className="ta-legend is-available">{t('available') || 'Available'}</span>
                   <span className="ta-legend is-selected">{t('selected') || 'Selected'}</span>
                   <span className="ta-legend is-taken">{t('taken') || 'Taken'}</span>
+                </div>
+              </div>
+
+              {/* Manual seat input */}
+              <div className="ta-seatmap__manual-input mb-3">
+                <label htmlFor="seat-manual" className="ta-field__label" style={{ marginBottom: '8px', display: 'block', fontWeight: 700, fontSize: '13px', color: 'rgba(15, 23, 42, 0.85)' }}>
+                  {t('enter_seat_number') || 'Or enter seat number'}
+                </label>
+                <div className="ta-field__control">
+                  <input
+                    type="number"
+                    id="seat-manual"
+                    min="1"
+                    max={seatCount}
+                    className="form-control ta-input"
+                    placeholder={t('enter_seat_number_placeholder') || `Enter seat number (1-${seatCount})`}
+                    value={selectedSeat || ''}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value === '') {
+                        setValue('seat', '', { shouldValidate: true, shouldDirty: true });
+                      } else {
+                        const numValue = Number(value);
+                        if (numValue >= 1 && numValue <= seatCount) {
+                          if (takenSeats.includes(value)) {
+                            toast.error(t('seat_taken') || 'This seat is already taken');
+                            return;
+                          }
+                          setValue('seat', value, { shouldValidate: true, shouldDirty: true });
+                        }
+                      }
+                    }}
+                    onBlur={(e) => {
+                      const value = e.target.value;
+                      if (value) {
+                        const numValue = Number(value);
+                        if (numValue < 1 || numValue > seatCount) {
+                          toast.error(t('invalid_seat_number') || `Please enter a seat number between 1 and ${seatCount}`);
+                          setValue('seat', '', { shouldValidate: true, shouldDirty: true });
+                        } else if (takenSeats.includes(value)) {
+                          toast.error(t('seat_taken') || 'This seat is already taken');
+                          setValue('seat', '', { shouldValidate: true, shouldDirty: true });
+                        }
+                      }
+                    }}
+                    style={{
+                      maxWidth: '200px',
+                      width: '100%'
+                    }}
+                  />
                 </div>
               </div>
 

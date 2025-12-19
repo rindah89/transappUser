@@ -223,6 +223,10 @@
     "driver": "Driver",
     "selected": "Selected",
     "taken": "Taken",
+    "enter_seat_number": "Or enter seat number",
+    "enter_seat_number_placeholder": "Enter seat number",
+    "invalid_seat_number": "Please enter a valid seat number",
+    "seat_taken": "This seat is already taken",
     "valid_momo_number": "Valid money transfer number",
     "failed_booking": "Could not book your trip at this time. Please try again!",
      "ticket_num": "Your ticket number is",
@@ -479,7 +483,18 @@
     "confirm_reservation": "Confirm Reservation",
     "reservation_confirmed": "Reservation confirmed successfully!",
     "free_reservation_note": "Your reservation fee is free! You will need to pay the full ticket amount in cash at the counter.",
-    "free": "Free"
+    "free": "Free",
+    "welcome_back": "Welcome Back",
+    "create_account": "Create Account",
+    "login_subtitle": "Sign in to continue to your account",
+    "signup_subtitle": "Create an account to get started",
+    "enter_your_name": "Enter your name",
+    "enter_your_email": "Enter your email address",
+    "enter_your_password": "Enter your password",
+    "show_password": "Show password",
+    "hide_password": "Hide password",
+    "name_required": "Name is required",
+    "continue_as_guest": "Continue as Guest"
 
 
 

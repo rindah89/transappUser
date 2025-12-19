@@ -979,6 +979,20 @@ textarea {
   min-height: 60px !important;
 }
 
+@media (max-width: 768px) {
+  .ta-modal .modal-footer {
+    padding: 16px 20px calc(16px + env(safe-area-inset-bottom)) 20px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+  }
+  
+  .ta-modal .modal-footer .btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+}
+
 /* Ensure modal dialog allows proper height */
 .modal.show .ta-modal {
   display: flex !important;
@@ -1209,13 +1223,404 @@ textarea {
   .ta-seatmap__header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
+  
+  .ta-seatmap__legend {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
   .ta-seatmap__row {
     grid-template-columns: 1fr 28px 1fr;
+    gap: 8px;
   }
+  
   .ta-seatmap__aisle {
     height: 40px;
     border-radius: 10px;
+  }
+  
+  .ta-seatmap__side {
+    gap: 8px;
+  }
+  
+  .ta-seat {
+    min-height: 40px;
+    min-width: 40px;
+    font-size: 13px;
+  }
+  
+  .ta-seatmap__manual-input {
+    width: 100%;
+  }
+  
+  .ta-seatmap__manual-input .ta-field__control {
+    width: 100%;
+  }
+  
+  .ta-seatmap__manual-input input {
+    max-width: 100% !important;
+  }
+}
+
+/* ===========================
+   Modern Auth Forms (Login/Signup)
+   =========================== */
+.ta-auth-panel {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+  padding: 0;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.ta-auth-header-band {
+  width: 100%;
+  padding: 24px 20px;
+  background: linear-gradient(135deg, #162f27 0%, #2d5a47 100%);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(22, 47, 39, 0.2);
+}
+
+.ta-auth-header-band figure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ta-auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 32px 40px 0;
+}
+
+.ta-auth-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.95);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.ta-auth-subtitle {
+  font-size: 15px;
+  color: rgba(15, 23, 42, 0.65);
+  margin: 0;
+  font-weight: 500;
+}
+
+.ta-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 40px 40px;
+}
+
+.ta-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ta-form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.85);
+  margin-bottom: 4px;
+}
+
+.ta-form-label svg {
+  color: rgba(15, 23, 42, 0.6);
+  flex-shrink: 0;
+}
+
+.ta-form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(15, 23, 42, 0.12);
+  border-radius: 12px;
+  font-size: 15px;
+  color: rgba(15, 23, 42, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.ta-form-input::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.ta-form-input:focus {
+  outline: none;
+  border-color: rgba(188, 192, 20, 0.6);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(188, 192, 20, 0.1);
+}
+
+.ta-form-input:focus-visible {
+  outline: none;
+}
+
+.ta-password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ta-password-wrapper .ta-form-input {
+  padding-right: 48px;
+}
+
+.ta-password-toggle {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: rgba(15, 23, 42, 0.5);
+  transition: color 0.2s ease;
+  border-radius: 8px;
+}
+
+.ta-password-toggle:hover {
+  color: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.ta-password-toggle:active {
+  transform: scale(0.95);
+}
+
+.ta-form-error {
+  font-size: 13px;
+  color: #ef4444;
+  margin: 4px 0 0 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ta-form-footer-link {
+  text-align: right;
+  margin: -8px 0 4px 0;
+}
+
+.ta-form-footer-link a {
+  font-size: 14px;
+  color: rgba(188, 192, 20, 0.9);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.ta-form-footer-link a:hover {
+  color: rgba(188, 192, 20, 1);
+  text-decoration: underline;
+}
+
+.ta-btn-primary {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, rgba(188, 192, 20, 0.95) 0%, rgba(188, 192, 20, 0.85) 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.95);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  box-shadow: 0 4px 12px rgba(188, 192, 20, 0.25);
+  letter-spacing: -0.01em;
+}
+
+.ta-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(188, 192, 20, 0.3);
+  background: linear-gradient(135deg, rgba(188, 192, 20, 1) 0%, rgba(188, 192, 20, 0.95) 100%);
+}
+
+.ta-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(188, 192, 20, 0.2);
+}
+
+.ta-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ta-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(15, 23, 42, 0.2);
+  border-top-color: rgba(15, 23, 42, 0.8);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ta-auth-panel .divider {
+  margin: 0;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ta-auth-panel .divider::before,
+.ta-auth-panel .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(15, 23, 42, 0.1);
+}
+
+.ta-auth-panel .divider span {
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.5);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 0 12px;
+}
+
+.ta-auth-panel .ta-btn-secondary {
+  margin: 16px 40px 0;
+  width: calc(100% - 80px);
+}
+
+.ta-auth-footer {
+  margin: 24px 40px 32px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.ta-auth-footer a {
+  color: rgba(188, 192, 20, 0.9);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+  margin-left: 4px;
+}
+
+.ta-auth-footer a:hover {
+  color: rgba(188, 192, 20, 1);
+  text-decoration: underline;
+}
+
+.ta-auth-footer-section {
+  padding: 0 40px 32px;
+}
+
+.ta-auth-footer-section .divider {
+  margin-top: 0;
+}
+
+.ta-btn-secondary {
+  padding: 16px 24px;
+  background: transparent;
+  border: 1.5px solid rgba(15, 23, 42, 0.2);
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.85);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.01em;
+}
+
+.ta-btn-secondary:hover {
+  background: rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 23, 42, 0.3);
+  transform: translateY(-1px);
+}
+
+.ta-btn-secondary:active {
+  transform: translateY(0);
+  background: rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 768px) {
+  .ta-auth-panel {
+    border-radius: 16px;
+    margin: 0 16px;
+  }
+  
+  .ta-auth-header-band {
+    padding: 20px 16px;
+  }
+  
+  .ta-auth-header {
+    padding: 24px 24px 0;
+    margin-bottom: 24px;
+  }
+  
+  .ta-auth-form {
+    padding: 0 24px 28px;
+  }
+  
+  .ta-auth-panel .divider {
+    padding: 0 24px;
+  }
+  
+  .ta-auth-panel .ta-btn-secondary {
+    margin: 16px 24px 0;
+    width: calc(100% - 48px);
+  }
+  
+  .ta-auth-footer {
+    margin: 24px 24px 28px;
+  }
+  
+  .ta-auth-footer-section {
+    padding: 0 24px 28px;
+  }
+  
+  .ta-auth-title {
+    font-size: 24px;
+  }
+  
+  .ta-auth-subtitle {
+    font-size: 14px;
+  }
+  
+  .ta-form-input {
+    padding: 12px 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .ta-btn-primary {
+    padding: 14px 20px;
+    font-size: 15px;
   }
 }
 

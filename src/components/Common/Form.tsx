@@ -11,7 +11,7 @@ import { useStateMachine } from "little-state-machine";
 import { updateUser, updateClient } from "../../utils/updateActions";
 import { useForm } from "react-hook-form";
 import type { User } from "../../interfaces/user.interface";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, User as UserIcon, Mail, Lock } from "lucide-react";
 
 interface FormProps {
   account?: string;
@@ -169,113 +169,149 @@ const Form: React.FC<FormProps> = ({
       <div className="container my-auto">
         <div className="row">
           <div className="col-md-9 col-lg-7 col-xl-5 mx-auto my-4">
-            <div className="panel header_2 center">
-              <figure>
-                <a href="#0">
-                  <Image src={logo} width={86} height={80} alt="TransApp Logo" />
-                </a>
-              </figure>
+            <div className="ta-auth-panel">
+              <div className="ta-auth-header-band">
+                <figure>
+                  <a href="#0">
+                    <Image src={logo} width={86} height={80} alt="TransApp Logo" />
+                  </a>
+                </figure>
+              </div>
+              <div className="ta-auth-header">
+                <h2 className="ta-auth-title">
+                  {source === 'login' ? t("welcome_back") || "Welcome Back" : t("create_account") || "Create Account"}
+                </h2>
+                <p className="ta-auth-subtitle">
+                  {source === 'login' ? t("login_subtitle") || "Sign in to continue to your account" : t("signup_subtitle") || "Create an account to get started"}
+                </p>
+              </div>
 
               <form 
-                className="input_style_1" 
+                className="ta-auth-form" 
                 onSubmit={source === 'login' ? handleSubmit(onSubmitLogin) : handleSubmit(onSubmitSignup)}
               >
                 {source === 'login' ? null : (
-                  <div className="form-group">
-                    <label htmlFor="name">{t("name")}</label>
+                  <div className="ta-form-group">
+                    <label htmlFor="name" className="ta-form-label">
+                      <UserIcon size={16} />
+                      <span>{t("name")}</span>
+                    </label>
                     <input
                       type="text"
                       id="name"
-                      className="form-control"
+                      className="ta-form-input"
+                      placeholder={t("enter_your_name") || "Enter your name"}
                       {...register("name", {
                         required: true,
                       })}
                     />
+                    {errors.name && (
+                      <p className="ta-form-error">{t("name_required") || t("agency_name_err")}</p>
+                    )}
                   </div>
                 )}
-                {errors.name && (
-                  <p style={{ color: "red" }}>{t("agency_name_err")}</p>
-                )}
-                <div className="form-group">
-                  <label htmlFor="email_address">{t("email_address")}</label>
+                
+                <div className="ta-form-group">
+                  <label htmlFor="email_address" className="ta-form-label">
+                    <Mail size={16} />
+                    <span>{t("email_address")}</span>
+                  </label>
                   <input
                     type="email"
                     id="email_address"
-                    className="form-control"
+                    className="ta-form-input"
+                    placeholder={t("enter_your_email") || "Enter your email address"}
                     {...register("email", {
                       required: true,
                       pattern:
                         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     })}
                   />
+                  {errors.email && (
+                    <p className="ta-form-error">{t("email_err")}</p>
+                  )}
                 </div>
-                {errors.email && (
-                  <p style={{ color: "red" }}>{t("email_err")}</p>
-                )}
-                <label htmlFor="password">{t("password")}</label>
-                <div className="row">
-                  <div className="input-group mb-3 col-lg-12">
+                
+                <div className="ta-form-group">
+                  <label htmlFor="password" className="ta-form-label">
+                    <Lock size={16} />
+                    <span>{t("password")}</span>
+                  </label>
+                  <div className="ta-password-wrapper">
                     <input
                       type={isPasswordVisible ? "text" : "password"}
                       id="password"
-                      className="form-control"
+                      className="ta-form-input"
+                      placeholder={t("enter_your_password") || "Enter your password"}
                       {...register("password", {
                         required: true,
                         minLength: 6,
                       })}
                     />
-                    <div className="input-group-prepend bg-white">
-                      <span 
-                        className="input-group-text border-left-0 rounded-right bg-white" 
-                        id="basic-addon1"
-                      >
-                        {isPasswordVisible ? (
-                          <Eye
-                            onClick={togglePassword}
-                            style={{ cursor: 'pointer' }}
-                            size={18}
-                          />
-                        ) : (
-                          <EyeOff
-                            onClick={togglePassword}
-                            style={{ cursor: 'pointer' }}
-                            size={18}
-                          />
-                        )}
-                      </span>
-                    </div>
+                    <button
+                      type="button"
+                      className="ta-password-toggle"
+                      onClick={togglePassword}
+                      aria-label={isPasswordVisible ? t("hide_password") || "Hide password" : t("show_password") || "Show password"}
+                    >
+                      {isPasswordVisible ? (
+                        <EyeOff size={18} />
+                      ) : (
+                        <Eye size={18} />
+                      )}
+                    </button>
                   </div>
+                  {errors.password && (
+                    <p className="ta-form-error">{t("password_err")}</p>
+                  )}
                 </div>
 
-                {errors.password && (
-                  <p style={{ color: "red" }}>{t("password_err")}</p>
-                )}
-
                 {buttonLink !== '/login' && (
-                  <p className="float-right mb-3">
+                  <div className="ta-form-footer-link">
                     <a href="/user-forgot">{t("forgot_password")}?</a>
-                  </p>
+                  </div>
                 )}
 
-                <button type="submit" className="btn_1 full-width" disabled={loading}>
-                  {loading ? t("loading") || "Loading..." : buttonText}
+                <button type="submit" className="ta-btn-primary" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <span className="ta-spinner"></span>
+                      {t("loading") || "Loading..."}
+                    </>
+                  ) : (
+                    buttonText
+                  )}
                 </button>
               </form>
               {source === 'triplogin' ? null : source === "login" ? (
-                <p className="text-center mt-3 mb-0">
-                  {account} <a href="/register">{t("sign_up")}</a>
-                </p>
+                <>
+                  <div className="divider">
+                    <span>{t("or") || "or"}</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="ta-btn-secondary"
+                    onClick={() => {
+                      router.push(redirectTo || "/");
+                    }}
+                  >
+                    {t("continue_as_guest") || "Continue as Guest"}
+                  </button>
+                  <p className="ta-auth-footer">
+                    {account} <a href="/register">{t("sign_up")}</a>
+                  </p>
+                </>
               ) : (
-                <p className="text-center mt-3 mb-0">
+                <p className="ta-auth-footer">
                   {account} <a href="/login">{t("login")}</a>
                 </p>
               )}
               {source === 'triplogin' && (
-                <div>
-                  <div className="divider mt-4">
+                <div className="ta-auth-footer-section">
+                  <div className="divider">
                     <span>{t("or")}</span>
                   </div>
-                  <p className="text-center">
+                  <p className="ta-auth-footer">
                     No online account? <a href="/ticket-form">{t("guest_checkout")}</a>
                   </p>
                 </div>
