@@ -122,12 +122,13 @@ const UserBookingModal: React.FC<UserBookingModalProps> = ({
     }
 
     const tripForPayment = selectedTrip;
-    const booked = {
-      total_amount: tripForPayment?.price || 100,
-      currency: "XAF",
-      transaction_id: transaction_id,
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://transapp-user.herokuapp.com'}/payunit-return/:transaction_id/:transaction_amount/:transaction_gateway/:transaction_status/:purchaseRef/:currency`,
-    };
+    // PAYUNIT PAYMENT BYPASSED - booked variable no longer needed
+    // const booked = {
+    //   total_amount: tripForPayment?.price || 100,
+    //   currency: "XAF",
+    //   transaction_id: transaction_id,
+    //   return_url: `${process.env.NEXT_PUBLIC_APP_URL || 'https://transapp-user.herokuapp.com'}/payunit-return/:transaction_id/:transaction_amount/:transaction_gateway/:transaction_status/:purchaseRef/:currency`,
+    // };
 
     // PAYUNIT PAYMENT BYPASSED - Direct booking creation for app launch
     // All reservation fees will have 100% promo code applied

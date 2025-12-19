@@ -250,33 +250,35 @@ const ReservationFeePayment: React.FC = () => {
     }
   }
 
-  const completePayment = async (transactionId: string, method: string): Promise<void> => {
-    try {
-      const { data } = await axios.post(`/api/v1/bookings/${bookingId}/complete-reservation-payment`, {
-        transaction_id: transactionId,
-        payment_method: method,
-        amount: reservationFee,
-        discount: discount,
-        promo_code: promoCode || null,
-      })
+  // PAYUNIT PAYMENT BYPASSED - completePayment function no longer used
+  // Kept for future reference when PayUnit is re-enabled
+  // const completePayment = async (transactionId: string, method: string): Promise<void> => {
+  //   try {
+  //     const { data } = await axios.post(`/api/v1/bookings/${bookingId}/complete-reservation-payment`, {
+  //       transaction_id: transactionId,
+  //       payment_method: method,
+  //       amount: reservationFee,
+  //       discount: discount,
+  //       promo_code: promoCode || null,
+  //     })
 
-      if (data?.error) {
-        toast.error(data.message || t('failed_to_complete_payment') || 'Failed to complete payment')
-        setProcessing(false)
-        return
-      }
+  //     if (data?.error) {
+  //       toast.error(data.message || t('failed_to_complete_payment') || 'Failed to complete payment')
+  //       setProcessing(false)
+  //       return
+  //     }
 
-      toast.success(t('reservation_fee_paid_success') || 'Reservation fee paid successfully!')
-      router.push(`/ticket/${bookingId}`)
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        toast.error((err.response?.data as any)?.message || t('failed_to_complete_payment') || 'Failed to complete payment')
-      } else {
-        toast.error(t('unexpected_error') || 'An unexpected error occurred')
-      }
-      setProcessing(false)
-    }
-  }
+  //     toast.success(t('reservation_fee_paid_success') || 'Reservation fee paid successfully!')
+  //     router.push(`/ticket/${bookingId}`)
+  //   } catch (err: unknown) {
+  //     if (axios.isAxiosError(err)) {
+  //       toast.error((err.response?.data as any)?.message || t('failed_to_complete_payment') || 'Failed to complete payment')
+  //     } else {
+  //       toast.error(t('unexpected_error') || 'An unexpected error occurred')
+  //     }
+  //     setProcessing(false)
+  //   }
+  // }
 
   if (loading) {
     return (
