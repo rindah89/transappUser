@@ -11,6 +11,7 @@ import type { Booking } from '../../interfaces/booking.interface'
 import Link from 'next/link'
 import { Building2, CalendarDays, Clock, Download, Printer, User, XCircle } from 'lucide-react'
 import { roundPriceToNearest50 } from '../../utils/helpers'
+import { formatDateDisplay } from '../../utils/dateHelpers'
 
 type BookingResponse = { error: boolean; message: string; data?: Booking }
 
@@ -190,7 +191,7 @@ const TicketPage: React.FC = () => {
                   <CalendarDays size={16} />
                   <span>{t('journey_date') || 'Date'}</span>
                 </div>
-                <div className="ta-kv__v">{booking.journey_date}</div>
+                <div className="ta-kv__v">{formatDateDisplay(booking.journey_date)}</div>
               </div>
 
               <div className="ta-kv">

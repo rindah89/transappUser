@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form'
 import ShortUniqueId from 'short-unique-id'
 import { CreditCard, Tag, X, CheckCircle } from 'lucide-react'
 import { roundPriceToNearest50 } from '../../utils/helpers'
+import { formatDateDisplay } from '../../utils/dateHelpers'
 import type { Booking } from '../../interfaces/booking.interface'
 
 interface PaymentFormData {
@@ -322,7 +323,7 @@ const ReservationFeePayment: React.FC = () => {
                 </div>
                 <div className="d-flex justify-content-between">
                   <span>{t('journey_date') || 'Journey Date'}:</span>
-                  <strong>{new Date(booking.journey_date).toLocaleDateString()}</strong>
+                  <strong>{formatDateDisplay(booking.journey_date)}</strong>
                 </div>
               </div>
 

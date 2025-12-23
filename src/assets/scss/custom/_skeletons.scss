@@ -1,0 +1,93 @@
+/**
+ * Skeleton Loading Styles
+ * Shimmer animation for loading states
+ */
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0px,
+    #f8f8f8 40px,
+    #f0f0f0 80px
+  );
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #2a2a2a 0px,
+      #333333 40px,
+      #2a2a2a 80px
+    );
+    background-size: 200px 100%;
+  }
+}
+
+// Skeleton variants
+.skeleton {
+  &.skeleton--rounded {
+    border-radius: 0.5rem;
+  }
+
+  &.skeleton--circle {
+    border-radius: 50%;
+  }
+
+  &.skeleton--pulse {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Trip card skeleton adjustments
+.ta-trip-card {
+  .skeleton {
+    background-color: #f8f9fa;
+  }
+}
+
+// Booking card skeleton adjustments
+.ta-ticket-card {
+  .skeleton {
+    background-color: #f8f9fa;
+  }
+}
+
+// Search form skeleton adjustments
+.ta-search-form {
+  .skeleton {
+    background-color: #ffffff;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .skeleton {
+    // Slightly faster animation on mobile
+    animation-duration: 1.2s;
+  }
+}
+

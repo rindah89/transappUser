@@ -4,8 +4,8 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useStateMachine } from "little-state-machine";
 import { updateSearch, updateAction, SearchState } from "../../utils/updateActions";
 import { Card, Row, Col, CardBody, Container, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import moment from "moment";
 import axios from 'axios';
+import { formatDate, formatTime, toDate, parseTime } from '../../utils/dateHelpers';
 import { SpinnerCircular } from 'spinners-react';
 import Image from 'next/image';
 import logo from "../../assets/images/client-2.png";
@@ -44,7 +44,7 @@ const TripSearch: React.FC = () => {
     typeof searchState?.journeyDate === 'string'
       ? searchState.journeyDate
       : searchState?.journeyDate
-        ? moment(searchState.journeyDate).format('YYYY-MM-DD')
+        ? formatDate(searchState.journeyDate, 'yyyy-MM-dd')
         : '';
   const from = typeof searchState?.from === 'string' ? searchState.from : (searchState?.from as any)?.value || '';
   const to = typeof searchState?.to === 'string' ? searchState.to : (searchState?.to as any)?.value || '';
@@ -53,12 +53,12 @@ const TripSearch: React.FC = () => {
     typeof searchState?.departureTime === 'string'
       ? searchState.departureTime
       : searchState?.departureTime
-        ? moment(searchState.departureTime).format('HH:mm')
+        ? formatTime(searchState.departureTime, 'HH:mm')
         : '';
 
-  const initialJourneyDate = searchState?.journeyDate ? moment(searchState.journeyDate).toDate() : undefined;
+  const initialJourneyDate = searchState?.journeyDate ? toDate(searchState.journeyDate) : undefined;
   const initialDepartureTime = searchState?.departureTime
-    ? moment(searchState.departureTime, ['HH:mm', 'hh:mm A']).toDate()
+    ? parseTime(searchState.departureTime, ['HH:mm', 'hh:mm a'])
     : undefined;
 
   function hideFailureModal(): void {

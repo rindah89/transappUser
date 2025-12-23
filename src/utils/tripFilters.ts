@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { parse } from 'date-fns';
 import type { Trip } from '../interfaces/trips.interface';
 
 export type TripSort =
@@ -50,9 +50,24 @@ export function departureMinutes(trip: Trip): number | null {
   const s = String(raw || '').trim();
   if (!s) return null;
 
-  const m = moment(s, ['HH:mm', 'HH:mm a', 'hh:mm A', 'H:mm', 'h:mm A'], true);
-  if (!m.isValid()) return null;
-  return m.hours() * 60 + m.minutes();
+  // Try parsing with different time formats
+  const formats = ['HH:mm', 'HH:mm a', 'hh:mm a', 'H:mm', 'h:mm a'];
+  let date: Date | null = null;
+  
+  for (const fmt of formats) {
+    try {
+      date = parse(s, fmt, new Date());
+      if (!isNaN(date.getTime())) {
+        break;
+      }
+    } catch {
+      // Try next format
+    }
+  }
+  
+  if (!date || isNaN(date.getTime())) return null;
+  
+  return date.getHours() * 60 + date.getMinutes();
 }
 
 function withinTimeWindow(trip: Trip, start: string, end: string): boolean {
@@ -60,10 +75,30 @@ function withinTimeWindow(trip: Trip, start: string, end: string): boolean {
   const mins = departureMinutes(trip);
   if (mins == null) return true;
 
-  const startM = start ? moment(start, 'HH:mm', true) : null;
-  const endM = end ? moment(end, 'HH:mm', true) : null;
-  const startMin = startM?.isValid() ? startM.hours() * 60 + startM.minutes() : null;
-  const endMin = endM?.isValid() ? endM.hours() * 60 + endM.minutes() : null;
+  let startMin: number | null = null;
+  let endMin: number | null = null;
+  
+  if (start) {
+    try {
+      const startDate = parse(start, 'HH:mm', new Date());
+      if (!isNaN(startDate.getTime())) {
+        startMin = startDate.getHours() * 60 + startDate.getMinutes();
+      }
+    } catch {
+      // Invalid format, ignore
+    }
+  }
+  
+  if (end) {
+    try {
+      const endDate = parse(end, 'HH:mm', new Date());
+      if (!isNaN(endDate.getTime())) {
+        endMin = endDate.getHours() * 60 + endDate.getMinutes();
+      }
+    } catch {
+      // Invalid format, ignore
+    }
+  }
 
   if (startMin != null && mins < startMin) return false;
   if (endMin != null && mins > endMin) return false;

@@ -1,15 +1,5 @@
-export default function Loading() {
-  return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: '50vh' 
-    }}>
-      <div>
-        <p>Loading...</p>
-      </div>
-    </div>
-  );
-}
+import LoadingSpinner from '../../components/Loading/LoadingSpinner';
 
+export default function Loading() {
+  return <LoadingSpinner message="Loading..." fullScreen />;
+}

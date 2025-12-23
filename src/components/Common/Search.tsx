@@ -12,8 +12,9 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import Select, { StylesConfig } from 'react-select';
+import { formatDate, formatTime } from '../../utils/dateHelpers';
+import { startOfHour } from 'date-fns';
 import { useForm } from "react-hook-form";
 import type { Trip } from "../../interfaces/trips.interface";
 import { CalendarDays, Clock, MapPin, Search as SearchIcon } from 'lucide-react';
@@ -68,7 +69,7 @@ const Search: React.FC<SearchProps> = ({
   const router = useRouter();
   const [startDate, setStartDate] = useState<Date>(initialJourneyDate ?? new Date());
   // Default to the top of the current hour so it matches our seeded trip times (HH:mm with :00).
-  const [depDate, setDepDate] = useState<Date>(initialDepartureTime ?? moment().startOf('hour').toDate());
+  const [depDate, setDepDate] = useState<Date>(initialDepartureTime ?? startOfHour(new Date()));
 
   const initialFromValue = initialFrom ?? from;
   const [toCity, setToCity] = useState<TownOption | null>(
@@ -96,8 +97,8 @@ const Search: React.FC<SearchProps> = ({
   const formData: SearchState = {
     from: selectedOption?.value,
     to: toCity?.value,
-    journeyDate: moment(startDate).format('YYYY-MM-DD'),
-    departureTime: moment(depDate).format('HH:mm'),
+    journeyDate: formatDate(startDate, 'yyyy-MM-dd'),
+    departureTime: formatTime(depDate, 'HH:mm'),
   };
 
   const searchTrip = async (): Promise<void> => {
@@ -194,9 +195,10 @@ const Search: React.FC<SearchProps> = ({
             <DatePicker
               selected={startDate}
               onChange={(date: Date | null) => date && setStartDate(date)}
-              minDate={moment().toDate()}
+              minDate={new Date()}
               locale={language === 'fr' ? fr : en}
-              placeholderText={moment(startDate).format('MM-DD-YYYY')}
+              placeholderText={formatDate(startDate, 'dd/MM/yyyy')}
+              dateFormat="dd/MM/yyyy"
               className="form-control ta-input"
             />
           </div>
@@ -209,8 +211,8 @@ const Search: React.FC<SearchProps> = ({
             <DatePicker
               selected={depDate}
               onChange={(date: Date | null) => date && setDepDate(date)}
-              minDate={moment().toDate()}
-              placeholderText={moment(depDate).format('HH:mm')}
+              minDate={new Date()}
+              placeholderText={formatTime(depDate, 'HH:mm')}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={60}

@@ -16,6 +16,7 @@ import {
   updateUser,
 } from "../../utils/updateActions";
 import { roundPriceToNearest50 } from "../../utils/helpers";
+import { formatDateDisplay } from "../../utils/dateHelpers";
 import { SpinnerCircular } from 'spinners-react';
 
 interface SummaryModalProps {
@@ -81,7 +82,7 @@ const SummaryModal: React.FC<SummaryModalProps> = ({
                 <li>{t('Agency')}: <span>{trip?.agency_name || trip?.agencyName}</span></li>
                 <li>{t('from')}: <span>{trip?.from_location || trip?.from}</span></li>
                 <li>{t('to')}: <span>{trip?.to_location || trip?.to}</span></li>
-                <li>{t('journey_date')}: <span>{trip?.journey_date || trip?.journeyDate}</span></li>
+                <li>{t('journey_date')}: <span>{trip?.journey_date || trip?.journeyDate ? formatDateDisplay(trip.journey_date || trip.journeyDate) : '-'}</span></li>
                 <li>{t('time')}: <span>{trip?.departure || trip?.departure_time}</span></li>
                 <li>{t('fare')}: <span>{ticketPrice} {currency}</span></li>
                 <li>{t('reservation_fee') || t('booking_fee')}: <span>{reservationFee} {currency}</span></li>

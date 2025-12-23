@@ -1,0 +1,269 @@
+/**
+ * Error Page Styles
+ * Styles for error boundaries and loading states
+ */
+
+.ta-error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem 1rem;
+
+  &__content {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  &__icon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+
+  &__message {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  &__digest {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    
+    code {
+      background-color: #f8f9fa;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #495057;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    .ta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 120px;
+      justify-content: center;
+    }
+  }
+
+  &__details {
+    margin-top: 2rem;
+    text-align: left;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+
+    summary {
+      cursor: pointer;
+      font-weight: 500;
+      color: #495057;
+      margin-bottom: 0.5rem;
+      
+      &:hover {
+        color: #212529;
+      }
+    }
+  }
+
+  &__stack {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    color: #dc3545;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}
+
+// Loading spinner styles
+.loader-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+
+  .loader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+// 404 Not Found Page Styles
+.ta-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 2rem 1rem;
+
+  &__content {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  &__icon {
+    margin-bottom: 1.5rem;
+  }
+
+  &__code {
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #bcc014;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+
+  &__message {
+    font-size: 1.125rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+
+    .ta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 140px;
+      justify-content: center;
+    }
+  }
+
+  &__suggestions {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #dee2e6;
+    text-align: left;
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #212529;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        a {
+          color: #007bff;
+          text-decoration: none;
+          font-size: 1rem;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #0056b3;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .ta-error-page {
+    min-height: 50vh;
+    padding: 1rem;
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__message {
+      font-size: 0.9375rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+      
+      .ta-btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .ta-not-found {
+    min-height: 60vh;
+    padding: 1rem;
+
+    &__code {
+      font-size: 5rem;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__message {
+      font-size: 1rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+      
+      .ta-btn {
+        width: 100%;
+      }
+    }
+
+    &__suggestions {
+      text-align: center;
+    }
+  }
+}
+

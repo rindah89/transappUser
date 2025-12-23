@@ -3,10 +3,10 @@
 import React, { useEffect } from "react";
 import { Container } from "reactstrap";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import { useStateMachine } from "little-state-machine";
 import { updateAction, updateBooking } from "../../utils/updateActions";
 import { roundPriceToNearest50 } from "../../utils/helpers";
+import { formatDateDisplay } from "../../utils/dateHelpers";
 import Link from "next/link";
 
 const TicketSummary: React.FC = () => {
@@ -54,7 +54,7 @@ const TicketSummary: React.FC = () => {
                   {t('to')}: <span>{trip.to_location || trip.to}</span>
                 </li>
                 <li>
-                  {t('journey_date')}: <span>{moment(trip.journey_date || trip.journeyDate).format("DD-MM-YYYY")}</span>
+                  {t('journey_date')}: <span>{formatDateDisplay(trip.journey_date || trip.journeyDate)}</span>
                 </li>
                 <li>
                   {t('time')}: <span>{trip.departure || trip.departure_time}</span>

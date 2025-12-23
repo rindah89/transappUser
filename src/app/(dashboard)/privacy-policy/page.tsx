@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import Privacy from '../../../pages/Users/Privacy';
+import PrivacyContent from '../../../components/Privacy/PrivacyContent';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'TransApp privacy policy',
+  description: 'TransApp privacy policy - Learn how we protect your information',
 };
 
 export default function PrivacyPage() {
-  return <Privacy />;
+  return <PrivacyContent />;
 }
 

@@ -10,6 +10,7 @@ import Link from 'next/link';
 import type { Booking } from '../../interfaces/booking.interface';
 import { CalendarDays, Clock, Download, Eye, XCircle } from 'lucide-react';
 import { roundPriceToNearest50 } from '../../utils/helpers';
+import { formatDateDisplay } from '../../utils/dateHelpers';
 
 interface BookingsResponse {
   error: boolean;
@@ -152,7 +153,7 @@ const Trips: React.FC = () => {
                           <CalendarDays size={16} />
                           <span>{t('journey_date') || 'Date'}</span>
                         </div>
-                        <div className="ta-kv__v">{trip.journey_date}</div>
+                        <div className="ta-kv__v">{formatDateDisplay(trip.journey_date)}</div>
                       </div>
 
                       <div className="ta-kv">

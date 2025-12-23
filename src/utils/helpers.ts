@@ -4,7 +4,13 @@
 
 export const formatDate = (date: string | Date): string => {
   const d = new Date(date);
-  return d.toLocaleDateString();
+  if (isNaN(d.getTime())) return '';
+  
+  // Format as DD/MM/YYYY
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
 };
 
 export const formatCurrency = (amount: number, currency: string = 'XAF'): string => {

@@ -11,6 +11,7 @@ import { SpinnerCircular } from 'spinners-react';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
+import { formatDateDisplay } from "../../utils/dateHelpers";
 import type { BookingInsert } from "../../interfaces/booking.interface";
 
 const currentYear = new Date().getFullYear();
@@ -252,7 +253,7 @@ const PayUnit: React.FC = () => {
                     <p className="text-center booking-p">{t('seat')}: {seat}</p>
                     {trip && (
                       <>
-                        <p className="text-center booking-p">{t('date')}: {trip.journey_date || trip.journeyDate}</p>
+                        <p className="text-center booking-p">{t('date')}: {formatDateDisplay(trip.journey_date || trip.journeyDate)}</p>
                         <p className="text-center booking-p">{t('time')}: {trip.departure || trip.departure_time}</p>
                         <p className="text-center booking-p">{t('to')}: {trip.to_location || trip.to}</p>
                       </>

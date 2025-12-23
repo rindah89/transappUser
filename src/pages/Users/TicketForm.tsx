@@ -5,7 +5,7 @@ import { SpinnerCircular } from 'spinners-react';
 import { Row, Col, Card, Button } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
-import moment from "moment";
+import { formatDateDisplay, formatTime } from "../../utils/dateHelpers";
 import { useTranslation } from "react-i18next";
 import { useStateMachine } from "little-state-machine";
 import {
@@ -343,13 +343,13 @@ const TicketForm: React.FC = () => {
               </Row>
               <Row>
                 <Col>
-                  <small>{trip.journey_date || trip.journeyDate}</small>
+                  <small>{formatDateDisplay(trip.journey_date || trip.journeyDate)}</small>
                 </Col>
                 <Col>
                   <small>{trip.departure || trip.departure_time}</small>
                 </Col>
                 <Col>
-                  <small>{trip.arrival ? moment(trip.arrival).format("LT") : ''}</small>
+                  <small>{trip.arrival ? formatTime(trip.arrival, 'HH:mm') : ''}</small>
                 </Col>
               </Row>
               <hr className="mt-4" />

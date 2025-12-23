@@ -5,29 +5,49 @@ import { useTranslation } from "react-i18next";
 import { useStateMachine } from "little-state-machine";
 import { updateSearch, updateAction, updateBooking, SearchState } from "../../utils/updateActions";
 import { Container, Button } from "reactstrap";
-import { io, Socket } from 'socket.io-client';
-import moment from "moment";
+import type { Socket } from 'socket.io-client';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { SpinnerCircular } from 'spinners-react';
-import ConfirmationModal from '../../components/Modals/ConfirmationModal';
-import ReservationModal from '../../components/Modals/ReservationModal';
-import SummaryModal from '../../components/Modals/SummaryModal';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import dynamic from 'next/dynamic';
 import type { Trip } from '../../interfaces/trips.interface';
 import type { Booking } from '../../interfaces/booking.interface';
 import Link from 'next/link';
+import Image from 'next/image';
 import Search from '../../components/Common/Search';
 import PopularRoutes from '../../components/Common/PopularRoutes';
 import TripFiltersResponsive from '../../components/Trips/TripFiltersResponsive';
 import { DEFAULT_TRIP_FILTERS, applyTripFilters, sortTrips, availableSeats } from '../../utils/tripFilters';
 import { roundPriceToNearest50 } from '../../utils/helpers';
 import { useRouter } from 'next/navigation';
+import { formatDate, formatTime, toDate, parseTime } from '../../utils/dateHelpers';
 
-// Use Next.js API routes instead of direct external API calls (proxy pattern)
-// Socket.io endpoint - can be configured via environment variable
-const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_URL || process.env.NEXT_PUBLIC_API_URL || "https://api.bookontransapp.com";
+// Lazy load modals - only load when needed
+const ConfirmationModal = dynamic(
+  () => import('../../components/Modals/ConfirmationModal'),
+  { 
+    ssr: false,
+    loading: () => null
+  }
+);
+
+const ReservationModal = dynamic(
+  () => import('../../components/Modals/ReservationModal'),
+  { 
+    ssr: false,
+    loading: () => null
+  }
+);
+
+const SummaryModal = dynamic(
+  () => import('../../components/Modals/SummaryModal'),
+  { 
+    ssr: false,
+    loading: () => null
+  }
+);
+
+// Socket.io endpoint is now loaded dynamically in useEffect
 
 const SearchResults: React.FC = () => {
   const { t } = useTranslation();
@@ -56,7 +76,7 @@ const SearchResults: React.FC = () => {
     typeof searchState?.journeyDate === 'string'
       ? searchState.journeyDate
       : searchState?.journeyDate
-        ? moment(searchState.journeyDate).format('YYYY-MM-DD')
+        ? formatDate(searchState.journeyDate, 'yyyy-MM-dd')
         : '';
   const from = typeof searchState?.from === 'string' ? searchState.from : (searchState?.from as any)?.value || '';
   const to = typeof searchState?.to === 'string' ? searchState.to : (searchState?.to as any)?.value || '';
@@ -65,12 +85,12 @@ const SearchResults: React.FC = () => {
     typeof searchState?.departureTime === 'string'
       ? searchState.departureTime
       : searchState?.departureTime
-        ? moment(searchState.departureTime).format('HH:mm')
+        ? formatTime(searchState.departureTime, 'HH:mm')
         : '';
 
-  const initialJourneyDate = searchState?.journeyDate ? moment(searchState.journeyDate).toDate() : undefined;
+  const initialJourneyDate = searchState?.journeyDate ? toDate(searchState.journeyDate) : undefined;
   const initialDepartureTime = searchState?.departureTime
-    ? moment(searchState.departureTime, ['HH:mm', 'hh:mm A']).toDate()
+    ? parseTime(searchState.departureTime, ['HH:mm', 'hh:mm a'])
     : undefined;
 
   const showModal = (): void => {
@@ -81,22 +101,38 @@ const SearchResults: React.FC = () => {
     setModal({ modal_static: false });
   };
 
-  const downloadTicket = (): void => {
+  const downloadTicket = async (): Promise<void> => {
     const input = document.getElementById('ticket-info');
     if (!input) return;
 
-    html2canvas(input, { logging: true, useCORS: true }).then(canvas => {
+    try {
+      // Dynamically import PDF libraries only when needed
+      const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
+        import('html2canvas'),
+        import('jspdf')
+      ]);
+
+      const canvas = await html2canvas(input, { 
+        logging: false, 
+        useCORS: true 
+      });
+      
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
         format: "a4",
         unit: "mm",
       });
+      
       pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
       pdf.save("ticket.pdf");
-    });
-
-    setModalConfirm({ modal_static: false });
-    setWorking(false);
+      
+      setModalConfirm({ modal_static: false });
+      setWorking(false);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast.error('Failed to download ticket. Please try again.');
+      setWorking(false);
+    }
   };
 
   const getCurrentTrip = (trip: Trip): void => {
@@ -139,15 +175,41 @@ const SearchResults: React.FC = () => {
   }, [from, to, journeyDate, departureTime]);
 
   useEffect(() => {
-    const socket: Socket = io(ENDPOINT);
-    socket.on("trip:update", () => {
-      fetchTrips();
-    });
-
+    let socket: Socket | null = null;
+    
+    const initSocket = async () => {
+      try {
+        // Dynamically import socket.io only when needed
+        const { io } = await import('socket.io-client');
+        const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_URL || 
+                         process.env.NEXT_PUBLIC_API_URL || 
+                         "https://api.bookontransapp.com";
+        
+        socket = io(ENDPOINT);
+        
+        socket.on("connect", () => {
+          console.log('Socket connected');
+        });
+        
+        socket.on("trip:update", () => {
+          fetchTrips();
+        });
+        
+        socket.on("error", (error) => {
+          console.error('Socket error:', error);
+        });
+      } catch (error) {
+        console.error('Failed to initialize socket:', error);
+      }
+    };
+    
+    initSocket();
     fetchTrips();
 
     return () => {
-      socket.disconnect();
+      if (socket) {
+        socket.disconnect();
+      }
     };
   }, [fetchTrips]);
 
@@ -411,8 +473,14 @@ const SearchResults: React.FC = () => {
                       <div className="ta-trip-card__left">
                         <div className="ta-trip-card__logo">
                           {trip.agency_logo ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={trip.agency_logo} alt="agency logo" width={44} height={44} />
+                            <Image 
+                              src={trip.agency_logo} 
+                              alt="agency logo" 
+                              width={44} 
+                              height={44}
+                              className="ta-trip-card__logo-img"
+                              unoptimized={trip.agency_logo.startsWith('http') && !trip.agency_logo.includes('supabase.co')}
+                            />
                           ) : (
                             <span className="fw-bold">{String(trip.agency_name || 'T').slice(0, 1)}</span>
                           )}
